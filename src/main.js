@@ -9,10 +9,11 @@ const port = process.env.PORT || 3000;
 // Middleware to parse JSON requests
 app.use(express.json());
 
+console.log(`Connecting database at: mongodb://${process.env.MONGODB_URL}:${process.env.MONGODB_PORT}/event-management`);
 connect(`mongodb://${process.env.MONGODB_URL}:${process.env.MONGODB_PORT}/event-management`);
 
 // Routes
-app.use('/', router);
+app.use('/api', router);
 
 // Start the server
 app.listen(port, () => {

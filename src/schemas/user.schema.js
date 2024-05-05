@@ -12,6 +12,14 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  name: {
+    type: String,
+    required: true
+  },
+  contactNumber: {
+    type: String,
+    required: true
+  },
   role: {
     type: String,
     enum: ['admin', 'user'],
