@@ -1,4 +1,4 @@
-# DMS (Event Management Service)
+# Event Management Service
 
 ## Description
 
