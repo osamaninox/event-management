@@ -6,7 +6,7 @@ import MainTop from "./components/MainTop";
 import CanvasTop from "./components/CanvasTop";
 //import Layers from './Layers';
 
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { toPng } from "html-to-image";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
