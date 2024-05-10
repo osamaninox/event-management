@@ -1,0 +1,15 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+/* fonts */
+@import url('./fonts.css');
+
+/* front css */
+@import url('./sass/front/global.scss');
+
+
+/* dashboard css */
+@import url('./sass/dashboard/global.scss');
+
+/* Tool css */
+@import url('./sass/tool/index.css');

@@ -1,0 +1,18 @@
+[
+  {
+    "canvasSettings": {
+      "canvasBG": "#fff",
+      "canvasWidth": "800px",
+      "canvasHeight": "600px"
+    },
+    "droppedItems": [
+      {
+        "id": 1,
+        "name": "Chair",
+        "price": 10,
+        "x": 50,
+        "y": 50
+      }
+    ]
+  }
+]

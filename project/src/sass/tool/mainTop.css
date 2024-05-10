@@ -1,0 +1,136 @@
+/*! CSS Used from: Embedded */
+/* *{user-select:none;-webkit-user-drag:none;} */
+/*! CSS Used from: Embedded */
+.css-wcwwis {
+  background: rgb(30, 30, 45);
+  padding: 12px 32px;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .css-wcwwis {
+    padding: 12px;
+  }
+}
+
+.css-7z6edo {
+  color: rgb(61, 142, 255);
+  font-size: 36px;
+}
+
+.css-39gffh {
+  color: white;
+  height: 42px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.css-1jxic4p {
+  max-height: 100%;
+}
+
+.css-70qvj9 {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.css-u55l71 {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  background: rgb(58, 58, 76);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.css-u55l71:hover {
+  background: rgba(58, 58, 76, 0.5);
+}
+
+.css-1xzdikv {
+  margin: 0px 16px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+}
+
+.css-1xzdikv:hover {
+  text-decoration: underline;
+}
+
+.css-1hyfx7x {
+  display: none;
+}
+
+.css-y73845 {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  line-height: 1;
+  background: rgb(58, 58, 76);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.css-y73845:hover {
+  background: rgba(58, 58, 76, 0.5);
+}
+
+.css-8cka6y {
+  margin-right: 4px;
+  font-size: 20px;
+}
+
+/*! CSS Used from: Embedded */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+  outline: none;
+}
+
+img {
+  border-style: solid;
+}
+
+input::placeholder {
+  opacity: 1;
+  color: #a1a1aa;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+input {
+  padding: 0;
+  line-height: inherit;
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  vertical-align: middle;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

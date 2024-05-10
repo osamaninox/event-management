@@ -1,0 +1,302 @@
+/*! CSS Used from: Embedded */
+.lidojs-text {
+  counter-reset: list 0;
+}
+
+.lidojs-text p {
+  margin-left: calc(var(--indent-level)*1.7em);
+}
+
+.lidojs-text p::before {
+  counter-increment: list 1;
+  content: counter(list, var(--counter-list-marker)) ".";
+  left: 0px;
+  height: calc(var(--line-height))*1em;
+  width: calc(var(--indent-level)*1em);
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  white-space: nowrap;
+}
+
+/*! CSS Used from: Embedded */
+.css-70qvj9 {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.css-1up8n9n {
+  width: 360px;
+  position: absolute;
+  overflow: visible;
+  top: 0px;
+  right: 0;
+  height: calc(100vh - 80px);
+  background-color: #fff;
+  display: block;
+  z-index: 9999999999999;
+  box-shadow: 0 0 15px #00000090;
+}
+
+.css-c88uu9 {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: auto;
+  width: 1640px;
+  height: 924px;
+}
+
+.css-iwr8av {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1640px;
+  height: 924px;
+  background: rgb(255, 255, 255);
+}
+
+.css-19b3lhe {
+  touch-action: pan-x pan-y pinch-zoom;
+  pointer-events: auto;
+  position: absolute;
+}
+
+.css-79esob {
+  transform-origin: 0px 0px;
+}
+
+.css-1cqrcl7 {
+  position: relative;
+  width: 1766px;
+  height: 296px;
+}
+
+.css-1rfi7w8 {
+  clip-path: path("M 0 0 L 1766 0 L 1766 296 L 0 296 L 0 0");
+  width: 100%;
+  height: 100%;
+  background: rgb(253, 235, 207);
+}
+
+.css-1sr1lb8 {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 48px;
+  border-bottom: 1px solid rgba(57, 76, 96, 0.15);
+  padding: 0px 20px;
+}
+
+.css-14q1onm {
+  line-height: 48px;
+  font-weight: 600;
+  color: rgb(24, 28, 50);
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+
+.css-hsza6h {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.css-8u3s4k {
+  border-right: 1px solid rgba(57, 76, 96, 0.15);
+  background: rgb(255, 255, 255);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+  .css-8u3s4k {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    top: 0px;
+    background: rgb(255, 255, 255);
+  }
+}
+
+.css-1v1dkfz {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.css-16awsaw {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.css-8x6z4y {
+  display: grid;
+  grid-template-columns: minmax(0px, 1fr);
+  row-gap: 8px;
+  padding: 16px;
+}
+
+.css-jt95m4 {
+  font-size: 22px;
+  width: 30px;
+  height: 20px;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.css-a5urb8 {
+  min-width: 0px;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+
+.css-1pjisgg {
+  width: 231px;
+  height: 36px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.css-hcvu4z {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  background: rgb(94, 98, 120);
+  border-radius: 8px;
+  color: rgb(255, 255, 255);
+  padding: 0px 6px;
+}
+
+.css-1g7d1bw {
+  width: 214.784px;
+  height: 36px;
+}
+
+.css-1lhrm9k {
+  transform: translate(4.98649px, -79.2973px);
+}
+
+.css-ah84fy {
+  transform-origin: 0px 0px;
+  transform: scale(0.121622);
+}
+
+.css-kycdys {
+  background: rgb(246, 246, 246);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(61, 142, 255);
+}
+
+.css-11hgz7v {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.css-1etqi7d {
+  width: 63.8961px;
+  height: 36px;
+}
+
+.css-kmgsds {
+  transform: translate(0px, 0px);
+}
+
+.css-1t1t2h3 {
+  transform-origin: 0px 0px;
+  transform: scale(0.038961);
+}
+
+.css-1di3d0s {
+  flex-shrink: 0;
+  font-size: 24px;
+}
+
+.css-y42dwd {
+  background: rgb(246, 246, 246);
+  border-radius: 8px;
+  padding: 5px 8px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  transition: transform 0ms linear 0s;
+  z-index: auto;
+  opacity: 1;
+  touch-action: none;
+}
+
+.css-666920 {
+  width: 101.615px;
+  height: 36px;
+}
+
+.css-w2vec {
+  transform: translate(-104.561px, -78.5368px);
+}
+
+.css-ulrs6g {
+  transform-origin: 0px 0px;
+  transform: scale(0.189474);
+}
+
+/*! CSS Used from: Embedded */
+p {
+  margin: 0;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+  outline: none;
+}
+
+[role='button'] {
+  cursor: pointer;
+}
+
+svg {
+  display: block;
+  vertical-align: middle;
+}

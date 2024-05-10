@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Chair",
+    "x": 50,
+    "y": 59,
+    "offsetX": 12,
+    "offsetY": 18
+  },
+  {
+    "id": 2,
+    "name": "Table",
+    "x": 150,
+    "y": 150
+  },
+  {
+    "name": "Table",
+    "x": 443,
+    "y": 180,
+    "id": 3
+  },
+  {
+    "name": "Table",
+    "x": 454,
+    "y": 78,
+    "id": 4
+  },
+  {
+    "name": "Table",
+    "x": 385,
+    "y": 326,
+    "id": 5
+  },
+  {
+    "name": "Table",
+    "x": 315,
+    "y": 294,
+    "id": 6,
+    "offsetX": 27,
+    "offsetY": 37
+  },
+  {
+    "name": "Table",
+    "x": 134,
+    "y": 313,
+    "id": 7,
+    "offsetX": 59,
+    "offsetY": 22
+  },
+  {
+    "name": "Chair",
+    "x": 327,
+    "y": 88,
+    "id": 8
+  },
+  {
+    "name": "Chair",
+    "x": 309,
+    "y": 102,
+    "id": 9
+  }
+]

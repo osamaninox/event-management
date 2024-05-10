@@ -1,0 +1,119 @@
+/*! CSS Used from: Embedded */
+
+/*! CSS Used from: Embedded */
+.css-1ll1a4k {
+  display: flex;
+  background: white;
+}
+
+.css-14hi016 {
+  display: flex;
+  z-index: 2;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  border-right: 1px solid rgba(217, 219, 228, 0.6);
+}
+
+.css-k008qs {
+  display: flex;
+}
+
+.css-lhozno {
+  color: rgb(94, 98, 120);
+  border-right: 1px solid rgba(217, 219, 228, 0.6);
+  position: fixed;
+  height: 100%;
+  background-color: #fff;
+  left: 0;
+  top: auto;
+}
+
+@media (max-width: 900px) {
+  .css-lhozno {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: rgb(255, 255, 255);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+  }
+}
+
+.css-32x41w {
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 900px) {
+  .css-32x41w {
+    display: flex;
+  }
+}
+
+.css-1dvgmd3 {
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 0px 2px;
+  height: 72px;
+  width: 72px;
+  cursor: pointer;
+}
+
+.css-1dvgmd3:hover {
+  color: rgb(0, 158, 247);
+}
+
+.css-16iqw5x {
+  font-size: 24px;
+}
+
+.css-184r8y9 {
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.css-i9ow3q {
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 0px 2px;
+  height: 72px;
+  width: 72px;
+  cursor: pointer;
+}
+
+.css-i9ow3q:hover {
+  color: rgb(0, 158, 247);
+}
+
+/*! CSS Used from: Embedded */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+  outline: none;
+}
+
+svg {
+  display: block;
+  vertical-align: middle;
+}

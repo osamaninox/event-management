@@ -1,0 +1,27 @@
+[
+  {
+    "canvasSettings": {
+      "canvasBG": "#cc0f0f",
+      "canvasWidth": "800px",
+      "canvasHeight": "600px"
+    },
+    "droppedItems": [
+      {
+        "id": 1,
+        "name": "Chair",
+        "price": 10,
+        "x": 50,
+        "y": 50
+      },
+      {
+        "name": "Image",
+        "price": 0,
+        "text": "Default Text",
+        "image": "",
+        "x": 321,
+        "y": 174,
+        "id": 3
+      }
+    ]
+  }
+]
