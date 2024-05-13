@@ -31,7 +31,7 @@ const EventTool = () => {
         { id: 9, name: "wimg1", price: 60, x: 103, y: 82 },
         { id: 10, name: "wase", price: 80, x: 99, y: 72 },
         { id: 11, name: "wase", price: 80, x: 99, y: 72 },
-         { id: 12, name: "ballon", price: 80, x: 99, y: 72 },
+        { id: 12, name: "ballon", price: 80, x: 99, y: 72 },
       ],
     },
   ]);

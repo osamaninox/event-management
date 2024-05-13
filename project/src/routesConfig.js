@@ -79,6 +79,10 @@ const routesConfig = [
         path: "/dashboard/users",
         element: <User />,
       },
+      {
+        path: "/dashboard/userprofile",
+        element: <UserProfile />,
+      },
     ],
   },
   {
