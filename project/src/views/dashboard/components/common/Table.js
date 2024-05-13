@@ -1,6 +1,8 @@
 import { Card, Typography } from "@material-tailwind/react";
 import React from "react";
 import Badge from "./Badge";
+import { Link } from "react-router-dom";
+import IconsSet from "../../../../assets/front/icons/Icons";
 
 
 export function Table({head, rows}) {
@@ -27,7 +29,7 @@ export function Table({head, rows}) {
         </thead>
         <tbody>
           {rows.map(
-            ({ id, name, Amount, date, Status, Payment_Channel,success }, index) => (
+            ({ id, name, Amount, date, Status, Payment_Channel,success,action }, index) => (
               <tr key={name} className="even:bg-blue-gray-50/50">
                 <td className="p-4">
                   <Typography
@@ -93,6 +95,16 @@ export function Table({head, rows}) {
                     {date}
                   </Typography>
                 </td>
+                {
+                  action && (
+                    <td className="p-4">
+                      <div className="flex">
+                        <Link to="/" className=""><IconsSet.EditIcon /></Link>
+                        <Link to="/" className="px-2"><IconsSet.TrashIcon /></Link>
+                      </div>
+                     </td>
+                  )
+                }
               </tr>
             )
           )}

@@ -16,6 +16,7 @@ import Checkbox from '../components/common/Checkbox';
 import { AvatarDefault } from "../components/common/Avatar";
 import face from "../../../assets/dashboard/images/face-2.jpg";
 import { Table } from '../components/common/Table';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const incomeData = {
@@ -219,7 +220,9 @@ const Home = () => {
             <h2 className="text-[#000] text-[16px] font-[600]">
               Latest Transactions
             </h2>
-            <Button size="md" label="View All"></Button>
+           <Link to="/dashboard/transactions">
+              <Button size="md" label="View All"></Button>
+           </Link>
           </div>
           <Table head={TABLE_HEAD} rows={TABLE_ROWS} />
         </div>

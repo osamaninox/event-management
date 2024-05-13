@@ -14,7 +14,7 @@ const DashboardLayout = ({ }) => {
         <div className="sticky top-0 z-20">
           <Header />
           <div class="shadow-sm bg-[#fff]  top-20 py-[10px] px-[10px] mb-[10px]">
-            <h2 class="flex items-center justify-between gap-5 flex-wrap font-[500] text-[#000]">
+            <h2 class="flex items-center justify-between gap-5 flex-wrap font-[500] text-[#000] text-[18px]">
               Welcome! John deo
             </h2>
           </div>
