@@ -45,9 +45,71 @@ import rec3 from "../../assets/tool/Shapes/Rectangle/REC3.png";
 import rec4 from "../../assets/tool/Shapes/Rectangle/REC4.png";
 import rec5 from "../../assets/tool/Shapes/Rectangle/REC5.png";
 
+import wimg1 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR-1.png";
+import wimg2 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR2.png";
+import wimg3 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR3.png";
+import wimg4 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR4.png";
+import wimg5 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR5.png";
+import wimg6 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR6.png";
+import wimg7 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR7.png";
+import wimg8 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR8.png";
+import wimg9 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR9.png";
+import wimg10 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR10.png";
+import wimg11 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR11.png";
+
+import std1 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND1.png";
+import std2 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND2.png";
+import std3 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND3.png";
+import std4 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND4.png";
+import std5 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND5.png";
+import std6 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND6.png";
+import std7 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND7.png";
+import std8 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND8.png";
+
+import vse1 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE1.png";
+import vse2 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE2.png";
+import vse3 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE3.png";
+import vse4 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE4.png";
+import vse5 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE5.png";
 
 
-// import rec5 from "../../assets/tool/Wedding/Chairsandsofas/";
+
+import b1 from "../../assets/tool/Birthday/Balloons/B1.png";
+import b2 from "../../assets/tool/Birthday/Balloons/B2.png";
+import b3 from "../../assets/tool/Birthday/Balloons/B3.png";
+import b4 from "../../assets/tool/Birthday/Balloons/B4.png";
+import b5 from "../../assets/tool/Birthday/Balloons/B5.png";
+import b6 from "../../assets/tool/Birthday/Balloons/B6.png";
+import b7 from "../../assets/tool/Birthday/Balloons/B7.png";
+import b8 from "../../assets/tool/Birthday/Balloons/B8.png";
+import b9 from "../../assets/tool/Birthday/Balloons/B9.png";
+import b10 from "../../assets/tool/Birthday/Balloons/B10.png";
+import b11 from "../../assets/tool/Birthday/Balloons/B11.png";
+import b12 from "../../assets/tool/Birthday/Balloons/B12.png";
+import b13 from "../../assets/tool/Birthday/Balloons/B13.png";
+import b14 from "../../assets/tool/Birthday/Balloons/B14.png";
+import b15 from "../../assets/tool/Birthday/Balloons/B15.png";
+import b16 from "../../assets/tool/Birthday/Balloons/B16.png";
+import b17 from "../../assets/tool/Birthday/Balloons/B17.png";
+import b18 from "../../assets/tool/Birthday/Balloons/B18.png";
+import b19 from "../../assets/tool/Birthday/Balloons/B19.png";
+import b20 from "../../assets/tool/Birthday/Balloons/B20.png";
+import b21 from "../../assets/tool/Birthday/Balloons/B21.png";
+import b22 from "../../assets/tool/Birthday/Balloons/B22.png";
+import b23 from "../../assets/tool/Birthday/Balloons/B23.png";
+import b24 from "../../assets/tool/Birthday/Balloons/B24.png";
+import b25 from "../../assets/tool/Birthday/Balloons/B25.png";
+import b26 from "../../assets/tool/Birthday/Balloons/B26.png";
+import b27 from "../../assets/tool/Birthday/Balloons/B27.png";
+import b28 from "../../assets/tool/Birthday/Balloons/B28.png";
+import b29 from "../../assets/tool/Birthday/Balloons/B29.png";
+import b30 from "../../assets/tool/Birthday/Balloons/B30.png";
+
+
+import c1 from "../../assets/tool/Birthday/Chairs/char-one.png";
+import c2 from "../../assets/tool/Birthday/Chairs/chair-two.png";
+import c3 from "../../assets/tool/Birthday/Chairs/chair-three.png";
+import c4 from "../../assets/tool/Birthday/Chairs/chair-four.png";
 
 
 const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
@@ -61,21 +123,70 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
       label: "Wedding Event",
       value: "wedding",
       items: [
-        { id: 1, itemName: "Chair", iconName: "faChair" },
-        { id: 2, itemName: "Table", iconName: "faTable" },
-        { id: 3, itemName: "Chair", iconName: "faChair" },
-        { id: 4, itemName: "Table", iconName: "faTable" },
-        { id: 5, itemName: "Chair", iconName: "faChair" },
-        { id: 6, itemName: "Table", iconName: "faTable" },
+        { id: 1, itemName: "weddingImg", src: wimg1 },
+        { id: 2, itemName: "weddingImg", src: wimg2 },
+        { id: 3, itemName: "weddingImg", src: wimg3 },
+        { id: 4, itemName: "weddingImg", src: wimg4 },
+        { id: 5, itemName: "weddingImg", src: wimg5 },
+        { id: 6, itemName: "weddingImg", src: wimg6 },
+        { id: 7, itemName: "weddingImg", src: wimg7 },
+        { id: 8, itemName: "weddingImg", src: wimg8 },
+        { id: 9, itemName: "weddingImg", src: wimg9 },
+        { id: 10, itemName: "weddingImg", src: wimg10 },
+        { id: 11, itemName: "weddingImg", src: wimg11 },
+        { id: 12, itemName: "weddingImg", src: std1 },
+        { id: 13, itemName: "weddingImg", src: std2 },
+        { id: 14, itemName: "weddingImg", src: std3 },
+        { id: 15, itemName: "weddingImg", src: std4},
+        { id: 16, itemName: "weddingImg", src: std5 },
+        { id: 17, itemName: "weddingImg", src: std6 },
+        { id: 18, itemName: "weddingImg", src: std7 },
+        { id: 19, itemName: "weddingImg", src: std8 },
+        { id: 20, itemName: "weddingImg", src: vse1 },
+        { id: 21, itemName: "weddingImg", src: vse2 },
+        { id: 22, itemName: "weddingImg", src: vse3 },
+        { id: 23, itemName: "weddingImg", src: vse4 },
+        { id: 24, itemName: "weddingImg", src: vse5 },
       ],
     },
     {
       label: "Birthday Event",
       value: "birthday",
       items: [
-        { id: 1, itemName: "Chair", iconName: "faChair" },
-        { id: 2, itemName: "Table", iconName: "faTable" },
-        { id: 3, itemName: "Chair", iconName: "faChair" },
+        { id: 1, itemName: "BallonImg", src: b1 },
+        { id: 2, itemName: "BallonImg", src: b2 },
+        { id: 3, itemName: "BallonImg", src: b3 },
+        { id: 4, itemName: "BallonImg", src: b4 },
+        { id: 5, itemName: "BallonImg", src: b5 },
+        { id: 6, itemName: "BallonImg", src: b6 },
+        { id: 7, itemName: "BallonImg", src: b7 },
+        { id: 8, itemName: "BallonImg", src: b8 },
+        { id: 9, itemName: "BallonImg", src: b9 },
+        { id: 10, itemName: "BallonImg", src: b10 },
+        { id: 11, itemName: "BallonImg", src: b11 },
+        { id: 12, itemName: "BallonImg", src: b12 },
+        { id: 13, itemName: "BallonImg", src: b13 },
+        { id: 14, itemName: "BallonImg", src: b14 },
+        { id: 15, itemName: "BallonImg", src: b15 },
+        { id: 16, itemName: "BallonImg", src: b16 },
+        { id: 17, itemName: "BallonImg", src: b17 },
+        { id: 18, itemName: "BallonImg", src: b18 },
+        { id: 19, itemName: "BallonImg", src: b19 },
+        { id: 20, itemName: "BallonImg", src: b20 },
+        { id: 21, itemName: "BallonImg", src: b21 },
+        { id: 22, itemName: "BallonImg", src: b22 },
+        { id: 23, itemName: "BallonImg", src: b23 },
+        { id: 24, itemName: "BallonImg", src: b24 },
+        { id: 25, itemName: "BallonImg", src: b25 },
+        { id: 26, itemName: "BallonImg", src: b26 },
+        { id: 27, itemName: "BallonImg", src: b27 },
+        { id: 28, itemName: "BallonImg", src: b28 },
+        { id: 29, itemName: "BallonImg", src: b29 },
+        { id: 30, itemName: "BallonImg", src: b30 },
+        { id: 31, itemName: "chairImg", src: c1 },
+        { id: 32, itemName: "chairImg", src: c2 },
+        { id: 33, itemName: "chairImg", src: c3 },
+        { id: 34, itemName: "chairImg", src: c4 },
       ],
     },
   ];
@@ -179,12 +290,17 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
                                 itemName={item.name}
                                 onDragStart={onDragStart}
                               >
-                                <FontAwesomeIcon
+                                {/* <FontAwesomeIcon
                                   color="black"
                                   size="3x"
                                   icon={faTable}
+                                /> */}
+                                <img
+                                  loading="lazy"
+                                  src={item.src}
+                                  alt={item.name}
+                                  className="object-center w-full max-h-[60px]"
                                 />
-                                {/* <img src={} alt="event-image" className=""/> */}
                               </DraggableItem>
                             </li>
                           ))}

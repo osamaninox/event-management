@@ -18,12 +18,11 @@ import Rating from "./views/dashboard/pages/Rating";
 import User from "./views/dashboard/pages/Users";
 import EventTool from "./tool/EventTool";
 import { elements } from "chart.js";
+import Login from "./views/auth/Login";
+import SignUp from "./views/auth/SignUp";
+import ResetPassword from "./views/auth/ResetPassword";
 
 const routesConfig = [
-  // {
-  //   path: "/login",
-  //   element: <Login />,
-  // },
   {
     element: <SiteLayout />,
     children: [
@@ -85,6 +84,18 @@ const routesConfig = [
   {
     path: "/eventtool",
     element: <EventTool />,
+  },
+  {
+    path: "/auth/login",
+    element: <Login />,
+  },
+  {
+    path: "/auth/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/auth/resetpassword",
+    element: <ResetPassword />,
   },
 ];
 

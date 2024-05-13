@@ -8,11 +8,12 @@ import {
   faTable,
   faCog,
   faPencil,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 //import { zIndex } from 'html2canvas/dist/types/css/property-descriptors/z-index';
 // import { toPng } from 'html-to-image';
 
-import arrow1 from "../../assets/tool/Shapes/Arrows/ARROW1.png";
+import arrow1 from '../../assets/tool/Shapes/Arrows/ARROW1.png'
 import arrow2 from "../../assets/tool/Shapes/Arrows/ARROW2.png";
 import arrow3 from "../../assets/tool/Shapes/Arrows/ARROW3.png";
 import arrow4 from "../../assets/tool/Shapes/Arrows/ARROW4.png";
@@ -54,6 +55,83 @@ import rec3 from "../../assets/tool/Shapes/Rectangle/REC3.png";
 import rec4 from "../../assets/tool/Shapes/Rectangle/REC4.png";
 import rec5 from "../../assets/tool/Shapes/Rectangle/REC5.png";
 
+import wimg1 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR-1.png";
+import wimg2 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR2.png";
+import wimg3 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR3.png";
+import wimg4 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR4.png";
+import wimg5 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR5.png";
+import wimg6 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR6.png";
+import wimg7 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR7.png";
+import wimg8 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR8.png";
+import wimg9 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR9.png";
+import wimg10 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR10.png";
+import wimg11 from "../../assets/tool/Wedding/Chairsandsofas/CHAIR11.png";
+
+import std1 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND1.png";
+import std2 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND2.png";
+import std3 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND3.png";
+import std4 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND4.png";
+import std5 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND5.png";
+import std6 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND6.png";
+import std7 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND7.png";
+import std8 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/STAND8.png";
+
+import vse1 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE1.png";
+import vse2 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE2.png";
+import vse3 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE3.png";
+import vse4 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE4.png";
+import vse5 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE5.png";
+
+
+
+import b1 from "../../assets/tool/Birthday/Balloons/B1.png";
+import b2 from "../../assets/tool/Birthday/Balloons/B2.png";
+import b3 from "../../assets/tool/Birthday/Balloons/B3.png";
+import b4 from "../../assets/tool/Birthday/Balloons/B4.png";
+import b5 from "../../assets/tool/Birthday/Balloons/B5.png";
+import b6 from "../../assets/tool/Birthday/Balloons/B6.png";
+import b7 from "../../assets/tool/Birthday/Balloons/B7.png";
+import b8 from "../../assets/tool/Birthday/Balloons/B8.png";
+import b9 from "../../assets/tool/Birthday/Balloons/B9.png";
+import b10 from "../../assets/tool/Birthday/Balloons/B10.png";
+import b11 from "../../assets/tool/Birthday/Balloons/B11.png";
+import b12 from "../../assets/tool/Birthday/Balloons/B12.png";
+import b13 from "../../assets/tool/Birthday/Balloons/B13.png";
+import b14 from "../../assets/tool/Birthday/Balloons/B14.png";
+import b15 from "../../assets/tool/Birthday/Balloons/B15.png";
+import b16 from "../../assets/tool/Birthday/Balloons/B16.png";
+import b17 from "../../assets/tool/Birthday/Balloons/B17.png";
+import b18 from "../../assets/tool/Birthday/Balloons/B18.png";
+import b19 from "../../assets/tool/Birthday/Balloons/B19.png";
+import b20 from "../../assets/tool/Birthday/Balloons/B20.png";
+import b21 from "../../assets/tool/Birthday/Balloons/B21.png";
+import b22 from "../../assets/tool/Birthday/Balloons/B22.png";
+import b23 from "../../assets/tool/Birthday/Balloons/B23.png";
+import b24 from "../../assets/tool/Birthday/Balloons/B24.png";
+import b25 from "../../assets/tool/Birthday/Balloons/B25.png";
+import b26 from "../../assets/tool/Birthday/Balloons/B26.png";
+import b27 from "../../assets/tool/Birthday/Balloons/B27.png";
+import b28 from "../../assets/tool/Birthday/Balloons/B28.png";
+import b29 from "../../assets/tool/Birthday/Balloons/B29.png";
+import b30 from "../../assets/tool/Birthday/Balloons/B30.png";
+
+
+// import c1 from "../../assets/tool/Birthday/tables/";
+import c2 from "../../assets/tool/Birthday/Chairs/chair-two.png";
+import c3 from "../../assets/tool/Birthday/Chairs/chair-three.png";
+import c4 from "../../assets/tool/Birthday/Chairs/chair-four.png";
+
+
+import ch1 from "../../assets/tool/Birthday/Chairs/char-one.png";
+import ch2 from "../../assets/tool/Birthday/Chairs/chair-two.png";
+import ch3 from "../../assets/tool/Birthday/Chairs/chair-three.png";
+import ch4 from "../../assets/tool/Birthday/Chairs/chair-four.png";
+
+
+import t1 from "../../assets/tool/Birthday/tables/TABLE1.png";
+import t2 from "../../assets/tool/Birthday/tables/TBLE2.png";
+import t3 from "../../assets/tool/Birthday/tables/TBLE3.png";
+import t4 from "../../assets/tool/Birthday/tables/TBLE4.png";
 
 
 const Canvas = ({
@@ -64,6 +142,9 @@ const Canvas = ({
   onUpdateItems,
   canvasRef,
 }) => {
+
+
+
   //const canvasRef = useRef(null);
   const [context, setContext] = useState(null);
   // useEffect(() => {
@@ -90,6 +171,9 @@ const Canvas = ({
   const [canvasdrawSetting, setcanvasdrawSetting] = useState([
     { color: "#000", width: "2" },
   ]);
+
+
+
 
   const handleItemTextChange = (text) => {
     setItemText(text);
@@ -425,10 +509,10 @@ const Canvas = ({
             {showSetting && (
               <table
                 style={{
-                  left: "50px",
+                  right: "0px",
                   position: "relative",
                 }}
-                className="ms-5 ps-5 mb-1 w-50 table table-bordered"
+                className="mx-[40px] mb-1 w-50 table table-bordered order-2"
               >
                 <tbody>
                   <tr>
@@ -500,11 +584,12 @@ const Canvas = ({
               color="black"
               onClick={toggleSetting}
               title="Setting"
-              size="2x"
+              // size="2x"
+             className="text-[14px] text-[#000] py-[5px] px-[5px] bg-[#fff] shadow-md rounded-[5px] mr-[5px]"
               icon={faCog}
             />
             <div
-              className="drawSetting"
+              className="drawSetting flex mb-[10px]"
               // style={{
               //   position: "absolute",
               //   left: "50px",
@@ -518,11 +603,12 @@ const Canvas = ({
                 color={drawSetting ? "Green" : "Black"}
                 onClick={toggleDraw}
                 title="Draw"
-                size="2x"
+                // size="2x"
+               className="text-[14px] text-[#000] py-[5px] px-[5px] bg-[#fff] shadow-md rounded-[5px]"
                 icon={faPencil}
               />
               {drawSetting && (
-                <>
+                <div className=" flex ">
                   <input
                     title="draw color"
                     className="ms-3 me-3"
@@ -536,7 +622,7 @@ const Canvas = ({
                     type="range"
                     onChange={drawStrokeWidth}
                   />
-                </>
+                </div>
               )}
             </div>
           </div>
@@ -584,7 +670,7 @@ const Canvas = ({
                     padding: "10px",
 
                     //zIndex: selectedItem === item ? 1 : 0,
-                    outline: selectedItem === item ? "2px solid blue" : "none",
+                    outline: selectedItem === item ? "2px dotted gray shadow-md" : "none",
                     outlineOffset: selectedItem === item ? "-3px" : "0px",
                     resize: resizing ? "none" : "both",
                   }}
@@ -617,23 +703,16 @@ const Canvas = ({
                     onDragStart={(e) => handleDragStart(e, item)}
                     onClick={(e) => handleItemClick(e, item)}
                   >
-                    {item.name === "Chair" ? (
-                      <FontAwesomeIcon
-                        title={item.name}
-                        color={item.color}
-                        size="3x"
-                        icon={faChair}
-                      />
-                    ) : item.name === "Table" ? (
-                      <FontAwesomeIcon
-                        title={item.name}
-                        color={item.color}
-                        size="6x"
-                        icon={faTable}
-                      />
-                    ) : item.name === "solid border" ? (
-                       <h1>Solid Border</h1>
-                    ) : item.name === "Image" ? (
+                    {item.name === "wimg1" ? (
+                        <img src={wimg1} alt={item.name} className="w-[100px] h-auto"/>
+                    ) : item.name === "t1" ? (
+                        <img src={t1} alt={item.name} className="w-[100px] h-auto"/>
+                    ) : item.name === "wase" ? (
+                        <img src={vse1} alt={item.name} className="w-[100px] h-auto"/>
+                    ) : item.name === "ballon" ? (
+                        <img src={b1} alt={item.name} className="w-[100px] h-auto"/>
+                        
+                    ): item.name === "Image" ? (
                       <>
                         {item.src ? (
                           <img
@@ -641,7 +720,6 @@ const Canvas = ({
                             src={item.src}
                             alt="Dynamic Image"
                           />
-                          
                         ) : (
                           <img
                             src={
@@ -667,13 +745,13 @@ const Canvas = ({
                       style={{
                         position: "absolute",
                         left: "100%",
-                        top: "-20px",
+                        top: "-13px",
                       }}
                       color="red"
                       title="Remove"
                       onClick={() => handleRemoveItemClick(item.id)}
-                      size="2x"
-                      icon={faRemove}
+                      className="text-[12px] text-[#0000004d] shadow-md"
+                      icon={faTrash}
                     />
                   )}
                 </div>

@@ -95,7 +95,7 @@ const LeftPanel = ({ onDragStart }) => {
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 256 256"
-                        fill="currentColor"
+                        fill="#ffffff"
                         width="1em"
                         height="1em"
                       >
@@ -110,7 +110,7 @@ const LeftPanel = ({ onDragStart }) => {
                   className="css-i9ow3q element"
                 >
                   <div className="css-16iqw5x">
-                    <svg
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 256 256"
                       fill="currentColor"
@@ -118,9 +118,10 @@ const LeftPanel = ({ onDragStart }) => {
                       height="1em"
                     >
                       <path d="M192 116a12 12 0 1 1-12-12 12 12 0 0 1 12 12Zm-40-52h-40a8 8 0 0 0 0 16h40a8 8 0 0 0 0-16Zm96 48v32a24 24 0 0 1-24 24h-2.36l-16.21 45.38A16 16 0 0 1 190.36 224h-12.72a16 16 0 0 1-15.07-10.62l-1.92-5.38h-57.3l-1.92 5.38A16 16 0 0 1 86.36 224H73.64a16 16 0 0 1-15.07-10.62L46 178.22a87.69 87.69 0 0 1-21.44-48.38A16 16 0 0 0 16 144a8 8 0 0 1-16 0 32 32 0 0 1 24.28-31A88.12 88.12 0 0 1 112 32h104a8 8 0 0 1 0 16h-21.39a87.93 87.93 0 0 1 30.17 37c.43 1 .85 2 1.25 3A24 24 0 0 1 248 112Zm-16 0a8 8 0 0 0-8-8h-3.66a8 8 0 0 1-7.64-5.6A71.9 71.9 0 0 0 144 48h-32a72 72 0 0 0-53.09 120.64 8 8 0 0 1 1.64 2.71L73.64 208h12.72l3.82-10.69a8 8 0 0 1 7.53-5.31h68.58a8 8 0 0 1 7.53 5.31l3.82 10.69h12.72l18.11-50.69A8 8 0 0 1 216 152h8a8 8 0 0 0 8-8Z"></path>
-                    </svg>
+                    </svg> */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"><path fill-rule="evenodd" clip-rule="evenodd" d="M18 0.375L23.6667 11H12.3333L18 0.375ZM15.6667 9H20.3333L18 4.625L15.6667 9Z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1 1H11V11H1V1ZM3 3V9H9V3H3Z" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1 18C1 15.2386 3.23858 13 6 13C8.76142 13 11 15.2386 11 18C11 20.7614 8.76142 23 6 23C3.23858 23 1 20.7614 1 18ZM6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15Z" fill="#fff"/><path d="M13 13H23V15H13V13Z" fill="#fff"/><path d="M13 17H23V19H13V17Z" fill="#fff"/><path d="M13 21H23V23H13V21Z" fill="#fff"/></svg>
                   </div>
-                  <span className="css-184r8y9">Shapes</span>
+                  <span className="css-184r8y9 py-[5px]">Shapes</span>
                 </li>
                 {/* <li onClick={() => OpenPanel('Video')} className="css-i9ow3q element">
             <div className="css-16iqw5x">

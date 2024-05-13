@@ -67,23 +67,14 @@ const TopPanel = ({
   };
 
   return (
-    <section className="TopPanel bg-white px-3 py-2">
+    <section className="TopPanel bg-white px-3 py-2 shadow-md">
       <div className="d-flex flex-wrap">
         <table className="w-50 table table-bordered">
           <tbody>
             <tr>
               <td>
-                <div className="input-group input-group-sm">
-                  <span className="input-group-text">Position X:</span>
-                  {/* <input
-                className="form-range"
-                id="positionX"
-                  type="range"
-                  min="0"
-                  max="800"
-                  value={positionX}
-                  onChange={handlePositionXChange}
-                /> */}
+                <div className="">
+                  <span className="">Position X:</span>
                 </div>
               </td>
               <td>
