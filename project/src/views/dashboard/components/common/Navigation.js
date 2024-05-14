@@ -74,7 +74,7 @@ const Navigation = () => {
           >
             <span className="flex items-center">
               <span className="w-[30px] flex justify-center mr-[10px]">
-                <IconsSet.FeedBackIcon />
+                <IconsSet.ObjectIcon />
               </span>
               Objects
             </span>
