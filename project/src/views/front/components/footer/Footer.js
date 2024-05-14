@@ -88,6 +88,19 @@ function Footer() {
                 </Link>
               </div>
             </li>
+            <li className="py-[10px]">
+              <div className="flex items-center">
+                <span className="text-[#fff] text-[16px]  px-[10px]">
+                  <IconsSet.ChevronIcon />
+                </span>
+                <Link
+                  to="#"
+                  className="text-white text-[16px] font-[400] capitalize"
+                >
+                  How To Use Tool
+                </Link>
+              </div>
+            </li>
           </ul>
         </div>
         <div className="contactSec">

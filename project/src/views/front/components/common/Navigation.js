@@ -6,7 +6,7 @@ const Navigation = () => {
   return (
     <nav className="bg-[#265253] py-[10px]">
       <div className="flex justify-center items-center">
-        <ul className="flex">
+        <ul className="flex mb-0">
           <li className="px-[15px] text-[#fff]">
             <Link to="/">Home</Link>
           </li>
@@ -27,7 +27,7 @@ const Navigation = () => {
             alt="logo"
           />
         </Link>
-        <ul className="flex">
+        <ul className="flex mb-0">
           <li className="px-[15px] text-[#fff]">
             <Link to="/gallery">Gallery</Link>
           </li>
