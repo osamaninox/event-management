@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SearchInput from '../components/common/SearchInput'
 import { Table } from '../components/common/Table'
+import axios from 'axios'
 
 const Events = () => {
+  useEffect(() => {
+      axios.create({
+      }).get(`http://localhost:8000/api/event/all`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      }).then((response) => { 
+        console.log(response.data);
+        // SET USER PORFILE DATA TO STATE
+      }).catch((error) => {
+        console.error(error);
+      });
+    });
   const TABLE_HEAD = [
     "id",
     "name",
