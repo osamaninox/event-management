@@ -1,12 +1,17 @@
 import { Card, Typography } from "@material-tailwind/react";
-import React from "react";
+import React,{useState} from "react";
 import Badge from "./Badge";
 import { Link } from "react-router-dom";
 import IconsSet from "../../../../assets/front/icons/Icons";
+import EditModal from "./EditModal";
 
 
 export function Table({head, rows}) {
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpen = () => setOpenModal(true);
+  const handleClose = () => setOpenModal(false);
   return (
+    <>
     <Card className="h-full w-full">
       <table className="w-full min-w-max table-auto text-left rounded-t-sm">
         <thead className="">
@@ -84,22 +89,24 @@ export function Table({head, rows}) {
                     />
                   </Typography>
                 </td>
-                <td className="p-4">
-                  <Typography
-                    as="a"
-                    href="#"
-                    variant="small"
-                    color="blue-gray"
-                    className="font-medium"
-                  >
-                    {date}
-                  </Typography>
-                </td>
+                {date && 
+                    <td className="p-4">
+                      <Typography
+                        as="a"
+                        href="#"
+                        variant="small"
+                        color="blue-gray"
+                        className="font-medium"
+                      >
+                        {date}
+                      </Typography>
+                    </td>
+                }
                 {
                   action && (
                     <td className="p-4">
                       <div className="flex">
-                        <Link to="/" className=""><IconsSet.EditIcon /></Link>
+                        <Link to="#" onClick={handleOpen} className=""><IconsSet.EditIcon /></Link>
                         <Link to="/" className="px-2"><IconsSet.TrashIcon /></Link>
                       </div>
                      </td>
@@ -111,5 +118,7 @@ export function Table({head, rows}) {
         </tbody>
       </table>
     </Card>
+    <EditModal open={openModal} handleClose={handleClose} />
+    </>
   );
 }
