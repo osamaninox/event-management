@@ -3,16 +3,15 @@ import React,{useState} from "react";
 import Badge from "./Badge";
 import { Link } from "react-router-dom";
 import IconsSet from "../../../../assets/front/icons/Icons";
-import EditTransactionModal from "../modal/Transaction/EditTransactionModal";
-import DeleteTransactionModal from "../modal/Transaction/DeleteTransactionModal";
-import EditEventModal from "../modal/Event/EditEventModal";
+import EditObjectModal from "../modal/Object/EditObjectModal";
+import AddObjectModal from "../modal/Object/AddObjectModal";
+import DeleteObjectModal from "../modal/Object/DeleteObjectModal";
+
+import AddUserModal from "../modal/Event/EditEventModal";
 import DeleteEventModal from "../modal/Event/DeleteEventModal";
 
-// import AddUserModal from "../modal/Event/EditEventModal";
-// import DeleteEventModal from "../modal/Event/DeleteEventModal";
-
-export function Table({head, rows}) {
- const [openModal, setOpenModal] = useState({ editTransaction: false, deleteTransaction: false,editEvent: false, DeleteEvent: false,addUser: false, editUser: false, deleteUser:false });
+export function ObjectsTable({head, rows}) {
+ const [openModal, setOpenModal] = useState({ editobject: false, deleteobject: false, addUser: false, editUser: false, deleteUser:false });
 
   const handleOpen = (modalType) => {
     setOpenModal({ ...openModal, [modalType]: true });
@@ -45,7 +44,7 @@ export function Table({head, rows}) {
         </thead>
         <tbody>
           {rows.map(
-            ({ id, name, Amount, date, Status, Payment_Type,success,action,type }, index) => (
+            ({ id, name,objectImage,price,status,action }, index) => (
               <tr key={name} className="even:bg-blue-gray-50/50">
                 <td className="p-4">
                   <Typography
@@ -57,6 +56,9 @@ export function Table({head, rows}) {
                   </Typography>
                 </td>
                 <td className="p-4">
+                   <img src={objectImage} alt="image" className="w-[30px] h-[30px]  rounded-full"></img>
+                </td>
+                <td className="p-4">
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -65,26 +67,17 @@ export function Table({head, rows}) {
                     {name}
                   </Typography>
                 </td>
-                {type && 
+                {price && 
                    <td className="p-4">
                   <Typography
                     variant="small"
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {type}
+                    {price}
                   </Typography>
                 </td>
                 }
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {Amount}
-                  </Typography>
-                </td>
                 <td className="p-4">
                   <Typography
                     as="a"
@@ -93,43 +86,15 @@ export function Table({head, rows}) {
                     color="blue-gray"
                     className="font-medium"
                   >
-                    {Payment_Type}
+                    {status}
                   </Typography>
                 </td>
-                <td className="p-4">
-                  <Typography
-                    as="a"
-                    href="#"
-                    variant="small"
-                    color="blue-gray"
-                    className="font-medium"
-                  >
-                    <Badge
-                      label={Status}
-                      className={Status}
-                      variant={success ? 'success' : 'pending'}
-                    />
-                  </Typography>
-                </td>
-                {date && 
-                    <td className="p-4">
-                      <Typography
-                        as="a"
-                        href="#"
-                        variant="small"
-                        color="blue-gray"
-                        className="font-medium"
-                      >
-                        {date}
-                      </Typography>
-                    </td>
-                }
                 {
-                  action === 'transaction' && (
+                  action === 'objects' && (
                     <td className="p-4">
                       <div className="flex">
-                        <Link to="#" onClick={() => handleOpen('editTransaction')} className=""><IconsSet.EditIcon /></Link>
-                        <Link to="#" onClick={() => handleOpen('deleteTransaction')} className="px-2"><IconsSet.TrashIcon /></Link>
+                        <Link to="#" onClick={() => handleOpen('editobject')} className=""><IconsSet.EditIcon /></Link>
+                        <Link to="#" onClick={() => handleOpen('deleteobject')} className="px-2"><IconsSet.TrashIcon /></Link>
                       </div>
                      </td>
                   )
@@ -160,20 +125,12 @@ export function Table({head, rows}) {
         </tbody>
       </table>
     </Card>
-    <EditTransactionModal ModalHeader="Edit Payment Details"   open={openModal.editTransaction}
-        handleClose={() => handleClose('editTransaction')}
+    <EditObjectModal ModalHeader="Edit Object Details"   open={openModal.editobject}
+        handleClose={() => handleClose('editobject')}
          />
-    <DeleteTransactionModal ModalHeader="Confirmation" ModalMessageBody="Are You sure you want to delete this Transaction Details ?"
-        open={openModal.deleteTransaction}
-        handleClose={() => handleClose('deleteTransaction')}/>
-
-
-    <EditEventModal ModalHeader="Edit Event Details"   open={openModal.editEvent}
-        handleClose={() => handleClose('editEvent')}
-         />
-    <DeleteEventModal ModalHeader="Confirmation" ModalMessageBody="Are You sure you want to delete this Event ?"
-        open={openModal.deleteEvent}
-        handleClose={() => handleClose('deleteEvent')}/>
+    <DeleteObjectModal ModalHeader="Confirmation" ModalMessageBody="Are You sure you want to delete this Object ?"
+        open={openModal.deleteobject}
+        handleClose={() => handleClose('deleteobject')}/>
 
     {/* <EditUserModal ModalHeader="Edit User Details"   open={openModal.editUser}
         handleClose={() => handleClose('editUser')}

@@ -5,9 +5,10 @@ import {
   DialogHeader,
   DialogBody,
   DialogFooter,
+  Typography,
 } from "@material-tailwind/react";
  
-export default function EditModal ({open, handleClose, ...props}) {
+export default function DeleteTransactionModal ({open, handleClose,ModalHeader, ModalMessageBody, ...props}) {
   // const [open, setOpen] = React.useState(false);
  
   // const handleOpen = () => setOpen(!open);
@@ -15,12 +16,11 @@ export default function EditModal ({open, handleClose, ...props}) {
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
-        <DialogHeader>Its a simple dialog.</DialogHeader>
+        <DialogHeader>{ModalHeader ? ModalHeader : ''}</DialogHeader>
         <DialogBody>
-          The key to more success is to have a lot of pillows. Put it this way,
-          it took me twenty five years to get these plants, twenty five years of
-          blood sweat and tears, and I&apos;m never giving up, I&apos;m just
-          getting started. I&apos;m up to something. Fan luv.
+          {
+              ModalMessageBody ? <Typography variant="paragraph">{ModalMessageBody}</Typography> : ''
+          }
         </DialogBody>
         <DialogFooter>
           <Button
@@ -29,10 +29,10 @@ export default function EditModal ({open, handleClose, ...props}) {
             onClick={handleClose}
             className="mr-1"
           >
-            <span>Cancel</span>
+            <span>No</span>
           </Button>
           <Button  variant="gradient" color="green" onClick={handleClose}>
-            <span>Confirm</span>
+            <span>Yes</span>
           </Button>
         </DialogFooter>
       </Dialog>

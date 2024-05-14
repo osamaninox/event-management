@@ -99,14 +99,14 @@ const Home = () => {
       },
   };
 
-  const TABLE_HEAD = ["id", "name", "Amount", "Payment Channel", "status","date"];
+  const TABLE_HEAD = ["id", "name", "Amount", "Payment Type", "status","date"];
 
   const TABLE_ROWS = [
     {
       id: "1",
       name: "John Michael",
       Amount: "$50.00",
-      Payment_Channel: "Credit Card",
+      Payment_Type: "Credit Card",
       Status: "Completed",
       date: "23/04/18",
       success: "true",
@@ -116,7 +116,7 @@ const Home = () => {
       id: "2",
       name: "John Michael",
       Amount: "$50.00",
-      Payment_Channel: "Credit Card",
+      Payment_Type: "Credit Card",
       Status: "Pending",
       date: "23/04/18",
       sucess: "false",
@@ -125,7 +125,7 @@ const Home = () => {
       id: "3",
       name: "John Michael",
       Amount: "$25.00",
-      Payment_Channel: "Credit Card",
+      Payment_Type: "Credit Card",
       Status: "Pending",
       date: "23/04/18",
       sucess: "false",

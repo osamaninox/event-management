@@ -7,9 +7,20 @@ import {
 } from "@heroicons/react/20/solid";
 import IconsSet from "../../../../assets/front/icons/Icons";
 import avatar from '../../../../assets/dashboard/images/avatar.png'
+import { Link } from "react-router-dom";
+import LogOutModal from "../modal/LogOut/LogOutModal";
 
 
 export default function DropDownMenu() {
+  const [openModal, setOpenModal] = useState({ logOut:false });
+
+  const handleOpen = (modalType) => {
+    setOpenModal({ ...openModal, [modalType]: true });
+  };
+
+  const handleClose = (modalType) => {
+    setOpenModal({ ...openModal, [modalType]: false });
+  };
   return (
     <>
       <Menu as="div" className="relative inline-block text-left">
@@ -42,7 +53,8 @@ export default function DropDownMenu() {
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
-                  <button
+                  <Link
+                  to="/dashboard/userprofile"
                     className={`${
                       active ? "bg-[#265253] text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-3 py-2 text-sm`}
@@ -52,12 +64,13 @@ export default function DropDownMenu() {
                       aria-hidden="true"
                     />
                     Profile
-                  </button>
+                  </Link>
                 )}
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
                   <button
+                    onClick={() => handleOpen('logOut')}
                     className={`${
                       active ? "bg-[#265253] text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-3 py-2 text-sm`}
@@ -74,6 +87,9 @@ export default function DropDownMenu() {
           </Menu.Items>
         </Transition>
       </Menu>
+      <LogOutModal ModalHeader="" ModalMessageBody="Are You sure you want to Logout ?"  open={openModal.logOut}
+        handleClose={() => handleClose('logOut')}
+         />
     </>
   );
 }

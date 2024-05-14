@@ -12,10 +12,10 @@ const Navigation = () => {
      setActiveMenuItem("Dashboard");
    } else if (pathname === "/dashboard/events") {
      setActiveMenuItem("Events");
-   } else if (pathname === "/dashboard/feedbacks") {
-     setActiveMenuItem("feedbacks");
-   } else if (pathname === "/dashboard/rating") {
-     setActiveMenuItem("ratings");
+   } else if (pathname === "/dashboard/objects") {
+     setActiveMenuItem("objects");
+   } else if (pathname === "/dashboard/userprofile") {
+     setActiveMenuItem("users");
    } else if (pathname === "/dashboard/users") {
      setActiveMenuItem("users");
    }
@@ -64,24 +64,24 @@ const Navigation = () => {
         </li>
         <li
           className={`px-[10px] py-[15px] text-[#fff] font-poppins  ${
-            activeMenuItem === "feedbacks" ? "bg-[#143738]" : ""
+            activeMenuItem === "objects" ? "bg-[#143738]" : ""
           }`}
           
         >
           <Link
             className="flex items-center justify-between"
-            to="/dashboard/feedbacks"
+            to="/dashboard/objects"
           >
             <span className="flex items-center">
               <span className="w-[30px] flex justify-center mr-[10px]">
                 <IconsSet.FeedBackIcon />
               </span>
-              FeedBacks
+              Objects
             </span>
             <IconsSet.ChevronIcon />
           </Link>
         </li>
-        <li
+        {/* <li
           className={`px-[10px] py-[15px] text-[#fff] font-poppins  ${
             activeMenuItem === "ratings" ? "bg-[#143738]" : ""
           }`}
@@ -99,7 +99,7 @@ const Navigation = () => {
             </span>
             <IconsSet.ChevronIcon />
           </Link>
-        </li>
+        </li> */}
         <li
           className={`px-[10px] py-[15px] text-[#fff] font-poppins  ${
             activeMenuItem === "users" ? "bg-[#143738]" : ""

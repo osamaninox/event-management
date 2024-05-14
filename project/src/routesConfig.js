@@ -13,12 +13,13 @@ import UserProfile from "./views/front/pages/UserProfile";
 
 // dashboard routes
 import Events from "./views/dashboard/pages/Events";
-import Feedbacks from "./views/dashboard/pages/Feedbacks";
+import Objects from "./views/dashboard/pages/Objects";
 import Rating from "./views/dashboard/pages/Rating";
 import User from "./views/dashboard/pages/Users";
 import EventTool from "./tool/EventTool";
 import { elements } from "chart.js";
 import PaymentTransactions from "./views/dashboard/pages/PaymentTransactions";
+import UserProfileDashboard from "./views/dashboard/pages/UserProfile";
 
 // auth routes
 import Login from "./views/auth/Login";
@@ -76,20 +77,20 @@ const routesConfig = [
         element: <Events />,
       },
       {
-        path: "/dashboard/feedbacks",
-        element: <Feedbacks />,
+        path: "/dashboard/objects",
+        element: <Objects />,
       },
-      {
-        path: "/dashboard/rating",
-        element: <Rating />,
-      },
+      // {
+      //   path: "/dashboard/rating",
+      //   element: <Rating />,
+      // },
       {
         path: "/dashboard/users",
         element: <User />,
       },
       {
         path: "/dashboard/userprofile",
-        element: <UserProfile />,
+        element: <UserProfileDashboard />,
       },
     ],
   },

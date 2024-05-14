@@ -8,14 +8,14 @@ const DraggableItem = ({ itemName, src, onDragStart, children }) => {
       e.dataTransfer.setData("src", src);
     }
 
-    onDragStart(e, { name: itemName });
+    onDragStart(e, { name: itemName});
   };
 
   return (
     <div
       draggable
       onDragStart={handleDragStart}
-      style={{ marginBottom: "0px", cursor: "move" }} // Add cursor: 'move' for better UX
+      style={{ marginBottom: "0px", cursor: "move" }}
     >
       {children}
     </div>
