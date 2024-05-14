@@ -18,7 +18,7 @@ const userSchema = new Schema({
   },
   contactNumber: {
     type: String,
-    required: true
+    required: false
   },
   role: {
     type: String,

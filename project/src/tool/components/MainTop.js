@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 const MainTop = ({ items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
   const [jsonTemplate, setJsonTemplate] = useState("");
@@ -13,6 +14,27 @@ const MainTop = ({ items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
     setJsonTemplate(json);
     // Optionally, you can pass the JSON template to a parent component if needed
     onExport(json);
+  };
+
+  const saveEvent = async () => {
+    const json = JSON.stringify(items);
+    const totalAmount = items[0].droppedItems.reduce(
+      (acc, item) => acc + (item.price || 0),
+      0
+    );
+    await axios.create({
+    }).post("http://localhost:8000/api/event", {
+      userId: "60f3b3b3b3b3b3b3b3b3b3b3", // REPLACE WITH USER ID
+      design: json,
+      date: new Date(),
+      title: "Event 1", // REPLACE WITH EVENT TITLE
+      totalAmount: totalAmount, // REPLACE WITH TOTAL AMOUNT
+    },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      });
   };
 
   const handleFileChange = (event) => {
@@ -35,7 +57,7 @@ const MainTop = ({ items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
   return (
     <div className="css-wcwwis fixed w-full z-[9]">
       <div className="css-7z6edo">
- 
+
       </div>
       <div className="css-70qvj9">
         <Link to="/" rel="noreferrer" target="_blank" className="shadow-md  rounded-[5px]">
@@ -56,6 +78,9 @@ const MainTop = ({ items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
         </div>
         <div className="css-1xzdikv" onClick={exportTemplate}>
           Export
+        </div>
+        <div className="css-1xzdikv" onClick={saveEvent}>
+          Save Event
         </div>
         <div onClick={onSaveAsPNG} className="css-y73845 mr-3">
           <div className="css-8cka6y">

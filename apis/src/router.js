@@ -1,7 +1,13 @@
 import { Router } from "express";
-import { login, register, updateProfile, getProfile } from "./controllers/user.controller.js";
+import {
+  login,
+  register,
+  updateProfile,
+  getProfile,
+} from "./controllers/user.controller.js";
 import {
   createEvent,
+  getAllEvents,
   getEventByUserId,
   getEvent,
   updateEvent,
@@ -24,6 +30,7 @@ import {
   deleteObject,
 } from "./controllers/object-library.controller.js";
 import { authenticateToken } from "./middlwares/jwt-verify.js";
+import { get } from "mongoose";
 const router = Router();
 
 /* User */
@@ -34,6 +41,7 @@ router.get("/user/profile/:id", authenticateToken, getProfile);
 
 /* Event */
 router.post("/event", authenticateToken, createEvent);
+router.get("/event/all", authenticateToken, getAllEvents);
 router.get("/event", authenticateToken, getEventByUserId);
 router.get("/event/:eventId", authenticateToken, getEvent);
 router.put("/event/:eventId", authenticateToken, updateEvent);
@@ -42,9 +50,21 @@ router.delete("/event/:eventId", authenticateToken, deleteEvent);
 /* Event Template */
 router.post("/event-template", authenticateToken, createEventTemplate);
 router.get("/event-template", authenticateToken, getAllEventTemplates);
-router.get("/event-template/:eventTemplateId", authenticateToken, getEventTemplate);
-router.put("/event-template/:eventTemplateId", authenticateToken, updateEventTemplate);
-router.delete("/event-template/:eventTemplateId", authenticateToken, deleteEventTemplate);
+router.get(
+  "/event-template/:eventTemplateId",
+  authenticateToken,
+  getEventTemplate
+);
+router.put(
+  "/event-template/:eventTemplateId",
+  authenticateToken,
+  updateEventTemplate
+);
+router.delete(
+  "/event-template/:eventTemplateId",
+  authenticateToken,
+  deleteEventTemplate
+);
 
 /* Object Library */
 router.post("/object-library", authenticateToken, createObject);

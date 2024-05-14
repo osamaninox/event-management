@@ -11,6 +11,11 @@ export async function getEventByUserId(req, res) {
   res.send(events);
 }
 
+export async function getAllEvents(req, res) {
+  const events = await Event.find();
+  res.send(events);
+}
+
 export async function getEvent(req, res) {
   const event = await Event.findById(req.params.eventId);
   if (!event) {
