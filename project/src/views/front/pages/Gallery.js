@@ -1,13 +1,26 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Banner from '../components/common/Banner';
 import galleryBanner from '../../../assets/front/images/Bannergallery.png';
 import premadeTemplate from "../../../assets/front/images/12.jpg";
 import weddingEvent from "../../../assets/front/images/1.jpg";
 import birthdayEvent from "../../../assets/front/images/20.jpg";
 import { Link } from 'react-router-dom';
+import TemplateModal from '../components/common/TemplateModal';
 
 const Gallery = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
+  const handleOpenModal = (imgUrl) => {
+    setOpenModal(true);
+    setSelectedImage(imgUrl);
+  
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage('');
+    setOpenModal(false);
+  };
   const birthdayData = [
     {
       img: birthdayEvent,
@@ -89,11 +102,15 @@ const Gallery = () => {
               {birthdayData.map((data, i) => {
                 return (
                   <div className="flex justify-center">
-                    <div className="w-[220px] h-[180px] mx-[10px]">
+                    <div className="w-[220px] h-[180px] mx-[10px] hover:shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer" >
                       <img
                         src={data.img}
                         alt={data.event}
                         className="w-full h-full"
+                          onClick={(e) => {
+                          handleOpenModal(data.img);
+                          e.stopPropagation(); // Stop event propagation if needed
+                        }}
                       />
                     </div>
                   </div>
@@ -111,11 +128,15 @@ const Gallery = () => {
               {weddingData.map((data, i) => {
                 return (
                   <div className="flex justify-center">
-                    <div className="w-[220px] h-[180px] mx-[10px]">
+                    <div className="w-[220px] h-[180px] mx-[10px] hover:shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
                       <img
                         src={data.img}
                         alt={data.event}
                         className="w-full h-full object-cover"
+                          onClick={(e) => {
+                          handleOpenModal(data.img);
+                          e.stopPropagation(); // Stop event propagation if needed
+                        }}
                       />
                     </div>
                   </div>
@@ -125,6 +146,7 @@ const Gallery = () => {
           </div>
         </div>
       </div>
+      <TemplateModal open={openModal}  handleClose={handleCloseModal} imageUrl={selectedImage}/>
     </>
   );
 }

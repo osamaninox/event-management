@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const TemplateCard = ({ imgUrl , price}) => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center w-[350px] my-[20px]">
+      <div className="flex flex-col justify-center items-center w-[350px] my-[20px] ">
         <div className="border border-2 border-[#000] rounded-[10px] w-[200px] h-[200px]">
           <img
             src={imgUrl}
@@ -17,7 +17,7 @@ const TemplateCard = ({ imgUrl , price}) => {
         </h6>
         <Link
           className="bg-[#F2D2BD] text-[#000] font-bold uppercase py-[8px] px-[30px]"
-          src="/#"
+          to="/eventtool"
         >
           Edit
         </Link>

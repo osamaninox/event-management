@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import loginImg from '../../assets/front/images/loginbackground.jpeg'
 import logo from '../../assets/front/logo.png';
 import axios from 'axios';
@@ -19,8 +19,9 @@ const Login = () => {
   };
 
   const [user, setUser] = useState(null);
-
+  const navigate = useNavigate();
   const login = () => {
+   
     axios.create({
     }).post(`http://localhost:8000/api/user/login`, {
       email: email,
@@ -42,9 +43,9 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       console.log('User logged in, redirect to home page', user);
-      // Perform any side effects here
+      navigate('/'); // Redirect to home page or any other page
     }
-  }, [user]);
+  }, [user, navigate]);
   return (
     <>
       <section class="bg-gray-50 dark:bg-gray-900 fixed w-full">
@@ -64,7 +65,7 @@ const Login = () => {
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                        Sign In To Your Account
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="#">
+                     <div>
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                             <input value={email} onChange={handleEmailChange} type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
@@ -88,7 +89,7 @@ const Login = () => {
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                             Don’t have an account yet? <a href="/auth/signup" class="font-medium text-[#265253] hover:underline dark:text-[#265253]">Sign up</a>
                         </p>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

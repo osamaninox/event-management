@@ -70,7 +70,7 @@ const UserProfile = () => {
                 className="object-center object-cover  rounded-full w-[150px] h-[150px]"
               />
             </div>
-            {isEditing && (
+            {/* {isEditing && (
               <div className="">
                 <label
                   for="file-upload"
@@ -82,16 +82,16 @@ const UserProfile = () => {
                 </label>
                 <input id="file-upload" type="file" hidden />
               </div>
-            )}
+            )} */}
           </div>
-          <div className="absolute right-[10px] top-[10px]">
+          {/* <div className="absolute right-[10px] top-[10px]">
             <button
               onClick={handleEditClick}
               className="bg-[#265253] text-[#fff] text-[12px] d-inline-block text-center p-[4px] font-bold  rounded focus:outline-none focus:shadow-outline"
             >
               <IconsSet.EditIcon />
             </button>
-          </div>
+          </div> */}
           <CardBody>
             <div className="mb-3">
               <label
@@ -195,7 +195,7 @@ const UserProfile = () => {
                 disabled={!isEditing}
                 class={`${
                   isEditing ? "text-[#000]" : "text-gray-400"
-                } bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
               >
                 <option value="male" disabled selected>
                   Male

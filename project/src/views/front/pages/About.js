@@ -13,21 +13,21 @@ const About = () => {
       imgUrl: vp,
       name: "Saman Karim",
       details:
-        "Welcome to the forefront of event excellence at InnoVista Designers. As the Vice President, I am delighted to extend a warm welcome to our website, where innovation meets precision to create extraordinary moments. At InnoVista Designers, we believe that every event has the potential to be exceptional, and it is our mission to bring that vision to life. With a team of dedicated professionals and a commitment to excellence, we are poised to exceed your expectations and elevate your event experience to new heights. Join us as we embark on this journey of creativity, passion, and unparalleled service in the world of event management.",
+        "Meet our Vice President, a strategic thinker and operational powerhouse dedicated toelevating event experiences.With a knack for innovation and a passion for fl awless execution, she drive our team to exceed expectations and deliver unforgettable moments",
       designation: "Vice President",
     },
     {
       imgUrl: president,
       name: "Hafsah Majid",
       details:
-        "Greetings from the desk of the President at InnoVista Designers, where every event is a masterpiece waiting to unfold. I am honored to extend a warm welcome to our website, where innovation, professionalism, and dedication converge to shape unforgettable experiences. At InnoVista Designers, we understand the power of exceptional events, and as your President, I am committed to ensuring that each moment is meticulously curated to surpass expectations. Join us as we embark on a journey to redefine the landscape of event management, one unparalleled experience at a time",
+        "Introducing our esteemed President, a visionary leader with a track record of transforming events into remarkable experiences. With strategic foresight and unparalleled dedication, she steer our company towards new heights of success, setting the standard for excellence in event management.",
       designation: "President",
     },
     {
       imgUrl: director,
       name: "Wania Nadeem",
       details:
-        "Welcome to the hub of creativity and meticulous planning at InnoVista Designers. As the Director of Events, I am excited to extend a warm welcome to our website, where innovation and expertise converge to craft unforgettable moments. At InnoVista Designers, we understand the importance of every detail, and it is our passion to ensure that each event we undertake is executed flawlessly. With a team of dedicated professionals and a commitment to excellence, we are here to turn your vision into a reality. Join us as we embark on a journey of creativity, precision, and unparalleled service in the realm of event management",
+        "Meet our Director of Events, a seasoned orchestrator of unforgettable experiences, blending creativity with meticulous planning to craft seamless occasions. With a passionfor exceeding expectations, she bring innovation and precision to every event, ensuring each moment leaves a lasting impression.",
       designation: "Director of Events",
     },
   ];
@@ -52,15 +52,7 @@ const About = () => {
           <TeamMember
             imgUrl={ceo}
             name="MR.FAIZULLAH"
-            details="Welcome to InnoVista Designers, where we turn your
-            events into unforgettable experiences.
-            As the CEO, I am thrilled to welcome you to our website,
-            where creativity, precision, and passion
-            converge to craft extraordinary moments. With a dedicated
-            team of experts and a commitment to excellence,
-            we are here to transform your vision into reality, one event
-            at a time. Join us on this journey as we redefine
-            the art of event management."
+            details="Introducing our CEO, a visionary leader renowned for transforming event concepts into reality. With an unwavering commitment to excellence and a knack for inspiring creativity, they steer our company towards unparalleled success in the world of event management"
             designation="CEO"
             designationWithName
           />
