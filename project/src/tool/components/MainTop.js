@@ -54,6 +54,19 @@ const MainTop = ({ items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
     }
   };
 
+  
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  //   if (event && event.target && event.target.files && event.target.files.length > 0) {
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       const content = e.target.result;
+  //       onImport(content);
+  //     };
+  //     reader.readAsText(file);
+  //   }
+  // };
+
   return (
     <div className="css-wcwwis fixed w-full z-[9]">
       <div className="css-7z6edo">
@@ -68,13 +81,10 @@ const MainTop = ({ items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
         </Link>
 
         <div className="css-1xzdikv">
-          <label>
-            <input
-              onChange={handleFileChange}
-              className="css-1hyfx7x"
-            />
-            Import
-          </label>
+            <label>
+               <input  onChange={handleFileChange} accept="application/json" type="file" className="css-1hyfx7x cursor-pointer" />Import
+            </label>
+          
         </div>
         <div className="css-1xzdikv" onClick={exportTemplate}>
           Export
