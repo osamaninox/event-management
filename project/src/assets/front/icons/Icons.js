@@ -40,6 +40,25 @@ const AddressIcon = () => {
   );
 }
 
+const AddressIconSolid = () => {
+  return (
+    <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className="w-7 h-7"
+      >
+        <path
+          fillRule="evenodd"
+          d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </>
+  );
+}
+
 const InstagramIcon = () => {
   return (
     <>
@@ -104,6 +123,38 @@ const EnvelopIcon = () => {
   );
 };
 
+const EnvelopIconSolid = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="w-7 h-7"
+    >
+      <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+      <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+    </svg>
+  );
+};
+
+const ContactIconSolid = () => {
+  return (
+    <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className="w-7 h-7"
+      >
+        <path
+          fillRule="evenodd"
+          d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </>
+  );  
+}
 
 const TwitterIcon = () => {
   return (
@@ -284,11 +335,47 @@ const TrashIcon = () => {
   )
 }
 
+
+
 const ObjectIcon = () => {
   return(
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path fill-rule="evenodd" clip-rule="evenodd" d="M18 0.375L23.6667 11H12.3333L18 0.375ZM15.6667 9H20.3333L18 4.625L15.6667 9Z" fill="#fff"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M1 1H11V11H1V1ZM3 3V9H9V3H3Z" fill="#fff"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M1 18C1 15.2386 3.23858 13 6 13C8.76142 13 11 15.2386 11 18C11 20.7614 8.76142 23 6 23C3.23858 23 1 20.7614 1 18ZM6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15Z" fill="#fff"></path><path d="M13 13H23V15H13V13Z" fill="#fff"></path><path d="M13 17H23V19H13V17Z" fill="#fff"></path><path d="M13 21H23V23H13V21Z" fill="#fff"></path></svg>
   )
 }
+
+const FacebookIconSolid = () => {
+  return(
+   <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 50 50"
+        className="w-7 h-7"
+        fill="#4460a0"
+        stroke="#4460a0"
+      >
+        <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M37,19h-2c-2.14,0-3,0.5-3,2 v3h5l-1,5h-4v15h-5V29h-4v-5h4v-3c0-4,2-7,6-7c2.9,0,4,1,4,1V19z" />
+      </svg>
+    </>
+  )
+}
+
+
+const InstagramIconSolid = () => {
+  return(
+     <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 50 50"
+        className="w-7 h-7 "
+        fill="#fff"
+        stroke="#000"
+      >
+        <path d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z" />
+      </svg>
+    </>
+  )
+}
+
 
 const IconsSet = {
   ContactIcon,
@@ -310,11 +397,11 @@ const IconsSet = {
   EditIcon,
   TrashIcon,
   ObjectIcon,
+  FacebookIconSolid,
+  InstagramIconSolid,
+  EnvelopIconSolid,
+  AddressIconSolid,
+  ContactIconSolid,
 };
-
-
-
-
-
 
 export default IconsSet;

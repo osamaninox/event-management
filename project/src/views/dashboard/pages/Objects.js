@@ -127,7 +127,7 @@ const Objects = () => {
      "object Image",
      "name",
      "Price",
-     "status",
+     "type",
      "action"
     
    ];
@@ -138,7 +138,7 @@ const Objects = () => {
        objectImage: b30,
        name: "Ballon",
        price: "$50.00",
-       status: 'Active',
+       type: 'Wedding',
        action: "objects",
      },
       {
@@ -146,15 +146,15 @@ const Objects = () => {
        objectImage: c1,
        name: "Chair",
        price: "$100.00",
-       status: 'Active',
+       type: 'Birthday',
        action: "objects",
      },
      {
        id: "3",
       objectImage: vse1,
-       name: "wasr",
+       name: "wase",
        price: "$150.00",
-       status: 'InActive',
+       type: 'Wedding',
        action: "objects",
      },
    ];

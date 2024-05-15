@@ -12,10 +12,10 @@ const Testimonial = ({imgUrl, Content , ClientName}) => {
             className="w-[150px] h-[150px] rounded-full shadow-md  object-center object-cover"
           />
         </div>
-        <p className="text-center text-[14px] text-[#000] pb-[20px]">
+        <p className="text-center text-[14px] text-[#000] py-[20px]">
           {Content}
         </p>
-        <h6 className="text-center text-[12px] capitalize">{ClientName}</h6>
+        <h6 className="text-center text-[14px] capitalize font-bold">{ClientName}</h6>
       </div>
     </>
   );

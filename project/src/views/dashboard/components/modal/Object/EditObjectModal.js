@@ -173,23 +173,40 @@ export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMe
                   />
               </div>
               <div className="mb-3">
-              <label
-                for="Status type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-               Select Status
-              </label>
-              <select
-                id="statustype"
-                // value={selectedGender}
-                // onChange={handleChange}
-                // disabled={!isEditing}
-                class={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
-              >
-                <option value="active">Active</option>
-                <option value="inactive">InActive</option>
-              </select>
-            </div>
+                <label
+                  for="Status type"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                Select Type
+                </label>
+                <select
+                  id="statustype"
+                  // value={selectedGender}
+                  // onChange={handleChange}
+                  // disabled={!isEditing}
+                  class={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                >
+                  <option value="wedding">Wedding</option>
+                  <option value="birthday">Birthday</option>
+                </select>
+              </div>
+              <div className="mb-3">
+                <label
+                  for="object_price"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Object Price
+                </label>
+                  <input
+                    type="number"
+                    name="object_price"
+                    id="object_price"
+                    class={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                    placeholder="Enter ObjectPrice"
+                    required=""
+              
+                  />
+              </div>
           </div>
         </DialogBody>
         <DialogFooter>

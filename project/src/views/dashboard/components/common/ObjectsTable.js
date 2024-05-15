@@ -44,7 +44,7 @@ export function ObjectsTable({head, rows}) {
         </thead>
         <tbody>
           {rows.map(
-            ({ id, name,objectImage,price,status,action }, index) => (
+            ({ id, name,objectImage,price,type,action }, index) => (
               <tr key={name} className="even:bg-blue-gray-50/50">
                 <td className="p-4">
                   <Typography
@@ -86,7 +86,7 @@ export function ObjectsTable({head, rows}) {
                     color="blue-gray"
                     className="font-medium"
                   >
-                    {status}
+                    {type}
                   </Typography>
                 </td>
                 {

@@ -1,34 +1,40 @@
 import React from 'react'
 import IconsSet from "../../../../assets/front/icons/Icons";
+import { Link } from 'react-router-dom';
+// import fb from "../../../../assets/front/images/fb.png";
 
 const ContactCard = ({contactType, contactNo}) => {
    const renderIcon = () => {
      if (contactType === "phone") {
-       return <IconsSet.ContactIcon />;
+       return <IconsSet.ContactIconSolid />;
      } else if (contactType === "email") {
-       return <IconsSet.EnvelopIcon />;
+       return <IconsSet.EnvelopIconSolid />;
      } else if (contactType === "address") {
-       return <IconsSet.AddressIcon />;
+       return <IconsSet.AddressIconSolid />;
      } else if (contactType === "twitter") {
        return <IconsSet.TwitterIcon />;
      } else if (contactType === "facebook") {
-       return <IconsSet.FacebookIcon />;
+       return  <IconsSet.FacebookIconSolid />;
      } else if (contactType === "instagram") {
-       return <IconsSet.InstagramIcon />;
+       return <IconsSet.InstagramIconSolid />;
      } else {
        return null; // Or render a default icon or placeholder if needed
      }
    };
   return (
-    <div className=" border-[2px] border-[#F2D2BD] flex flex-col w-[300px] max-h-[300px] h-[200px] mx-auto rounded-md  hover:shadow-md cursor-pointer justify-center items-center px-[10px] py-[20px] ">
-      <div className="text-[#000]  border border-[#000] p-[5px] border-1 rounded-[50px]">
-        {renderIcon()}
-      </div>
-      <h6 className="text-[26px] text-[#000] font-[600] py-[5px] capitalize">
-        {contactType}
-      </h6>
+    <Link to="/" className=" border-[2px] border-[#F2D2BD] flex flex-col w-[300px] max-h-[300px] h-[200px] mx-auto rounded-md  hover:shadow-md cursor-pointer justify-center items-center px-[10px] py-[20px] ">
+       <div>
+          <div className="text-[#000] w-[40px] h-[40px] m-auto border border-[#000] p-[5px] border-1 rounded-[50px]">
+             <div className='flex justify-center items-center flex-column'>
+              {renderIcon()}
+             </div>
+          </div>
+          <h6 className="text-[26px] text-[#000] font-[600] py-[5px] capitalize max-h-[50px] h-[50px]">
+            {contactType}
+          </h6>
+       </div>
       <p className="text-[14px] text-[#000] text-center">{contactNo}</p>
-    </div>
+    </Link>
   );
 }
 

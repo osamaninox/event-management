@@ -42,7 +42,7 @@ function Footer() {
                   <IconsSet.ChevronIcon />
                 </span>
                 <Link
-                  to="#"
+                  to="/about"
                   className="text-white text-[16px] font-[400] capitalize"
                 >
                   About us
@@ -55,7 +55,7 @@ function Footer() {
                   <IconsSet.ChevronIcon />
                 </span>
                 <Link
-                  to="#"
+                  to="/services"
                   className="text-white text-[16px] font-[400] capitalize"
                 >
                   Our Services
@@ -68,14 +68,14 @@ function Footer() {
                   <IconsSet.ChevronIcon />
                 </span>
                 <Link
-                  to="#"
+                  to="/eventtool"
                   className="text-white text-[16px] font-[400] capitalize"
                 >
                   Creat your Event
                 </Link>
               </div>
             </li>
-            <li className="py-[10px]">
+            {/* <li className="py-[10px]">
               <div className="flex items-center">
                 <span className="text-[#fff] text-[16px]  px-[10px]">
                   <IconsSet.ChevronIcon />
@@ -87,7 +87,7 @@ function Footer() {
                   Blog
                 </Link>
               </div>
-            </li>
+            </li> */}
             <li className="py-[10px]">
               <div className="flex items-center">
                 <span className="text-[#fff] text-[16px]  px-[10px]">
