@@ -59,7 +59,7 @@ const Login = () => {
                       <div className='m-auto w-[100px] shadow-md rounded-full'>
                          <img src={logo} alt={logo} className='m-auto rounded-full'/>
                        </div>
-                       <h2 className='text-[32px] py-[10px] text-[#000] font-dancing text-center font-bold'>Innovista Desingers</h2>
+                       <h2 className='text-[32px] py-[10px] text-[#000] font-dancing text-center font-bold'>Innovista Designers</h2>
                     </div>
 
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
