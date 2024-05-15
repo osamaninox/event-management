@@ -19,20 +19,7 @@ const EventTool = () => {
         canvasWidth: "800px",
         canvasHeight: "600px",
       },
-      droppedItems: [
-        { id: 1, name: "wimg1", price: 10, x: 119, y: 42 },
-        { id: 2, name: "wimg1", price: 50, x: 86, y: 39 },
-        { id: 3, name: "wimg1", price: 60, x: 24, y: 10 },
-        { id: 4, name: "t1", price: 80, x: 99, y: 72 },
-        { id: 5, name: "wimg1", price: 50, x: 86, y: 39 },
-        { id: 6, name: "wimg1", price: 60, x: 24, y: 10 },
-        { id: 7, name: "t1", price: 80, x: 99, y: 72 },
-        { id: 8, name: "wimg1", price: 60, x: 103, y: 62 },
-        { id: 9, name: "wimg1", price: 60, x: 103, y: 82 },
-        { id: 10, name: "wase", price: 80, x: 99, y: 72 },
-        { id: 11, name: "wase", price: 80, x: 99, y: 72 },
-        { id: 12, name: "ballon", price: 80, x: 99, y: 72 },
-      ],
+      droppedItems: [],
     },
   ]);
 
@@ -258,16 +245,16 @@ const EventTool = () => {
         <div className="flex flex-col flex-grow pl-[70px] ">
           {/* Pass updateItems function to Canvas */}
           <CanvasTop items={items}></CanvasTop>
-           <div>
-             <Canvas
-            items={items}
-            updateSetting={updateSettingFunc}
-            onDrop={handleDrop}
-            onRemoveItem={handleRemoveItem}
-            onUpdateItems={updateItems}
-            canvasRef={canvasRef}
-          />
-           </div>
+          <div>
+            <Canvas
+              items={items}
+              updateSetting={updateSettingFunc}
+              onDrop={handleDrop}
+              onRemoveItem={handleRemoveItem}
+              onUpdateItems={updateItems}
+              canvasRef={canvasRef}
+            />
+          </div>
         </div>
 
         {/* <RightPanel items={items} onExport={handleExport} onImport={handleImport} /> */}

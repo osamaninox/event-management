@@ -1,7 +1,7 @@
-import React,{useState} from 'react'
-import SearchInput from '../components/common/SearchInput'
-import { Table } from '../components/common/Table'
-import arrow1 from '../../../assets/tool/Shapes/Arrows/ARROW1.png'
+import React, { useState, useEffect } from "react";
+import SearchInput from "../components/common/SearchInput";
+import { Table } from "../components/common/Table";
+import arrow1 from "../../../assets/tool/Shapes/Arrows/ARROW1.png";
 import arrow2 from "../../../assets/tool/Shapes/Arrows/ARROW2.png";
 import arrow3 from "../../../assets/tool/Shapes/Arrows/ARROW3.png";
 import arrow4 from "../../../assets/tool/Shapes/Arrows/ARROW4.png";
@@ -70,8 +70,6 @@ import vse3 from "../../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE
 import vse4 from "../../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE4.png";
 import vse5 from "../../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE5.png";
 
-
-
 import b1 from "../../../assets/tool/Birthday/Balloons/B1.png";
 import b2 from "../../../assets/tool/Birthday/Balloons/B2.png";
 import b3 from "../../../assets/tool/Birthday/Balloons/B3.png";
@@ -103,17 +101,19 @@ import b28 from "../../../assets/tool/Birthday/Balloons/B28.png";
 import b29 from "../../../assets/tool/Birthday/Balloons/B29.png";
 import b30 from "../../../assets/tool/Birthday/Balloons/B30.png";
 
-
 import c1 from "../../../assets/tool/Birthday/Chairs/char-one.png";
 import c2 from "../../../assets/tool/Birthday/Chairs/chair-two.png";
 import c3 from "../../../assets/tool/Birthday/Chairs/chair-three.png";
 import c4 from "../../../assets/tool/Birthday/Chairs/chair-four.png";
-import { ObjectsTable } from '../components/common/ObjectsTable';
-import AddObjectModal from '../components/modal/Object/AddObjectModal'
-import { Link } from 'react-router-dom';
+import { ObjectsTable } from "../components/common/ObjectsTable";
+import AddObjectModal from "../components/modal/Object/AddObjectModal";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Objects = () => {
   const [openModal, setOpenModal] = useState({ addObj: false });
+
+  const [TABLE_ROWS, setObjectRows] = useState([]);
 
   const handleOpen = (modalType) => {
     setOpenModal({ ...openModal, [modalType]: true });
@@ -121,50 +121,61 @@ const Objects = () => {
 
   const handleClose = (modalType) => {
     setOpenModal({ ...openModal, [modalType]: false });
+    axios
+      .create({})
+      .get(`http://localhost:8000/api/object-library`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log("useEffect objects API response", response.data);
+        console.log(response.data);
+        setObjectRows(response.data);
+        // SET USER PORFILE DATA TO STATE
+      })
+      .catch((error) => {
+        console.log("useEffect objects API error", error);
+        console.error(error);
+      });
   };
-   const TABLE_HEAD = [
-     "id",
-     "object Image",
-     "name",
-     "Price",
-     "type",
-     "action"
-    
-   ];
 
-   const TABLE_ROWS = [
-     {
-       id: "1",
-       objectImage: b30,
-       name: "Ballon",
-       price: "$50.00",
-       type: 'Wedding',
-       action: "objects",
-     },
-      {
-       id: "2",
-       objectImage: c1,
-       name: "Chair",
-       price: "$100.00",
-       type: 'Birthday',
-       action: "objects",
-     },
-     {
-       id: "3",
-      objectImage: vse1,
-       name: "wase",
-       price: "$150.00",
-       type: 'Wedding',
-       action: "objects",
-     },
-   ];
+  const TABLE_HEAD = ["id", "object Image", "name", "Price", "type", "action"];
+
+  useEffect(() => {
+    console.log("useEffect objects API");
+    axios
+      .create({})
+      .get(`http://localhost:8000/api/object-library`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log("useEffect objects API response", response.data);
+        console.log(response.data);
+        setObjectRows(response.data);
+        // SET USER PORFILE DATA TO STATE
+      })
+      .catch((error) => {
+        console.log("useEffect objects API error", error);
+        console.error(error);
+      });
+  }, []);
+
   return (
     <div>
-      <div className='flex justify-between mb-[20px]'>
+      <div className="flex justify-between mb-[20px]">
         <h2 className="text-[26px] text-[#000] font-[600] font-poppins ">
-            Object Listing
+          Object Listing
         </h2>
-        <Link to="#" onClick={() => handleOpen('addObj')} className='shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-2 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]'>Add Object</Link>
+        <Link
+          to="#"
+          onClick={() => handleOpen("addObj")}
+          className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-2 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]"
+        >
+          Add Object
+        </Link>
       </div>
       <div className="flex justify-end">
         <SearchInput />
@@ -172,10 +183,13 @@ const Objects = () => {
       <div className="my-[20px]">
         <ObjectsTable head={TABLE_HEAD} rows={TABLE_ROWS} />
       </div>
-      <AddObjectModal ModalHeader="Add Object " open={openModal.addObj}  handleClose={() => handleClose('addObj')}
-         />
+      <AddObjectModal
+        ModalHeader="Add Object "
+        open={openModal.addObj}
+        handleClose={() => handleClose("addObj")}
+      />
     </div>
   );
-}
+};
 
-export default Objects
+export default Objects;

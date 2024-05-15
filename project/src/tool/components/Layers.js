@@ -3,7 +3,7 @@ import React from "react";
 const Layers = ({ items, toggleLayersClick }) => {
   // Calculate total budget based on item prices
   const totalBudget = items[0].droppedItems.reduce(
-    (acc, item) => acc + (item.price || 0),
+    (acc, item) => acc + (Number(item.price) || 0),
     0
   );
 

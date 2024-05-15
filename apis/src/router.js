@@ -4,6 +4,7 @@ import {
   register,
   updateProfile,
   getProfile,
+  getAllUsers,
 } from "./controllers/user.controller.js";
 import {
   createEvent,
@@ -30,7 +31,6 @@ import {
   deleteObject,
 } from "./controllers/object-library.controller.js";
 import { authenticateToken } from "./middlwares/jwt-verify.js";
-import { get } from "mongoose";
 const router = Router();
 
 /* User */
@@ -38,6 +38,7 @@ router.post("/user/register", register);
 router.post("/user/login", login);
 router.patch("/user/profile", authenticateToken, updateProfile);
 router.get("/user/profile/:id", authenticateToken, getProfile);
+router.get("/user/all", authenticateToken, getAllUsers);
 
 /* Event */
 router.post("/event", authenticateToken, createEvent);

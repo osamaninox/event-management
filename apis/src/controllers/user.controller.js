@@ -1,5 +1,5 @@
 import { User } from "../schemas/user.schema.js";
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 export async function login(req, res, next) {
   const { email, password } = req.body;
@@ -13,12 +13,10 @@ export async function login(req, res, next) {
     const token = jwt.sign(
       { email: user.email, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: '24h' }
+      { expiresIn: "24h" }
     );
     Object.assign(user, { token });
-    return res
-      .status(200)
-      .json({ message: "Login successful", user });
+    return res.status(200).json({ message: "Login successful", user });
   }
 
   res.status(401).json({ message: "Invalid credentials" });
@@ -44,10 +42,11 @@ export async function updateProfile(req, res, next) {
   const { id } = req.params;
   const { email, password, name, contactNumber } = req.body;
 
-  const updatedUser = await User.findByIdAndUpdate({ id }, { email, password, name, contactNumber }).lean();
-  res
-    .status(200)
-    .json(updatedUser);
+  const updatedUser = await User.findByIdAndUpdate(
+    { id },
+    { email, password, name, contactNumber }
+  ).lean();
+  res.status(200).json(updatedUser);
 }
 
 export async function getProfile(req, res, next) {
@@ -57,10 +56,13 @@ export async function getProfile(req, res, next) {
     if (!user) {
       return res.status(400).json({ message: "Invalid user id" });
     }
-    res
-      .status(200)
-      .json(user);
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ message: "Something went wrong" });
   }
+}
+
+export async function getAllUsers(req, res, next) {
+  const users = await User.find().lean();
+  res.status(200).json(users);
 }

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DraggableItem from "./DraggableItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChair, faTable } from "@fortawesome/free-solid-svg-icons";
 
-import arrow1 from '../../assets/tool/Shapes/Arrows/ARROW1.png'
+import arrow1 from "../../assets/tool/Shapes/Arrows/ARROW1.png";
 import arrow2 from "../../assets/tool/Shapes/Arrows/ARROW2.png";
 import arrow3 from "../../assets/tool/Shapes/Arrows/ARROW3.png";
 import arrow4 from "../../assets/tool/Shapes/Arrows/ARROW4.png";
@@ -72,8 +72,6 @@ import vse3 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE3.p
 import vse4 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE4.png";
 import vse5 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE5.png";
 
-
-
 import b1 from "../../assets/tool/Birthday/Balloons/B1.png";
 import b2 from "../../assets/tool/Birthday/Balloons/B2.png";
 import b3 from "../../assets/tool/Birthday/Balloons/B3.png";
@@ -105,136 +103,456 @@ import b28 from "../../assets/tool/Birthday/Balloons/B28.png";
 import b29 from "../../assets/tool/Birthday/Balloons/B29.png";
 import b30 from "../../assets/tool/Birthday/Balloons/B30.png";
 
-
 import c1 from "../../assets/tool/Birthday/Chairs/char-one.png";
 import c2 from "../../assets/tool/Birthday/Chairs/chair-two.png";
 import c3 from "../../assets/tool/Birthday/Chairs/chair-three.png";
 import c4 from "../../assets/tool/Birthday/Chairs/chair-four.png";
-
+import axios from "axios";
 
 const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
   const closePanelFunc = () => {
     closePanel(null);
   };
-  const [activeTab, setActiveTab] = useState("wedding");
-  
-  const tabsData = [
+  const tabsDataDefault = [
     {
       label: "Wedding Event",
       value: "wedding",
       items: [
-        { id: 1, itemName: "weddingImg", src: wimg1 },
-        { id: 2, itemName: "weddingImg", src: wimg2 },
-        { id: 3, itemName: "weddingImg", src: wimg3 },
-        { id: 4, itemName: "weddingImg", src: wimg4 },
-        { id: 5, itemName: "weddingImg", src: wimg5 },
-        { id: 6, itemName: "weddingImg", src: wimg6 },
-        { id: 7, itemName: "weddingImg", src: wimg7 },
-        { id: 8, itemName: "weddingImg", src: wimg8 },
-        { id: 9, itemName: "weddingImg", src: wimg9 },
-        { id: 10, itemName: "weddingImg", src: wimg10 },
-        { id: 11, itemName: "weddingImg", src: wimg11 },
-        { id: 12, itemName: "weddingImg", src: std1 },
-        { id: 13, itemName: "weddingImg", src: std2 },
-        { id: 14, itemName: "weddingImg", src: std3 },
-        { id: 15, itemName: "weddingImg", src: std4},
-        { id: 16, itemName: "weddingImg", src: std5 },
-        { id: 17, itemName: "weddingImg", src: std6 },
-        { id: 18, itemName: "weddingImg", src: std7 },
-        { id: 19, itemName: "weddingImg", src: std8 },
-        { id: 20, itemName: "weddingImg", src: vse1 },
-        { id: 21, itemName: "weddingImg", src: vse2 },
-        { id: 22, itemName: "weddingImg", src: vse3 },
-        { id: 23, itemName: "weddingImg", src: vse4 },
-        { id: 24, itemName: "weddingImg", src: vse5 },
+        {
+          id: 1,
+          itemName: "weddingImg",
+          src: wimg1,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 2,
+          itemName: "weddingImg",
+          src: wimg2,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 3,
+          itemName: "weddingImg",
+          src: wimg3,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 4,
+          itemName: "weddingImg",
+          src: wimg4,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 5,
+          itemName: "weddingImg",
+          src: wimg5,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 6,
+          itemName: "weddingImg",
+          src: wimg6,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 7,
+          itemName: "weddingImg",
+          src: wimg7,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 8,
+          itemName: "weddingImg",
+          src: wimg8,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 9,
+          itemName: "weddingImg",
+          src: wimg9,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 10,
+          itemName: "weddingImg",
+          src: wimg10,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 11,
+          itemName: "weddingImg",
+          src: wimg11,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 12,
+          itemName: "weddingImg",
+          src: std1,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 13,
+          itemName: "weddingImg",
+          src: std2,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 14,
+          itemName: "weddingImg",
+          src: std3,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 15,
+          itemName: "weddingImg",
+          src: std4,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 16,
+          itemName: "weddingImg",
+          src: std5,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 17,
+          itemName: "weddingImg",
+          src: std6,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 18,
+          itemName: "weddingImg",
+          src: std7,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 19,
+          itemName: "weddingImg",
+          src: std8,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 20,
+          itemName: "weddingImg",
+          src: vse1,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 21,
+          itemName: "weddingImg",
+          src: vse2,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 22,
+          itemName: "weddingImg",
+          src: vse3,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 23,
+          itemName: "weddingImg",
+          src: vse4,
+          type: "wedding",
+          price: 150,
+        },
+        {
+          id: 24,
+          itemName: "weddingImg",
+          src: vse5,
+          type: "wedding",
+          price: 150,
+        },
       ],
     },
     {
       label: "Birthday Event",
       value: "birthday",
       items: [
-        { id: 1, itemName: "BallonImg", src: b1 },
-        { id: 2, itemName: "BallonImg", src: b2 },
-        { id: 3, itemName: "BallonImg", src: b3 },
-        { id: 4, itemName: "BallonImg", src: b4 },
-        { id: 5, itemName: "BallonImg", src: b5 },
-        { id: 6, itemName: "BallonImg", src: b6 },
-        { id: 7, itemName: "BallonImg", src: b7 },
-        { id: 8, itemName: "BallonImg", src: b8 },
-        { id: 9, itemName: "BallonImg", src: b9 },
-        { id: 10, itemName: "BallonImg", src: b10 },
-        { id: 11, itemName: "BallonImg", src: b11 },
-        { id: 12, itemName: "BallonImg", src: b12 },
-        { id: 13, itemName: "BallonImg", src: b13 },
-        { id: 14, itemName: "BallonImg", src: b14 },
-        { id: 15, itemName: "BallonImg", src: b15 },
-        { id: 16, itemName: "BallonImg", src: b16 },
-        { id: 17, itemName: "BallonImg", src: b17 },
-        { id: 18, itemName: "BallonImg", src: b18 },
-        { id: 19, itemName: "BallonImg", src: b19 },
-        { id: 20, itemName: "BallonImg", src: b20 },
-        { id: 21, itemName: "BallonImg", src: b21 },
-        { id: 22, itemName: "BallonImg", src: b22 },
-        { id: 23, itemName: "BallonImg", src: b23 },
-        { id: 24, itemName: "BallonImg", src: b24 },
-        { id: 25, itemName: "BallonImg", src: b25 },
-        { id: 26, itemName: "BallonImg", src: b26 },
-        { id: 27, itemName: "BallonImg", src: b27 },
-        { id: 28, itemName: "BallonImg", src: b28 },
-        { id: 29, itemName: "BallonImg", src: b29 },
-        { id: 30, itemName: "BallonImg", src: b30 },
-        { id: 31, itemName: "chairImg", src: c1 },
-        { id: 32, itemName: "chairImg", src: c2 },
-        { id: 33, itemName: "chairImg", src: c3 },
-        { id: 34, itemName: "chairImg", src: c4 },
+        { id: 1, itemName: "BallonImg", src: b1, type: "birthday", price: 50 },
+        { id: 2, itemName: "BallonImg", src: b2, type: "birthday", price: 50 },
+        { id: 3, itemName: "BallonImg", src: b3, type: "birthday", price: 50 },
+        { id: 4, itemName: "BallonImg", src: b4, type: "birthday", price: 50 },
+        { id: 5, itemName: "BallonImg", src: b5, type: "birthday", price: 50 },
+        { id: 6, itemName: "BallonImg", src: b6, type: "birthday", price: 50 },
+        { id: 7, itemName: "BallonImg", src: b7, type: "birthday", price: 50 },
+        { id: 8, itemName: "BallonImg", src: b8, type: "birthday", price: 50 },
+        { id: 9, itemName: "BallonImg", src: b9, type: "birthday", price: 50 },
+        {
+          id: 10,
+          itemName: "BallonImg",
+          src: b10,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 11,
+          itemName: "BallonImg",
+          src: b11,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 12,
+          itemName: "BallonImg",
+          src: b12,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 13,
+          itemName: "BallonImg",
+          src: b13,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 14,
+          itemName: "BallonImg",
+          src: b14,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 15,
+          itemName: "BallonImg",
+          src: b15,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 16,
+          itemName: "BallonImg",
+          src: b16,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 17,
+          itemName: "BallonImg",
+          src: b17,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 18,
+          itemName: "BallonImg",
+          src: b18,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 19,
+          itemName: "BallonImg",
+          src: b19,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 20,
+          itemName: "BallonImg",
+          src: b20,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 21,
+          itemName: "BallonImg",
+          src: b21,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 22,
+          itemName: "BallonImg",
+          src: b22,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 23,
+          itemName: "BallonImg",
+          src: b23,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 24,
+          itemName: "BallonImg",
+          src: b24,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 25,
+          itemName: "BallonImg",
+          src: b25,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 26,
+          itemName: "BallonImg",
+          src: b26,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 27,
+          itemName: "BallonImg",
+          src: b27,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 28,
+          itemName: "BallonImg",
+          src: b28,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 29,
+          itemName: "BallonImg",
+          src: b29,
+          type: "birthday",
+          price: 50,
+        },
+        {
+          id: 30,
+          itemName: "BallonImg",
+          src: b30,
+          type: "birthday",
+          price: 50,
+        },
+        { id: 31, itemName: "chairImg", src: c1, type: "birthday", price: 50 },
+        { id: 32, itemName: "chairImg", src: c2, type: "birthday", price: 50 },
+        { id: 33, itemName: "chairImg", src: c3, type: "birthday", price: 50 },
+        { id: 34, itemName: "chairImg", src: c4, type: "birthday", price: 50 },
       ],
     },
   ];
 
-  const shapesData = [
-    { id: 1, name: "dotted Arrow", src: arrow1 },
-    { id: 2, name: "solid arrow", src: arrow2 },
-    { id: 3, name: "image", src: arrow3 },
-    { id: 4, name: "image", src: arrow4 },
-    { id: 5, name: "image", src: arrow4 },
-    { id: 6, name: "image", src: arrow4 },
-    { id: 7, name: "solid border", src: border1 },
-    { id: 8, name: "solid border", src: border2 },
-    { id: 9, name: "solid border", src: border3 },
-    { id: 10, name: "solid border", src: border4 },
-    { id: 11, name: "circle", src: circle1 },
-    { id: 12, name: "circle", src: circle2 },
-    { id: 13, name: "circle", src: circle3 },
-    { id: 14, name: "circle", src: circle4 },
-    { id: 15, name: "flower", src: f1 },
-    { id: 16, name: "flower", src: f2 },
-    { id: 17, name: "flower", src: f3 },
-    { id: 18, name: "frames", src: frame1 },
-    { id: 19, name: "frames", src: frame2 },
-    { id: 20, name: "frames", src: frame3 },
-    { id: 21, name: "frames", src: frame4 },
-    { id: 22, name: "frames", src: frame5 },
-    { id: 23, name: "frames", src: frame6 },
-    { id: 24, name: "frames", src: frame7 },
-    { id: 25, name: "frames", src: frame8 },
-    { id: 26, name: "lines", src: l1 },
-    { id: 27, name: "lines", src: l2 },
-    { id: 28, name: "lines", src: l3 },
-    { id: 29, name: "lines", src: l4 },
-    { id: 30, name: "lines", src: l5 },
-    { id: 31, name: "lines", src: l6 },
-    { id: 32, name: "lines", src: l7 },
-    { id: 33, name: "rectangle", src: rec1 },
-    { id: 34, name: "rectangle", src: rec2 },
-    { id: 35, name: "rectangle", src: rec3 },
-    { id: 36, name: "rectangle", src: rec4 },
-    { id: 37, name: "rectangle", src: rec5 },
-
+  const shapesDataDefault = [
+    { id: 1, name: "dotted Arrow", src: arrow1, type: "shape", price: 20 },
+    { id: 2, name: "solid arrow", src: arrow2, type: "shape", price: 20 },
+    { id: 3, name: "image", src: arrow3, type: "shape", price: 20 },
+    { id: 4, name: "image", src: arrow4, type: "shape", price: 20 },
+    { id: 5, name: "image", src: arrow4, type: "shape", price: 20 },
+    { id: 6, name: "image", src: arrow4, type: "shape", price: 20 },
+    { id: 7, name: "solid border", src: border1, type: "shape", price: 20 },
+    { id: 8, name: "solid border", src: border2, type: "shape", price: 20 },
+    { id: 9, name: "solid border", src: border3, type: "shape", price: 20 },
+    { id: 10, name: "solid border", src: border4, type: "shape", price: 20 },
+    { id: 11, name: "circle", src: circle1, type: "shape", price: 20 },
+    { id: 12, name: "circle", src: circle2, type: "shape", price: 20 },
+    { id: 13, name: "circle", src: circle3, type: "shape", price: 20 },
+    { id: 14, name: "circle", src: circle4, type: "shape", price: 20 },
+    { id: 15, name: "flower", src: f1, type: "shape", price: 20 },
+    { id: 16, name: "flower", src: f2, type: "shape", price: 20 },
+    { id: 17, name: "flower", src: f3, type: "shape", price: 20 },
+    { id: 18, name: "frames", src: frame1, type: "shape", price: 20 },
+    { id: 19, name: "frames", src: frame2, type: "shape", price: 20 },
+    { id: 20, name: "frames", src: frame3, type: "shape", price: 20 },
+    { id: 21, name: "frames", src: frame4, type: "shape", price: 20 },
+    { id: 22, name: "frames", src: frame5, type: "shape", price: 20 },
+    { id: 23, name: "frames", src: frame6, type: "shape", price: 20 },
+    { id: 24, name: "frames", src: frame7, type: "shape", price: 20 },
+    { id: 25, name: "frames", src: frame8, type: "shape", price: 20 },
+    { id: 26, name: "lines", src: l1, type: "shape", price: 20 },
+    { id: 27, name: "lines", src: l2, type: "shape", price: 20 },
+    { id: 28, name: "lines", src: l3, type: "shape", price: 20 },
+    { id: 29, name: "lines", src: l4, type: "shape", price: 20 },
+    { id: 30, name: "lines", src: l5, type: "shape", price: 20 },
+    { id: 31, name: "lines", src: l6, type: "shape", price: 20 },
+    { id: 32, name: "lines", src: l7, type: "shape", price: 20 },
+    { id: 33, name: "rectangle", src: rec1, type: "shape", price: 20 },
+    { id: 34, name: "rectangle", src: rec2, type: "shape", price: 20 },
+    { id: 35, name: "rectangle", src: rec3, type: "shape", price: 20 },
+    { id: 36, name: "rectangle", src: rec4, type: "shape", price: 20 },
+    { id: 37, name: "rectangle", src: rec5, type: "shape", price: 20 },
   ];
+  const [activeTab, setActiveTab] = useState("wedding");
 
- const handleTabChange = (value) => {
-   setActiveTab(value);
- };
+  const [tabsData, setTabsData] = useState(tabsDataDefault);
+
+  const [shapesData, setShapesData] = useState(shapesDataDefault);
+
+  useEffect(() => {
+    console.log("useEffect objects library API");
+    axios
+      .create({})
+      .get(`http://localhost:8000/api/object-library`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log("useEffect objects library API response", response.data);
+        response.data.forEach((item) => {
+          if (item.type.toLowerCase() === "shape") {
+            shapesData.push({
+              id: item._id,
+              itemName: item.title,
+              src: item.objectImagePath,
+              type: item.type,
+              price: item.price,
+            });
+          } else if (item.type.toLowerCase() === "wedding") {
+            tabsData[0].items.push({
+              id: item._id,
+              itemName: item.title,
+              src: item.objectImagePath,
+              type: item.type,
+              price: item.price,
+            });
+          } else if (item.type.toLowerCase() === "birthday") {
+            tabsData[1].items.push({
+              id: item._id,
+              itemName: item.title,
+              src: item.objectImagePath,
+              type: item.type,
+              price: item.price,
+            });
+          }
+        });
+        setTabsData(tabsData);
+        console.log("tabs data >>", tabsData);
+        setShapesData(shapesData);
+        console.log("shapes data >>", shapesData);
+      })
+      .catch((error) => {
+        console.log("useEffect objects API error", error);
+        console.error(error);
+      });
+  }, []);
+
+  const handleTabChange = (value) => {
+    setActiveTab(value);
+  };
   return (
     <>
       <div className="css-1ix44gv">
@@ -287,8 +605,11 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
                               className="css-7toppc border boder-[#dfdfdf] rounded-[10px] p-[7px]"
                             >
                               <DraggableItem
-                                itemName={item.name}
+                                src={item.src}
+                                type={item.type}
+                                itemName={item.itemName}
                                 onDragStart={onDragStart}
+                                price={item.price}
                               >
                                 {/* <FontAwesomeIcon
                                   color="black"
@@ -331,11 +652,15 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
                       <DraggableItem
                         itemName={item.name}
                         onDragStart={onDragStart}
+                        src={item.src}
+                        type={item.type}
+                        price={item.price}
                       >
                         <img
                           loading="lazy"
                           src={item.src}
                           alt={item.name}
+                          type={item.type}
                           className="object-center w-full"
                         />
                       </DraggableItem>

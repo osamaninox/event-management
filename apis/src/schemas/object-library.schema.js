@@ -5,14 +5,18 @@ const objectLibrarySchema = new Schema({
     type: String,
     required: true,
   },
-  design: {
-    type: Object,
+  objectImagePath: {
+    type: String,
     required: true,
   },
   price: {
     type: Number,
     required: true,
-  }
+  },
+  type: {
+    type: String,
+    required: true,
+  },
 });
 
 export const ObjectLibrary = model("ObjectLibrary", objectLibrarySchema);

@@ -13,7 +13,7 @@ import {
 //import { zIndex } from 'html2canvas/dist/types/css/property-descriptors/z-index';
 // import { toPng } from 'html-to-image';
 
-import arrow1 from '../../assets/tool/Shapes/Arrows/ARROW1.png'
+import arrow1 from "../../assets/tool/Shapes/Arrows/ARROW1.png";
 import arrow2 from "../../assets/tool/Shapes/Arrows/ARROW2.png";
 import arrow3 from "../../assets/tool/Shapes/Arrows/ARROW3.png";
 import arrow4 from "../../assets/tool/Shapes/Arrows/ARROW4.png";
@@ -82,8 +82,6 @@ import vse3 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE3.p
 import vse4 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE4.png";
 import vse5 from "../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE5.png";
 
-
-
 import b1 from "../../assets/tool/Birthday/Balloons/B1.png";
 import b2 from "../../assets/tool/Birthday/Balloons/B2.png";
 import b3 from "../../assets/tool/Birthday/Balloons/B3.png";
@@ -115,24 +113,20 @@ import b28 from "../../assets/tool/Birthday/Balloons/B28.png";
 import b29 from "../../assets/tool/Birthday/Balloons/B29.png";
 import b30 from "../../assets/tool/Birthday/Balloons/B30.png";
 
-
 // import c1 from "../../assets/tool/Birthday/tables/";
 import c2 from "../../assets/tool/Birthday/Chairs/chair-two.png";
 import c3 from "../../assets/tool/Birthday/Chairs/chair-three.png";
 import c4 from "../../assets/tool/Birthday/Chairs/chair-four.png";
-
 
 import ch1 from "../../assets/tool/Birthday/Chairs/char-one.png";
 import ch2 from "../../assets/tool/Birthday/Chairs/chair-two.png";
 import ch3 from "../../assets/tool/Birthday/Chairs/chair-three.png";
 import ch4 from "../../assets/tool/Birthday/Chairs/chair-four.png";
 
-
 import t1 from "../../assets/tool/Birthday/tables/TABLE1.png";
 import t2 from "../../assets/tool/Birthday/tables/TBLE2.png";
 import t3 from "../../assets/tool/Birthday/tables/TBLE3.png";
 import t4 from "../../assets/tool/Birthday/tables/TBLE4.png";
-
 
 const Canvas = ({
   items,
@@ -142,9 +136,6 @@ const Canvas = ({
   onUpdateItems,
   canvasRef,
 }) => {
-
-
-
   //const canvasRef = useRef(null);
   const [context, setContext] = useState(null);
   // useEffect(() => {
@@ -172,9 +163,6 @@ const Canvas = ({
     { color: "#000", width: "2" },
   ]);
 
-
-
-
   const handleItemTextChange = (text) => {
     setItemText(text);
     //setColor(newValue);
@@ -199,7 +187,7 @@ const Canvas = ({
   }, [items, onUpdateItems]);
 
   const handleDragStart = (e, item) => {
-    console.log(item.name);
+    console.log("Dragged item,", item);
     e.dataTransfer.setData("text/plain", item.name);
     setDraggedItem(item);
   };
@@ -229,36 +217,40 @@ const Canvas = ({
           item === draggedItem ? { ...item, x, y } : item
         ),
       }));
-
+      console.log("Updated Items", updatedItems);
       onUpdateItems(updatedItems);
       setDraggedItem(null);
     } else {
       const itemName = e.dataTransfer.getData("text/plain");
 
       const itemSrc = e.dataTransfer.getData("src");
-
-      let itemPrice = 0;
-
-      switch (itemName) {
-        case "Chair":
-          itemPrice = 100;
-          break;
-        case "Table":
-          itemPrice = 200;
-          break;
-        case "Text":
-          itemPrice = 0;
-          //setItemText("default text");
-          break;
-        default:
-          itemPrice = 0;
-          break;
-      }
+      const itemType = e.dataTransfer.getData("type");
+      const itemPrice = e.dataTransfer.getData("price");
+      console.log("Item price >>", itemPrice);
+      // switch (itemName) {
+      //   case "Chair":
+      //     itemPrice = 100;
+      //     break;
+      //   case "Table":
+      //     itemPrice = 200;
+      //     break;
+      //   case "Text":
+      //     itemPrice = 0;
+      //     //setItemText("default text");
+      //     break;
+      //   case "weddingImg":
+      //     itemPrice = 150;
+      //     break;
+      //   default:
+      //     itemPrice = 0;
+      //     break;
+      // }
 
       onDrop({
         name: itemName,
         ...(itemSrc && { src: itemSrc }),
         price: itemPrice,
+        type: itemType,
         text: itemText,
         image: itemImage,
         x: e.nativeEvent.offsetX,
@@ -585,7 +577,7 @@ const Canvas = ({
               onClick={toggleSetting}
               title="Setting"
               // size="2x"
-             className="text-[14px] text-[#000] py-[5px] px-[5px] bg-[#fff] shadow-md rounded-[5px] mr-[5px]"
+              className="text-[14px] text-[#000] py-[5px] px-[5px] bg-[#fff] shadow-md rounded-[5px] mr-[5px]"
               icon={faCog}
             />
             <div
@@ -604,7 +596,7 @@ const Canvas = ({
                 onClick={toggleDraw}
                 title="Draw"
                 // size="2x"
-               className="text-[14px] text-[#000] py-[5px] px-[5px] bg-[#fff] shadow-md rounded-[5px]"
+                className="text-[14px] text-[#000] py-[5px] px-[5px] bg-[#fff] shadow-md rounded-[5px]"
                 icon={faPencil}
               />
               {drawSetting && (
@@ -670,7 +662,10 @@ const Canvas = ({
                     padding: "10px",
 
                     //zIndex: selectedItem === item ? 1 : 0,
-                    outline: selectedItem === item ? "2px dotted gray shadow-md" : "none",
+                    outline:
+                      selectedItem === item
+                        ? "2px dotted gray shadow-md"
+                        : "none",
                     outlineOffset: selectedItem === item ? "-3px" : "0px",
                     resize: resizing ? "none" : "both",
                   }}
@@ -703,34 +698,14 @@ const Canvas = ({
                     onDragStart={(e) => handleDragStart(e, item)}
                     onClick={(e) => handleItemClick(e, item)}
                   >
-                    {item.name === "wimg1" ? (
-                        <img src={wimg1} alt={item.name} className="w-[100px] h-auto"/>
-                    ) : item.name === "t1" ? (
-                        <img src={t1} alt={item.name} className="w-[100px] h-auto"/>
-                    ) : item.name === "wase" ? (
-                        <img src={vse1} alt={item.name} className="w-[100px] h-auto"/>
-                    ) : item.name === "ballon" ? (
-                        <img src={b1} alt={item.name} className="w-[100px] h-auto"/>
-                        
-                    ): item.name === "Image" ? (
-                      <>
-                        {item.src ? (
-                          <img
-                            data-src={item.src}
-                            src={item.src}
-                            alt="Dynamic Image"
-                          />
-                        ) : (
-                          <img
-                            src={
-                              item.image !== ""
-                                ? item.image
-                                : "https://images.unsplash.com/photo-1709136494561-d98ea74c9431?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200"
-                            }
-                            alt="Static Image"
-                          />
-                        )}
-                      </>
+                    {item.type === "wedding" ||
+                    item.type === "birthday" ||
+                    item.type === "shape" ? (
+                      <img
+                        src={item.src}
+                        alt={item.name}
+                        className="w-[100px] h-auto"
+                      />
                     ) : item.name === "Draw" ? (
                       <DrawingCanvas></DrawingCanvas>
                     ) : item.name === "Text" ? (
