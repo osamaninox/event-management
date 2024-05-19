@@ -8,13 +8,13 @@ import Sidebar from '../views/dashboard/components/common/Sidebar';
 const DashboardLayout = ({ }) => {
   
   return (
-    <div className="dashboard-body flex h-screen w-full bg-[#f3f4f6]">
+    <div className="dashboard-body flex h-screen  w-full bg-[#f3f4f6]">
       <Sidebar />
       <div className="ml-[300px] w-full">
         <div className="sticky top-0 z-20">
           <Header />
-          <div class="shadow-sm bg-[#fff]  top-20 py-[10px] px-[10px] mb-[10px]">
-            <h2 class="flex items-center justify-between gap-5 flex-wrap font-[500] text-[#000] text-[18px]">
+          <div className="shadow-sm bg-[#fff]  top-20 py-[10px] px-[10px] mb-[10px]">
+            <h2 className="flex items-center justify-between gap-5 flex-wrap font-[500] text-[#000] text-[18px]">
               Welcome! John deo
             </h2>
           </div>

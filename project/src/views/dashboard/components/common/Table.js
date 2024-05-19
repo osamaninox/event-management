@@ -45,7 +45,7 @@ export function Table({head, rows}) {
         </thead>
         <tbody>
           {rows.map(
-            ({ id, name, Amount, date, Status, Payment_Type,success,action,type }, index) => (
+            ({ id, name, Amount, date, Status, Payment_Type,success,action,type,comment,email }, index) => (
               <tr key={name} className="even:bg-blue-gray-50/50">
                 <td className="p-4">
                   <Typography
@@ -53,7 +53,7 @@ export function Table({head, rows}) {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {id}
+                    {index + 1}
                   </Typography>
                 </td>
                 <td className="p-4">
@@ -76,7 +76,33 @@ export function Table({head, rows}) {
                   </Typography>
                 </td>
                 }
-                <td className="p-4">
+                { email && 
+
+                  <td className="p-4">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                  >
+                    {email}
+                  </Typography>
+                </td>
+
+                }
+                { comment && 
+                  <td className="p-4">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                  >
+                    {comment}
+                  </Typography>
+                </td>
+
+               }
+               { Amount && 
+                  <td className="p-4">
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -85,7 +111,11 @@ export function Table({head, rows}) {
                     {Amount}
                   </Typography>
                 </td>
-                <td className="p-4">
+
+               }
+               {
+                Payment_Type &&
+                  <td className="p-4">
                   <Typography
                     as="a"
                     href="#"
@@ -96,7 +126,10 @@ export function Table({head, rows}) {
                     {Payment_Type}
                   </Typography>
                 </td>
-                <td className="p-4">
+               }
+                {
+                  success && 
+                  <td className="p-4">
                   <Typography
                     as="a"
                     href="#"
@@ -111,6 +144,7 @@ export function Table({head, rows}) {
                     />
                   </Typography>
                 </td>
+                }
                 {date && 
                     <td className="p-4">
                       <Typography
@@ -150,6 +184,15 @@ export function Table({head, rows}) {
                       <div className="flex">
                         <Link to="#" onClick={() => handleOpen('editUser')} className=""><IconsSet.EditIcon /></Link>
                         <Link to="#" onClick={() => handleOpen('deleteUser')} className="px-2"><IconsSet.TrashIcon /></Link>
+                      </div>
+                     </td>
+                  )
+                }
+                {
+                  action === 'feedbacks' && (
+                    <td className="p-4">
+                      <div className="flex">
+                        <Link to="#" className="">Aprroved</Link>
                       </div>
                      </td>
                   )

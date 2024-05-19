@@ -215,7 +215,7 @@ const Home = () => {
           </div>
           <div className=""></div>
         </div>
-        <div className="bg-[#ffffff] p-[25px] rounded shadow-xl">
+        {/* <div className="bg-[#ffffff] p-[25px] rounded shadow-xl">
           <div className="flex justify-between items-center pb-[20px]">
             <h2 className="text-[#000] text-[16px] font-[600]">
               Latest Transactions
@@ -225,7 +225,7 @@ const Home = () => {
            </Link>
           </div>
           <Table head={TABLE_HEAD} rows={TABLE_ROWS} />
-        </div>
+        </div> */}
       </div>
     </>
   );

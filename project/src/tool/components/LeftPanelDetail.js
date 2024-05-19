@@ -113,7 +113,8 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
   const closePanelFunc = () => {
     closePanel(null);
   };
-  const tabsDataDefault = [
+  const tabsDataDefault = [];
+  const tabsDataDefaults = [
     {
       label: "Wedding Event",
       value: "wedding",
@@ -497,12 +498,24 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
   ];
   const [activeTab, setActiveTab] = useState("wedding");
 
-  const [tabsData, setTabsData] = useState(tabsDataDefault);
+  const [tabsData, setTabsData] = useState(tabsDataDefaults);
 
   const [shapesData, setShapesData] = useState(shapesDataDefault);
 
+  var ii = 0;
   useEffect(() => {
-    console.log("useEffect objects library API");
+    
+      ii++;
+  }, []);
+
+  const [isloaded, setLoaded] = useState(false)
+
+
+  useEffect(() => {
+      if (!isloaded) {
+        console.log('This should called once')
+console.log(ii +"useEffect objects library API");
+    
     axios
       .create({})
       .get(`http://localhost:8000/api/object-library`, {
@@ -512,8 +525,10 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
       })
       .then((response) => {
         console.log("useEffect objects library API response", response.data);
-        response.data.forEach((item) => {
+        response.data.forEach((item,index) => {
+          console.log(index);
           if (item.type.toLowerCase() === "shape") {
+            if( !(shapesData.apiData) || shapesData.apiData !="added" ){
             shapesData.push({
               id: item._id,
               itemName: item.title,
@@ -521,7 +536,11 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
               type: item.type,
               price: item.price,
             });
+          }
           } else if (item.type.toLowerCase() === "wedding") {
+            
+            
+if( !(tabsData[0].apiData) || tabsData[0].apiData !="added" ){
             tabsData[0].items.push({
               id: item._id,
               itemName: item.title,
@@ -529,7 +548,12 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
               type: item.type,
               price: item.price,
             });
+          }
           } else if (item.type.toLowerCase() === "birthday") {
+
+            
+            console.log("count "+tabsData[1].items.count);
+            if( !(tabsData[1].apiData) || tabsData[1].apiData !="added" ){
             tabsData[1].items.push({
               id: item._id,
               itemName: item.title,
@@ -537,8 +561,14 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
               type: item.type,
               price: item.price,
             });
+            }
+            
           }
         });
+
+        shapesData.apiData = "added";
+        tabsData[0].apiData = "added";
+        tabsData[1].apiData = "added";
         setTabsData(tabsData);
         console.log("tabs data >>", tabsData);
         setShapesData(shapesData);
@@ -548,7 +578,10 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
         console.log("useEffect objects API error", error);
         console.error(error);
       });
-  }, []);
+        setLoaded(true)
+      }
+    return () => {}
+  }, [])
 
   const handleTabChange = (value) => {
     setActiveTab(value);
@@ -591,7 +624,8 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
                     ))}
                   </div>
                   <div className="tab-content overflow-wrapper">
-                    {tabsData.map(({ value, items }) => (
+                    {/* <pre>{JSON.stringify(tabsData, null, 2)}</pre> */}
+                     {tabsData.map(({ value, items }) => (
                       <div
                         key={value}
                         className={`tab-pane  py-[20px] ${
@@ -599,7 +633,8 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
                         }`}
                       >
                         <ul className="css-1nxiby7 px-0 ">
-                          {items.map((item) => (
+                          
+                           {items.map((item) => (
                             <li
                               key={item.id}
                               className="css-7toppc border boder-[#dfdfdf] rounded-[10px] p-[7px]"
@@ -611,23 +646,20 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
                                 onDragStart={onDragStart}
                                 price={item.price}
                               >
-                                {/* <FontAwesomeIcon
-                                  color="black"
-                                  size="3x"
-                                  icon={faTable}
-                                /> */}
+                                
                                 <img
                                   loading="lazy"
                                   src={item.src}
-                                  alt={item.name}
+                                  alt={item.itemName}
                                   className="object-center w-full max-h-[60px]"
                                 />
+                                
                               </DraggableItem>
                             </li>
-                          ))}
+                          ))} 
                         </ul>
                       </div>
-                    ))}
+                    ))} 
                   </div>
                 </>
               )}

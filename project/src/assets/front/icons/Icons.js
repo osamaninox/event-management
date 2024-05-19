@@ -175,10 +175,10 @@ const DashboardIcon = () => {
     <svg
       stroke="currentColor"
       fill="none"
-      stroke-width="2"
+      strokeWidth="2"
       viewBox="0 0 24 24"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className="w-[15px] h-[15px]"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -199,16 +199,16 @@ const CalendarIcon = () => {
       className="w-[15px] h-[15px]"
     >
       <path
-        class="cls-1"
+        className="cls-1"
         d="M20,2H19V1a1,1,0,0,0-2,0V2H7V1A1,1,0,0,0,5,1V2H4A4,4,0,0,0,0,6V20a4,4,0,0,0,4,4H20a4,4,0,0,0,4-4V6A4,4,0,0,0,20,2Zm2,18a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H5V5A1,1,0,0,0,7,5V4H17V5a1,1,0,0,0,2,0V4h1a2,2,0,0,1,2,2Z"
       />
-      <path class="cls-1" d="M19,7H5A1,1,0,0,0,5,9H19a1,1,0,0,0,0-2Z" />
-      <path class="cls-1" d="M7,12H5a1,1,0,0,0,0,2H7a1,1,0,0,0,0-2Z" />
-      <path class="cls-1" d="M7,17H5a1,1,0,0,0,0,2H7a1,1,0,0,0,0-2Z" />
-      <path class="cls-1" d="M13,12H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />
-      <path class="cls-1" d="M13,17H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />
-      <path class="cls-1" d="M19,12H17a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />
-      <path class="cls-1" d="M19,17H17a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />
+      <path className="cls-1" d="M19,7H5A1,1,0,0,0,5,9H19a1,1,0,0,0,0-2Z" />
+      <path className="cls-1" d="M7,12H5a1,1,0,0,0,0,2H7a1,1,0,0,0,0-2Z" />
+      <path className="cls-1" d="M7,17H5a1,1,0,0,0,0,2H7a1,1,0,0,0,0-2Z" />
+      <path className="cls-1" d="M13,12H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />
+      <path className="cls-1" d="M13,17H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />
+      <path className="cls-1" d="M19,12H17a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />
+      <path className="cls-1" d="M19,17H17a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />
     </svg>
   );
 };
@@ -287,14 +287,14 @@ const LogoutIcon = ({active}) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M3 4.25C3 3.00736 4.00736 2 5.25 2H10.75C11.9926 2 13 3.00736 13 4.25V6.25C13 6.66421 12.6642 7 12.25 7C11.8358 7 11.5 6.66421 11.5 6.25V4.25C11.5 3.83579 11.1642 3.5 10.75 3.5H5.25C4.83579 3.5 4.5 3.83579 4.5 4.25V15.75C4.5 16.1642 4.83579 16.5 5.25 16.5H10.75C11.1642 16.5 11.5 16.1642 11.5 15.75V13.75C11.5 13.3358 11.8358 13 12.25 13C12.6642 13 13 13.3358 13 13.75V15.75C13 16.9926 11.9926 18 10.75 18H5.25C4.00736 18 3 16.9926 3 15.75V4.25Z"
         fill="#0F172A"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M6 10C6 9.58579 6.33579 9.25 6.75 9.25H16.2955L15.2483 8.30747C14.9404 8.03038 14.9154 7.55616 15.1925 7.24828C15.4696 6.94039 15.9438 6.91543 16.2517 7.19253L18.7517 9.44253C18.9098 9.58476 19 9.78738 19 10C19 10.2126 18.9098 10.4152 18.7517 10.5575L16.2517 12.8075C15.9438 13.0846 15.4696 13.0596 15.1925 12.7517C14.9154 12.4438 14.9404 11.9696 15.2483 11.6925L16.2955 10.75H6.75C6.33579 10.75 6 10.4142 6 10Z"
         fill="#0F172A"
       />
@@ -325,7 +325,7 @@ const CameraIcon = () => {
 
 const EditIcon = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-edit" fill="none"  stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" height="16" width="16"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" className="feather feather-edit" fill="none"  stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" height="16" width="16"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
   );
 }
 
@@ -339,7 +339,7 @@ const TrashIcon = () => {
 
 const ObjectIcon = () => {
   return(
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path fill-rule="evenodd" clip-rule="evenodd" d="M18 0.375L23.6667 11H12.3333L18 0.375ZM15.6667 9H20.3333L18 4.625L15.6667 9Z" fill="#fff"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M1 1H11V11H1V1ZM3 3V9H9V3H3Z" fill="#fff"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M1 18C1 15.2386 3.23858 13 6 13C8.76142 13 11 15.2386 11 18C11 20.7614 8.76142 23 6 23C3.23858 23 1 20.7614 1 18ZM6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15Z" fill="#fff"></path><path d="M13 13H23V15H13V13Z" fill="#fff"></path><path d="M13 17H23V19H13V17Z" fill="#fff"></path><path d="M13 21H23V23H13V21Z" fill="#fff"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path fillRule="evenodd" clipRule="evenodd" d="M18 0.375L23.6667 11H12.3333L18 0.375ZM15.6667 9H20.3333L18 4.625L15.6667 9Z" fill="#fff"></path><path fillRule="evenodd" clipRule="evenodd" d="M1 1H11V11H1V1ZM3 3V9H9V3H3Z" fill="#fff"></path><path fillRule="evenodd" clipRule="evenodd" d="M1 18C1 15.2386 3.23858 13 6 13C8.76142 13 11 15.2386 11 18C11 20.7614 8.76142 23 6 23C3.23858 23 1 20.7614 1 18ZM6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15Z" fill="#fff"></path><path d="M13 13H23V15H13V13Z" fill="#fff"></path><path d="M13 17H23V19H13V17Z" fill="#fff"></path><path d="M13 21H23V23H13V21Z" fill="#fff"></path></svg>
   )
 }
 

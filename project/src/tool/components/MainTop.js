@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,9 +6,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const MainTop = ({ items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
+const MainTop = ({handleBudgetAmount, items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
   const [jsonTemplate, setJsonTemplate] = useState("");
-
+  const [budgetPrice, setbudgetPrice] = useState();
+   useEffect(() => {
+   
+   }, [handleBudgetAmount]);
   const exportTemplate = () => {
     const json = JSON.stringify(items);
     setJsonTemplate(json);
@@ -53,7 +56,18 @@ const MainTop = ({ items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
       reader.readAsText(file);
     }
   };
+  const [budgetModal, setBudgetModal] = useState(true);
+  //const [budgetAmount, setBudgetAmount] = useState('00');
+  const budgetPopup = (event) => {
+   console.log("budgetPopup");
+   setBudgetModal(prevState => !prevState); 
+  };
 
+  
+  const Updatebudget = (event) => {
+   //console.log("Updatebudget " +budgetAmount);
+   setBudgetModal(prevState => !prevState);
+  };
   
   // const handleFileChange = (event) => {
   //   const file = event.target.files[0];
@@ -125,7 +139,13 @@ const MainTop = ({ items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
              How to use Tool ?
         </Link>
         </div>
-      
+       <div onClick={budgetPopup}  className="css-y73845 ml-3 min-h-[36px]">
+          {/* <div className="css-8cka6y">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path d="M64 64C28.7 64 0 92.7 0 128V384c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H64zm64 320H64V320c35.3 0 64 28.7 64 64zM64 192V128h64c0 35.3-28.7 64-64 64zM448 384c0-35.3 28.7-64 64-64v64H448zm64-192c-35.3 0-64-28.7-64-64h64v64zM288 160a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/></svg>
+          </div> */}
+         Calculate Budget
+        </div>
         {/* <div className="css-y73845">
          <div className="css-8cka6y">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" width="1em" height="1em">
@@ -136,6 +156,35 @@ const MainTop = ({ items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
       </div> */}
         {/* <pre>{JSON.stringify(items, null, 2)}</pre> */}
       </div>
+      <div className='budget-modal position-absolute'>
+      {budgetModal &&  
+      <>
+      <div class="modal-backdrop fade show"></div>
+      <div class="modal d-block show fade" tabindex="-1" >   
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title">Project Budget</h5>
+                  <button onClick={budgetPopup} type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <div class="input-group input-group-sm">
+                     <span class="input-group-text">Amount:</span>
+                     <input class="form-control" id="budgetPrice" type="number" 
+                     value={budgetPrice} 
+                        onChange={(event) => handleBudgetAmount(event.target.value)} 
+                        />
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" onClick={Updatebudget}>Save</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      </>
+      }
+   </div>
     </div>
   );
 };

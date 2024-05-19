@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/20/solid";
 import IconsSet from "../../../../assets/front/icons/Icons";
 import avatar from '../../../../assets/dashboard/images/avatar.png'
+import placeholder from '../../../../assets/front/images/placeholderimg.png'
 import { Link } from "react-router-dom";
 import LogOutModal from "../modal/LogOut/LogOutModal";
 
@@ -30,8 +31,8 @@ export default function DropDownMenu() {
               <IconsSet.UserIcon />
             </div> */}
             <Menu.Button className="flex justify-center items-center text-[#000] px-[6px]">
-              <div className=" bg-[#cdcdcd] shadow-md rounded-full w-[50px] h-[50px] flex flex-col justify-center items-center">
-                <img src={avatar} alt="avatar" className="" />
+              <div className="bg-[#cdcdcd] shadow-md rounded-full w-[50px] h-[50px] flex flex-col justify-center items-center">
+                <img src={placeholder} alt="placeholder" className="w-auto object-center object-cover h-auto rounded-full" />
               </div>
               {/* <ChevronDownIcon
                 className="-mr-1 ml-2 h-5 w-5 text-[#000]"

@@ -660,6 +660,7 @@ const Canvas = ({
                     width: "auto",
                     height: "auto",
                     padding: "10px",
+                    wordBreak: "break-word",
 
                     //zIndex: selectedItem === item ? 1 : 0,
                     outline:
@@ -701,8 +702,9 @@ const Canvas = ({
                     {item.type === "wedding" ||
                     item.type === "birthday" ||
                     item.type === "shape" ? (
+                      
                       <img
-                        src={item.src}
+                        src={item.src} 
                         alt={item.name}
                         className="w-[100px] h-auto"
                       />

@@ -8,6 +8,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import IconsSet from '../../../assets/front/icons/Icons'; 
+import placeholder from '../../../assets/front/images/placeholderimg.png'
 
 
 const UserProfile = () => {
@@ -19,7 +20,7 @@ const UserProfile = () => {
     lname: 'Doe',
     email: 'johndoe@example.com',
     address: '123 Main St',
-    profilePic: 'https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80',
+    profilePic: placeholder,
   });
   const handleEditClick = () => {
     setIsEditing(true);

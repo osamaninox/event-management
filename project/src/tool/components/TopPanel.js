@@ -69,7 +69,7 @@ const TopPanel = ({
   return (
     <section className="TopPanel bg-white px-3 py-2 shadow-md">
       <div className="d-flex flex-wrap">
-        <table className="w-50 table table-bordered">
+        <table className="table table-bordered">
           <tbody>
             <tr>
               <td>

@@ -1,4 +1,6 @@
-import React from "react";
+// DeleteUserModal.js
+
+import React, { useState } from "react";
 import {
   Button,
   Dialog,
@@ -7,20 +9,40 @@ import {
   DialogFooter,
   Typography,
 } from "@material-tailwind/react";
- 
-export default function DeleteTransactionModal ({open, handleClose,ModalHeader, ModalMessageBody, ...props}) {
-  // const [open, setOpen] = React.useState(false);
- 
-  // const handleOpen = () => setOpen(!open);
- 
+import axios from "axios";
+
+export default function DeleteUserModal ({open, handleClose, ModalHeader, ModalMessageBody, handleDelete,selectedUserData, ...props}) {
+  const userId = selectedUserData?.id;
+  console.log(userId);
+   const [userData, setUserData] = useState([]);
+  const handleDeleteUser  = (obj) => {
+    //objectId
+    //debugger;
+    axios
+      .create({})
+      .delete(`http://localhost:8000/api/user/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log("useEffect objects API response", response.data);
+        console.log(response.data);
+        setUserData((prevData) => prevData.filter((user) => user.id !== selectedUserData));
+         handleClose();
+       
+      })
+      .catch((error) => {
+        console.log("useEffect objects API error", error);
+        console.error(error);
+      });
+  }
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
         <DialogHeader>{ModalHeader ? ModalHeader : ''}</DialogHeader>
         <DialogBody>
-          {
-              ModalMessageBody ? <Typography variant="paragraph">{ModalMessageBody}</Typography> : ''
-          }
+          {ModalMessageBody && <Typography variant="paragraph">{ModalMessageBody}</Typography>}
         </DialogBody>
         <DialogFooter>
           <Button
@@ -31,7 +53,7 @@ export default function DeleteTransactionModal ({open, handleClose,ModalHeader, 
           >
             <span>No</span>
           </Button>
-          <Button  variant="gradient" color="green" onClick={handleClose}>
+          <Button onClick={handleDeleteUser} className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]">
             <span>Yes</span>
           </Button>
         </DialogFooter>

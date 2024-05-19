@@ -18,7 +18,7 @@ const About = () => {
     },
     {
       imgUrl: president,
-      name: "Hafsah Majid",
+      name: "Hafsa Majid",
       details:
         "Introducing our esteemed President, a visionary leader with a track record of transforming events into remarkable experiences. With strategic foresight and unparalleled dedication, she steer our company towards new heights of success, setting the standard for excellence in event management.",
       designation: "President",

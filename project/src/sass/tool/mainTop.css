@@ -134,3 +134,17 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+
+.TopPanel .table {
+      width: 100%;
+      table-layout: fixed;
+     border-collapse: collapse;
+ }
+ .TopPanel .table td {
+  width: 150px;
+  overflow-x: auto;
+}
+.TopPanel .table th{
+  word-wrap: break-word;
+}

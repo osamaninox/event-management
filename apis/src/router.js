@@ -5,6 +5,8 @@ import {
   updateProfile,
   getProfile,
   getAllUsers,
+  updateUser,
+  deleteUser,
 } from "./controllers/user.controller.js";
 import {
   createEvent,
@@ -37,8 +39,10 @@ const router = Router();
 router.post("/user/register", register);
 router.post("/user/login", login);
 router.patch("/user/profile", authenticateToken, updateProfile);
+router.post("/user/update", authenticateToken, updateUser);
 router.get("/user/profile/:id", authenticateToken, getProfile);
 router.get("/user/all", authenticateToken, getAllUsers);
+router.delete("/user/:userId", authenticateToken, deleteUser);
 
 /* Event */
 router.post("/event", authenticateToken, createEvent);

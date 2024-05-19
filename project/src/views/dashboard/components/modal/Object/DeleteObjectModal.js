@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Dialog,
@@ -7,11 +7,36 @@ import {
   DialogFooter,
   Typography,
 } from "@material-tailwind/react";
+import axios from "axios";
  
-export default function DeleteObjectModal ({open, handleClose,ModalHeader, ModalMessageBody, ...props}) {
+export default function DeleteObjectModal ({open, handleClose,ModalHeader, ModalMessageBody,onDelete, ...propss}) {
   // const [open, setOpen] = React.useState(false);
- 
-  // const handleOpen = () => setOpen(!open);
+  const [objects, setObjectsData] = useState([]);
+
+  console.log(onDelete);
+
+  const handleDelete  = (obj) => {
+    //objectId
+    //debugger;
+    axios
+      .create({})
+      .delete(`http://localhost:8000/api/object-library/${onDelete}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log("useEffect objects API response", response.data);
+        console.log(response.data);
+        setObjectsData((prevData) => prevData.filter((object) => object.id !== onDelete));
+         handleClose();
+       
+      })
+      .catch((error) => {
+        console.log("useEffect objects API error", error);
+        console.error(error);
+      });
+  }
  
   return (
     <>
@@ -31,7 +56,7 @@ export default function DeleteObjectModal ({open, handleClose,ModalHeader, Modal
           >
             <span>No</span>
           </Button>
-          <Button  variant="gradient" color="green" onClick={handleClose}>
+          <Button className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]" onClick={handleDelete}>
             <span>Yes</span>
           </Button>
         </DialogFooter>

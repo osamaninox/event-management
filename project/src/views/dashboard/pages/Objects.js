@@ -114,7 +114,6 @@ const Objects = () => {
   const [openModal, setOpenModal] = useState({ addObj: false });
 
   const [TABLE_ROWS, setObjectRows] = useState([]);
-
   const handleOpen = (modalType) => {
     setOpenModal({ ...openModal, [modalType]: true });
   };
@@ -141,7 +140,7 @@ const Objects = () => {
   };
 
   const TABLE_HEAD = ["id", "object Image", "name", "Price", "type", "action"];
-
+ 
   useEffect(() => {
     console.log("useEffect objects API");
     axios
@@ -155,6 +154,7 @@ const Objects = () => {
         console.log("useEffect objects API response", response.data);
         console.log(response.data);
         setObjectRows(response.data);
+        // console.log(setObjectRows);
         // SET USER PORFILE DATA TO STATE
       })
       .catch((error) => {

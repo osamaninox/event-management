@@ -1,11 +1,17 @@
 import React from "react";
 
-const Layers = ({ items, toggleLayersClick }) => {
+const Layers = ({budgetAmount, items, toggleLayersClick }) => {
   // Calculate total budget based on item prices
-  const totalBudget = items[0].droppedItems.reduce(
-    (acc, item) => acc + (Number(item.price) || 0),
-    0
-  );
+ 
+  // Calculate total budget based on item prices
+
+ 
+const totalBudget = items[0].droppedItems.reduce((acc, item) => acc + (parseInt(item.price, 10) || 0), 0);
+
+
+    console.log(budgetAmount);
+  const budgetExceed = Math.abs(budgetAmount - totalBudget);
+
 
   return (
     <>
@@ -13,7 +19,7 @@ const Layers = ({ items, toggleLayersClick }) => {
         <div className="layers-container h-100 d-flex flex-column justify-content-between overflow-auto">
           <div className="layers-top">
             <div className="css-1sr1lb8">
-              <p className="css-14q1onm">Layers</p>
+              <p className="css-14q1onm">Budget</p>
               <div className="css-hsza6h">
                 <svg
                   onClick={toggleLayersClick}
@@ -75,14 +81,17 @@ const Layers = ({ items, toggleLayersClick }) => {
               ))}
             </ul>
           </div>
-          <div className="px-3 layers-bottom d-block">
-            <h6 className="w-100 d-flex justify-content-between">
-              {" "}
-              Total Budget:{" "}
-              <span className="badge rounded-pill bg-success">
-                {totalBudget} Rs
-              </span>
-            </h6>
+          <div className='px-3 layers-bottom d-block'>
+            <h6 className='w-100 d-flex justify-content-between'> Project Budget: <span className="badge rounded-pill bg-success">{budgetAmount} Rs</span></h6>
+            <h6 className='w-100 d-flex justify-content-between'> Total: <span className="badge rounded-pill bg-success">{totalBudget} Rs</span></h6>
+            {totalBudget > budgetAmount && 
+            <>
+            <h6 className='w-100 d-flex justify-content-between'>Exceed:  <span className="badge rounded-pill bg-danger">
+                {budgetExceed} Rs
+              </span></h6>
+            </>
+            }
+
           </div>
         </div>
       </div>

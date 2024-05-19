@@ -21,7 +21,7 @@ export default function TemplateModal ({open, handleClose,ModalHeader, ModalMess
            </div>
         </DialogBody>
         <DialogFooter>
-          <Button  variant="gradient" color="green" onClick={handleClose}>
+          <Button  className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]" onClick={handleClose}>
             <span>Close</span>
           </Button>
         </DialogFooter>

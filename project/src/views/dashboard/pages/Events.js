@@ -1,70 +1,44 @@
-import React, { useEffect } from 'react'
-import SearchInput from '../components/common/SearchInput'
-import { Table } from '../components/common/Table'
-import axios from 'axios'
-import { accordion } from '@material-tailwind/react'
+import React, { useEffect, useState } from 'react';
+import SearchInput from '../components/common/SearchInput';
+import { Table } from '../components/common/Table';
+import axios from 'axios';
 
 const Events = () => {
+  const [events, setEvents] = useState([]);
+
   useEffect(() => {
-      axios.create({
-      }).get(`http://localhost:8000/api/event/all`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
-      }).then((response) => { 
-        console.log(response.data);
-        // SET USER PORFILE DATA TO STATE
-      }).catch((error) => {
-        console.error(error);
-      });
+    axios.get('http://localhost:8000/api/event/all', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    }).then((response) => { 
+      setEvents(response.data);
+    }).catch((error) => {
+      console.error(error);
     });
+  }, []);
+
   const TABLE_HEAD = [
     "id",
     "Event Name",
-    "Event Type",
+    // "Event Type",
     "Amount",
-    "Payment Type",
-    "status",
-    "date",
+    // "Payment Type",
+    // "Status",
+    "Date",
     "Action",
   ];
 
-  const TABLE_ROWS = [
-    {
-      id: "1",
-      name: "John Michael",
-      Amount: "$50.00",
-      type: "Wedding",
-      Payment_Type: "Credit Card",
-      Status: "Completed",
-      date: "23/04/18",
-      success: "true",
-      pending: "false",
-      action:"event",
-    },
-    {
-      id: "2",
-      name: "John Michael",
-      Amount: "$50.00",
-      type: "Birthday",
-      Payment_Type: "Credit Card",
-      Status: "Pending",
-      date: "23/04/18",
-      sucess: "false",
-      action:"event",
-    },
-    {
-      id: "3",
-      name: "John Michael",
-      type: "Birthday",
-      Amount: "$25.00",
-      Payment_Type: "Credit Card",
-      Status: "Pending",
-      date: "23/04/18",
-      sucess: "false",
-      action:"event",
-    },
-  ];
+  const formatTableRows = (events) => {
+    return events.map((event,index) => ({
+      id: event._id,
+      name: event.title,
+      Amount: event.totalAmount,
+      date: event.date,
+      action: "event",
+    }));
+  };
+
   return (
     <div>
       <h2 className="text-[26px] text-[#000] font-[600] font-poppins">
@@ -74,10 +48,10 @@ const Events = () => {
         <SearchInput />
       </div>
       <div className="my-[20px]">
-        <Table head={TABLE_HEAD} rows={TABLE_ROWS} />
+        <Table head={TABLE_HEAD} rows={formatTableRows(events)} />
       </div>
     </div>
   );
 }
 
-export default Events
+export default Events;

@@ -24,7 +24,11 @@ const userSchema = new Schema({
     type: String,
     enum: ['admin', 'user'],
     default: 'user'
-  }
+  },
+  image: {
+    type: String,
+    required: false
+  },
 });
 
 export const User = model('User', userSchema);

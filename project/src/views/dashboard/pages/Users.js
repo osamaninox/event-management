@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import SearchInput from "../components/common/SearchInput";
-import { Table } from "../components/common/Table";
-import axios from "axios";
-import vp from '../../../../src/assets/front/images/vp.jpeg'
-import president from '../../../../src/assets/front/images/president.jpeg'
-import director from '../../../../src/assets/front/images/director.jpeg'
 import { UserTable } from '../components/common/UserTable';
+import axios from "axios";
+import vp from '../../../../src/assets/front/images/vp.jpeg';
+import president from '../../../../src/assets/front/images/president.jpeg';
+import director from '../../../../src/assets/front/images/director.jpeg';
 import { Link } from 'react-router-dom';
-import AddUserModal from '../../dashboard/components/modal/User/AddUserModal'
+import AddUserModal from '../../dashboard/components/modal/User/AddUserModal';
+import EditUserModal from '../../dashboard/components/modal/User/EditUserModal';
 
 const Users = () => {
   const [openModal, setOpenModal] = useState({ addUser: false });
-
+  const [users, setUsers] = useState([]);
+  
   const handleOpen = (modalType) => {
     setOpenModal({ ...openModal, [modalType]: true });
   };
@@ -19,19 +20,20 @@ const Users = () => {
   const handleClose = (modalType) => {
     setOpenModal({ ...openModal, [modalType]: false });
   };
+  const onCreateHandler = (user) => {
+      setUsers({...users, user})
+  }
   useEffect(() => {
-    axios.create({
-    }).get(`http://localhost:8000/api/event/all`, {
+    axios.get(`http://localhost:8000/api/user/all`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     }).then((response) => {
-      console.log(response.data);
-      // SET USER PORFILE DATA TO STATE
+      setUsers(response.data);
     }).catch((error) => {
       console.error(error);
     });
-  });
+  }, []);
 
   const TABLE_HEAD = [
     "id",
@@ -40,49 +42,42 @@ const Users = () => {
     "Action",
   ];
 
-  const TABLE_ROWS = [
-    {
-      id: "1",
-      user_image: vp,
-      name: "John Michael",
-      Status: "Active",
+  const formatTableRows = (users) => {
+    
+    let _return = users.map((user, index) => ({
+      id: user._id,
+      user_image: user.role === 'VP' ? vp : user.role === 'President' ? president : director,
+      name: user.name,
+      role: user.role,
       action: "user",
-      
-      
-    },
-    {
-      id: "2",
-      user_image: president,
-      name: "John Michael",
-      Status: "Active",
-      action: "user",
-    },
-    {
-      id: "3",
-      user_image: director,
-      name: "John Michael",
-      Status: "Active",
-      action: "user",
-    },
-  ];
+    }));
+    console.log(_return)
+    return _return;
+  };
+
   return (
     <div>
       <div className='flex justify-between mb-[20px]'>
-        <h2 className="text-[26px] text-[#000] font-[600] font-poppins ">
-            User Listing
+        <h2 className="text-[26px] text-[#000] font-[600] font-poppins">
+          User Listing
         </h2>
-        <Link to="#" onClick={() => handleOpen('AddUser')} className='shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-2 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]'>Add User</Link>
+        <Link to="#" onClick={() => handleOpen('addUser')} className='shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-2 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]'>Add User</Link>
       </div>
       <div className="flex justify-end">
         <SearchInput />
       </div>
       <div className="my-[20px]">
-        <UserTable head={TABLE_HEAD} rows={TABLE_ROWS} />
+        <UserTable head={TABLE_HEAD} rows={formatTableRows(users)} />
       </div>
-      <AddUserModal ModalHeader="Add User " open={openModal.AddUser}  handleClose={() => handleClose('AddUser')}
-         />
+      {/* <AddUserModal ModalHeader="Add User" open={openModal.addUser} handleClose={() => handleClose('addUser')} /> */}
+      <EditUserModal
+        ModalHeader="Add User"
+        open={openModal.addUser}
+        selectedUserData={{onCreateHandler}} 
+        handleClose={() => handleClose('editUser')}
+      />
     </div>
   );
 }
 
-export default Users
+export default Users;

@@ -26,7 +26,7 @@ const LeftPanel = ({ onDragStart }) => {
   const [typePanel, setTypePanel] = useState("");
 
   const OpenPanel = (type) => {
-    //console.log(type);
+    console.log("OpenPanel "+type);
     setTypePanel(type);
   };
 
@@ -89,7 +89,7 @@ const LeftPanel = ({ onDragStart }) => {
               </DraggableItem>
                     
                   </li> */}
-                <li className="css-i9ow3q element">
+                {/* <li className="css-i9ow3q element">
                   <DraggableItem itemName="Image" onDragStart={onDragStart}>
                     <div className="css-16iqw5x">
                       <svg
@@ -104,7 +104,7 @@ const LeftPanel = ({ onDragStart }) => {
                     </div>
                     <span className="css-184r8y9">Image</span>
                   </DraggableItem>
-                </li>
+                </li> */}
                 <li
                   onClick={() => OpenPanel("shapes")}
                   className="css-i9ow3q element"

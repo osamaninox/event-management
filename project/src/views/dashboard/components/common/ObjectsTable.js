@@ -10,22 +10,29 @@ import DeleteObjectModal from "../modal/Object/DeleteObjectModal";
 import AddUserModal from "../modal/Event/EditEventModal";
 import DeleteEventModal from "../modal/Event/DeleteEventModal";
 
-export function ObjectsTable({ head, rows }) {
+export function ObjectsTable({ head, rows, onRowClick }) {
   const [openModal, setOpenModal] = useState({
     editobject: false,
     deleteobject: false,
     addUser: false,
     editUser: false,
     deleteUser: false,
+    id: null,
   });
 
-  const handleOpen = (modalType) => {
-    setOpenModal({ ...openModal, [modalType]: true });
+  const handleOpen = (modalType, id) => {
+    setOpenModal({ ...openModal, [modalType]: true, id:id });
+
   };
 
   const handleClose = (modalType) => {
-    setOpenModal({ ...openModal, [modalType]: false });
+    setOpenModal({ ...openModal, [modalType]: false, id: null });
   };
+ 
+  const handleDelete = (id) => {
+     console.log("Deleting object with id:", id);  
+  }
+  
   return (
     <>
       <Card className="h-full w-full">
@@ -49,21 +56,22 @@ export function ObjectsTable({ head, rows }) {
             </tr>
           </thead>
           <tbody>
-            {rows.map(
-              ({ id, title, objectImagePath, price, type, action }, index) => (
-                <tr key={title} className="even:bg-blue-gray-50/50">
+            {/* { id, title, objectImagePath, price, type, action } */}
+            {rows.map((row, index) => (
+                
+                <tr key={row.title} className="even:bg-blue-gray-50/50">
                   <td className="p-4">
                     <Typography
                       variant="small"
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {id}
+                      {index + 1}
                     </Typography>
                   </td>
                   <td className="p-4">
                     <img
-                      src={objectImagePath}
+                      src={row.objectImagePath}
                       alt="image"
                       className="w-[30px] h-[30px]  rounded-full"
                     ></img>
@@ -74,17 +82,17 @@ export function ObjectsTable({ head, rows }) {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {title}
+                      {row.title}
                     </Typography>
                   </td>
-                  {price && (
+                  {row.price && (
                     <td className="p-4">
                       <Typography
                         variant="small"
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {price}
+                        {row.price}
                       </Typography>
                     </td>
                   )}
@@ -96,10 +104,28 @@ export function ObjectsTable({ head, rows }) {
                       color="blue-gray"
                       className="font-medium"
                     >
-                      {type}
+                      {row.type}
                     </Typography>
                   </td>
-                  {action === "objects" && (
+                  <td className="p-4">
+                      <div className="flex">
+                        <Link
+                          to="#"
+                          onClick={() => handleOpen("editobject")}
+                          className=""
+                        >
+                          <IconsSet.EditIcon />
+                        </Link>
+                        <Link
+                          to="#"
+                          onClick={(e) => handleOpen("deleteobject",row._id)}
+                          className="px-2"
+                        >
+                          <IconsSet.TrashIcon />
+                        </Link>
+                      </div>
+                    </td>
+                  {/* {action === "objects" && (
                     <td className="p-4">
                       <div className="flex">
                         <Link
@@ -118,8 +144,8 @@ export function ObjectsTable({ head, rows }) {
                         </Link>
                       </div>
                     </td>
-                  )}
-                  {action === "event" && (
+                  )} */}
+                  {/* {action === "event" && (
                     <td className="p-4">
                       <div className="flex">
                         <Link
@@ -158,7 +184,7 @@ export function ObjectsTable({ head, rows }) {
                         </Link>
                       </div>
                     </td>
-                  )}
+                  )} */}
                 </tr>
               )
             )}
@@ -174,6 +200,7 @@ export function ObjectsTable({ head, rows }) {
         ModalHeader="Confirmation"
         ModalMessageBody="Are You sure you want to delete this Object ?"
         open={openModal.deleteobject}
+         onDelete={openModal.id}
         handleClose={() => handleClose("deleteobject")}
       />
 

@@ -230,10 +230,15 @@ const EventTool = () => {
 
   //   };
   //   typePanel={typePanel}
-
+const [budgetAmount, setBudgetAmount] = useState('00');
+const handleBudgetAmount = (newValue) => {
+  console.log("newValue "+newValue);
+  setBudgetAmount(newValue); 
+}
   return (
     <div className="flex-col flex vh-100">
       <MainTop
+        handleBudgetAmount={handleBudgetAmount} 
         items={items}
         onExport={handleExport}
         onImport={handleImport}
@@ -244,7 +249,7 @@ const EventTool = () => {
         <LeftPanel onDragStart={handleDragStart} />
         <div className="flex flex-col flex-grow pl-[70px] ">
           {/* Pass updateItems function to Canvas */}
-          <CanvasTop items={items}></CanvasTop>
+          <CanvasTop budgetAmount={budgetAmount} items={items} ></CanvasTop>
           <div>
             <Canvas
               items={items}

@@ -2,50 +2,42 @@ import React from 'react'
 import SearchInput from "../components/common/SearchInput";
 import { Table } from "../components/common/Table";
 
-const Rating = () => {
+const FeedBack = () => {
   const TABLE_HEAD = [
     "id",
     "name",
-    "Amount",
-    "Payment Channel",
-    "status",
-    "date",
+    "email",
+    "comment",
+    "action"
   ];
 
   const TABLE_ROWS = [
     {
       id: "1",
       name: "John Michael",
-      Amount: "$50.00",
-      Payment_Channel: "Credit Card",
-      Status: "Completed",
-      date: "23/04/18",
-      success: "true",
-      pending: "false",
+      email: "abc@gmail.com",
+      comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+      action:"feedbacks"
     },
     {
       id: "2",
       name: "John Michael",
-      Amount: "$50.00",
-      Payment_Channel: "Credit Card",
-      Status: "Pending",
-      date: "23/04/18",
-      sucess: "false",
+      email: "abc@gmail.com",
+      comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+      action:"feedbacks"
     },
     {
       id: "3",
       name: "John Michael",
-      Amount: "$25.00",
-      Payment_Channel: "Credit Card",
-      Status: "Pending",
-      date: "23/04/18",
-      sucess: "false",
+      email: "abc@gmail.com",
+      comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+      action:"feedbacks"
     },
   ];
   return (
     <div>
       <h2 className="text-[26px] text-[#000] font-[600] font-poppins">
-        Rating Listing
+        FeedBack
       </h2>
       <div className="flex justify-end">
         <SearchInput />
@@ -57,4 +49,4 @@ const Rating = () => {
   );
 }
 
-export default Rating
+export default FeedBack

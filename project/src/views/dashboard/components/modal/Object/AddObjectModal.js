@@ -244,7 +244,7 @@ const AddObjectModal = ({
         >
           <span>Cancel</span>
         </Button>
-        <Button variant="gradient" color="green" onClick={createObject}>
+        <Button className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]" onClick={createObject}>
           <span>Update</span>
         </Button>
       </DialogFooter>

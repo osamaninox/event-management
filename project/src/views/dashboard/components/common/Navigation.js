@@ -19,6 +19,9 @@ const Navigation = () => {
    } else if (pathname === "/dashboard/users") {
      setActiveMenuItem("users");
    }
+    else if (pathname === "/dashboard/feedbacks") {
+     setActiveMenuItem("feedbacks");
+   }
  };
  useEffect(() => {
    setActiveMenuFromRoute();
@@ -81,25 +84,25 @@ const Navigation = () => {
             <IconsSet.ChevronIcon />
           </Link>
         </li>
-        {/* <li
+        <li
           className={`px-[10px] py-[15px] text-[#fff] font-poppins  ${
-            activeMenuItem === "ratings" ? "bg-[#143738]" : ""
+            activeMenuItem === "feedbacks" ? "bg-[#143738]" : ""
           }`}
           
         >
           <Link
             className="flex items-center justify-between"
-            to="/dashboard/rating"
+            to="/dashboard/feedbacks"
           >
             <span className="flex items-center">
               <span className="w-[30px] flex justify-center mr-[10px]">
-                <IconsSet.RatingIcon />
+                <IconsSet.FeedBackIcon />
               </span>
-              Rating
+              FeedBacks
             </span>
             <IconsSet.ChevronIcon />
           </Link>
-        </li> */}
+        </li>
         <li
           className={`px-[10px] py-[15px] text-[#fff] font-poppins  ${
             activeMenuItem === "users" ? "bg-[#143738]" : ""

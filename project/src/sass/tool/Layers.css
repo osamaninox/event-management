@@ -28,11 +28,11 @@
 
 .css-1up8n9n {
   width: 360px;
-  position: absolute;
+  position: fixed;
   overflow: visible;
   top: 0px;
   right: 0;
-  height: calc(100vh - 80px);
+  height: 100%;
   background-color: #fff;
   display: block;
   z-index: 9999999999999;
