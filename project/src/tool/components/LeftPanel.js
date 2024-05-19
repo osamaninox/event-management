@@ -69,7 +69,7 @@ const LeftPanel = ({ onDragStart }) => {
                   onClick={() => OpenPanel("Events")}
                   className="css-i9ow3q element"
                 >
-                  <div class="css-16iqw5x">
+                  <div className="css-16iqw5x">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 256 256"

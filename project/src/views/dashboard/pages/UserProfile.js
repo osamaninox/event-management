@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {
   Card,
   CardHeader,
@@ -9,19 +9,32 @@ import {
 } from "@material-tailwind/react";
 import IconsSet from '../../../assets/front/icons/Icons'; 
 import placeholder from '../../../assets/front/images/placeholderimg.png'
+import axios from 'axios';
 
 
 const UserProfile = () => {
   const [selectedCountry, setSelectedCountry] = useState('AUS');
   const [selectedGender, setSelectedGender] = useState('male');
   const [isEditing, setIsEditing] = useState(false);
+  const [error, setError] = useState(null);
   const [userData, setUserData] = useState({
-    fname: 'John',
-    lname: 'Doe',
-    email: 'johndoe@example.com',
-    address: '123 Main St',
+    name: '',
+    email: '',
     profilePic: placeholder,
   });
+   
+  //  useEffect(() => {
+  //   const userId = localStorage.getItem("userId");
+  //   axios.get(`http://localhost:8000/api/user/profile/${userId}`, {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("token")}`
+  //     }
+  //   }).then((response) => {
+  //     setUserData(response.data);
+  //   }).catch((error) => {
+  //     console.error(error);
+  //   });
+  // }, []);
   const handleEditClick = () => {
     setIsEditing(true);
   };
@@ -40,9 +53,13 @@ const UserProfile = () => {
     const handleProfilePicChange = (e) => {
     // Handle profile picture upload
   };
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   
   return (
-<form class="space-y-4 md:space-y-6" action="#">
+<form className="space-y-4 md:space-y-6" action="#">
   <div className="flex justify-center py-16">
     <Card className="mt-6 w-96 shadow">
       <div className="relative  m-auto">
@@ -57,7 +74,7 @@ const UserProfile = () => {
             isEditing && (
               <div className=''>
                   <label
-                  for="file-upload"
+                  htmlFor="file-upload"
                   className="absolute border-[3px] py-[1px] px-[2px] shadow-md bottom-0 w-[35px] h-[35px] bg-[#265253] text-[#fff] rounded-full right-[0px]"
                 >
                   <span className='text-center'>
@@ -79,20 +96,20 @@ const UserProfile = () => {
        </div> */}
       <CardBody>
          <div className="mb-3">
-          <label for="lname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
-          <input onChange={handleChange} disabled={!isEditing}  type="text" name="fname" id="fname" class={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="Enter Your First Name" required="" value={userData.fname} />
+          <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+          <input onChange={handleChange} disabled={!isEditing}  type="text" name="name" id="name" className={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="Enter Your Name" required="" value={userData.name} />
         </div>
+        {/* <div className="mb-3">
+          <label htmlFor="lname" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+          <input onChange={handleChange} disabled={!isEditing}  type="text" name="lname" id="lname" className={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="Enter Your Last Name" required=""  value={userData.lname} />
+        </div> */}
         <div className="mb-3">
-          <label for="lname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
-          <input onChange={handleChange} disabled={!isEditing}  type="text" name="lname" id="lname" class={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="Enter Your Last Name" required=""  value={userData.lname} />
+          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+          <input onChange={handleChange} disabled={!isEditing}  type="email" name="email" id="email" className={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="Enter Your Email Id" required=""  value={userData.email}/>
         </div>
-        <div className="mb-3">
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-          <input onChange={handleChange} disabled={!isEditing}  type="email" name="email" id="email" class={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`} placeholder="Enter Your Email Id" required=""  value={userData.email}/>
-        </div>
-        <div className="mb-3">
-          <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
-          <select value={selectedCountry}  onChange={handleChange} disabled={!isEditing} id="countries" class={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
+        {/* <div className="mb-3">
+          <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
+          <select value={selectedCountry}  onChange={handleChange} disabled={!isEditing} id="countries" className={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
              <option value="AUS" disabled selected>
               Australia
             </option>
@@ -103,20 +120,20 @@ const UserProfile = () => {
           </select>
         </div>
         <div className="mb-3">
-          <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
-          <select id="gender" value={selectedGender}  onChange={handleChange} disabled={!isEditing} class={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
+          <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
+          <select id="gender" value={selectedGender}  onChange={handleChange} disabled={!isEditing} className={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
              <option value="male" disabled selected>
                Male
             </option>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
-        </div>
+        </div> */}
       </CardBody>
       {
         isEditing && (
            <CardFooter className="pt-0">
-              <button  onClick={handleSaveClick} type="submit" class="w-full text-white bg-[#265253] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Update</button>
+              <button  onClick={handleSaveClick} type="submit" className="w-full text-white bg-[#265253] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Update</button>
           </CardFooter>
         )
       }

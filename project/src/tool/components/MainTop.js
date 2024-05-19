@@ -159,25 +159,25 @@ const MainTop = ({handleBudgetAmount, items, onExport, onImport, onSaveAsPNG, on
       <div className='budget-modal position-absolute'>
       {budgetModal &&  
       <>
-      <div class="modal-backdrop fade show"></div>
-      <div class="modal d-block show fade" tabindex="-1" >   
-         <div class="modal-dialog">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h5 class="modal-title">Project Budget</h5>
-                  <button onClick={budgetPopup} type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div className="modal-backdrop fade show"></div>
+      <div className="modal d-block show fade" tabindex="-1" >   
+         <div className="modal-dialog">
+            <div className="modal-content">
+               <div className="modal-header">
+                  <h5 className="modal-title">Project Budget</h5>
+                  <button onClick={budgetPopup} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
-               <div class="modal-body">
-                  <div class="input-group input-group-sm">
-                     <span class="input-group-text">Amount:</span>
-                     <input class="form-control" id="budgetPrice" type="number" 
+               <div className="modal-body">
+                  <div className="input-group input-group-sm">
+                     <span className="input-group-text">Amount:</span>
+                     <input className="form-control" id="budgetPrice" type="number" 
                      value={budgetPrice} 
                         onChange={(event) => handleBudgetAmount(event.target.value)} 
                         />
                   </div>
                </div>
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" onClick={Updatebudget}>Save</button>
+               <div className="modal-footer">
+                  <button type="button" className="btn btn-primary" onClick={Updatebudget}>Save</button>
                </div>
             </div>
          </div>

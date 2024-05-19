@@ -4,7 +4,7 @@ const PlanEvent = ({ imgUrl, eventType, eventDetails, imgPositionSec }) => {
   return (
     <>
       {imgPositionSec ? (
-        <div class="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col justify-center items-center md:w-[400px] mx-auto  ">
             <h6 className="uppercase text-[#000] font-[500] pb-[5px]">
               Plan Your
@@ -22,7 +22,7 @@ const PlanEvent = ({ imgUrl, eventType, eventDetails, imgPositionSec }) => {
           </div>
         </div>
       ) : (
-        <div class="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <div className="w-[400px]  mx-auto">
             <img src={imgUrl} alt="about img" className="h-auto w-full" />
           </div>

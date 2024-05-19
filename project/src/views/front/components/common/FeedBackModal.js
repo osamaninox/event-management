@@ -87,7 +87,7 @@ export default function FeedBackModal ({open, handleClose,ModalHeader, ModalMess
               >
                Comment Box
               </label>
-             <textarea class="resize-none rounded-md border-[#000] border w-full min-h-[120px] text-[#000] p-[20px]"></textarea>
+             <textarea className="resize-none rounded-md border-[#000] border w-full min-h-[120px] text-[#000] p-[20px]"></textarea>
             </div>
            </div> 
            </div>

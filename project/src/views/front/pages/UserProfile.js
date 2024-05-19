@@ -9,6 +9,7 @@ import {
 } from "@material-tailwind/react";
 import IconsSet from "../../../assets/front/icons/Icons";
 import axios from "axios";
+import placeholderimg from '../../../assets/front/images/placeholderimg.png'
 
 const UserProfile = () => {
   const [selectedCountry, setSelectedCountry] = useState("AUS");
@@ -19,8 +20,7 @@ const UserProfile = () => {
     lname: "Doe",
     email: "johndoe@example.com",
     address: "123 Main St",
-    profilePic:
-      "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    profilePic: placeholderimg,
   });
   const handleEditClick = () => {
     setIsEditing(true);
@@ -59,7 +59,7 @@ const UserProfile = () => {
       });
   }, []);
   return (
-    <form class="space-y-4 md:space-y-6" action="#">
+    <form className="space-y-4 md:space-y-6" action="#">
       <div className="flex justify-center py-16">
         <Card className="mt-6 w-96 shadow">
           <div className="relative  m-auto">
@@ -73,7 +73,7 @@ const UserProfile = () => {
             {/* {isEditing && (
               <div className="">
                 <label
-                  for="file-upload"
+                  htmlFor="file-upload"
                   className="absolute border-[3px] py-[1px] px-[2px] shadow-md bottom-0 w-[35px] h-[35px] bg-[#265253] text-[#fff] rounded-full right-[0px]"
                 >
                   <span className="text-center">
@@ -95,8 +95,8 @@ const UserProfile = () => {
           <CardBody>
             <div className="mb-3">
               <label
-                for="lname"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="lname"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 First Name
               </label>
@@ -106,7 +106,7 @@ const UserProfile = () => {
                 type="text"
                 name="fname"
                 id="fname"
-                class={`${
+                className={`${
                   isEditing ? "text-[#000]" : "text-gray-400"
                 } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                 placeholder="Enter Your First Name"
@@ -116,8 +116,8 @@ const UserProfile = () => {
             </div>
             <div className="mb-3">
               <label
-                for="lname"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="lname"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Last Name
               </label>
@@ -127,7 +127,7 @@ const UserProfile = () => {
                 type="text"
                 name="lname"
                 id="lname"
-                class={`${
+                className={`${
                   isEditing ? "text-[#000]" : "text-gray-400"
                 } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                 placeholder="Enter Your Last Name"
@@ -137,8 +137,8 @@ const UserProfile = () => {
             </div>
             <div className="mb-3">
               <label
-                for="email"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="email"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Email
               </label>
@@ -148,7 +148,7 @@ const UserProfile = () => {
                 type="email"
                 name="email"
                 id="email"
-                class={`${
+                className={`${
                   isEditing ? "text-[#000]" : "text-gray-400"
                 } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                 placeholder="Enter Your Email Id"
@@ -158,8 +158,8 @@ const UserProfile = () => {
             </div>
             <div className="mb-3">
               <label
-                for="countries"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="countries"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Country
               </label>
@@ -168,7 +168,7 @@ const UserProfile = () => {
                 onChange={handleChange}
                 disabled={!isEditing}
                 id="countries"
-                class={`${
+                className={`${
                   isEditing ? "text-[#000]" : "text-gray-400"
                 } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
               >
@@ -183,8 +183,8 @@ const UserProfile = () => {
             </div>
             <div className="mb-3">
               <label
-                for="gender"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="gender"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Gender
               </label>
@@ -193,7 +193,7 @@ const UserProfile = () => {
                 value={selectedGender}
                 onChange={handleChange}
                 disabled={!isEditing}
-                class={`${
+                className={`${
                   isEditing ? "text-[#000]" : "text-gray-400"
                 } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
               >
@@ -210,7 +210,7 @@ const UserProfile = () => {
               <button
                 onClick={handleSaveClick}
                 type="submit"
-                class="w-full text-white bg-[#265253] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="w-full text-white bg-[#265253] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Update
               </button>

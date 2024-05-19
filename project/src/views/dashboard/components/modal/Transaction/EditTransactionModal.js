@@ -21,8 +21,8 @@ export default function EditTransactionModal ({open, handleClose,ModalHeader, Mo
            <div className="grid grid-cols-2 gap-4">
               <div className="mb-3">
                 <label
-                  for="payment_name"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  htmlFor="payment_name"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                    Name
                 </label>
@@ -30,7 +30,7 @@ export default function EditTransactionModal ({open, handleClose,ModalHeader, Mo
                     type="text"
                     name="payment_name"
                     id="payment_name"
-                    class={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                    className={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                     placeholder="Enter Your Name"
                     required=""
               
@@ -38,8 +38,8 @@ export default function EditTransactionModal ({open, handleClose,ModalHeader, Mo
               </div>
               <div className="mb-3">
                 <label
-                  for="amount"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  htmlFor="amount"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Enter Amount
                 </label>
@@ -47,7 +47,7 @@ export default function EditTransactionModal ({open, handleClose,ModalHeader, Mo
                     type="number"
                     name="amount"
                     id="amount"
-                    class={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                    className={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                     placeholder="Enter Amount"
                     required=""
               
@@ -55,8 +55,8 @@ export default function EditTransactionModal ({open, handleClose,ModalHeader, Mo
               </div>
               <div className="mb-3">
               <label
-                for="payment type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="payment type"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                Select Payment type
               </label>
@@ -65,7 +65,7 @@ export default function EditTransactionModal ({open, handleClose,ModalHeader, Mo
                 // value={selectedGender}
                 // onChange={handleChange}
                 // disabled={!isEditing}
-                class={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
               >
                 <option value="cr">Credit Card</option>
                 <option value="cash">Cash</option>
@@ -74,8 +74,8 @@ export default function EditTransactionModal ({open, handleClose,ModalHeader, Mo
             </div>
             <div className="mb-3">
               <label
-                for="paymentstatus"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="paymentstatus"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                Select Payment Status
               </label>
@@ -84,7 +84,7 @@ export default function EditTransactionModal ({open, handleClose,ModalHeader, Mo
                 // value={selectedGender}
                 // onChange={handleChange}
                 // disabled={!isEditing}
-                class={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
               >
                 <option value="cmp">Completed</option>
                 <option value="pending">Pending</option>

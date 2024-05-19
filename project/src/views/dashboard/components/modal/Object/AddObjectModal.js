@@ -164,7 +164,7 @@ const AddObjectModal = ({
 
             <div className="">
               <label
-                for="file-upload"
+                htmlFor="file-upload"
                 className="absolute border-[3px] py-[1px] px-[2px] shadow-md bottom-0 w-[35px] h-[35px] bg-[#265253] text-[#fff] rounded-full right-[0px]"
               >
                 <span className="text-center">
@@ -178,8 +178,8 @@ const AddObjectModal = ({
         <div className="grid grid-cols-2 gap-4">
           <div className="mb-3">
             <label
-              for="object_name"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              htmlFor="object_name"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Object Name
             </label>
@@ -187,7 +187,7 @@ const AddObjectModal = ({
               type="text"
               name="object_name"
               id="object_name"
-              class={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+              className={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
               placeholder="Enter Object Name"
               required=""
               value={title}
@@ -196,8 +196,8 @@ const AddObjectModal = ({
           </div>
           <div className="mb-3">
             <label
-              for="Status type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              htmlFor="Status type"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Select Type
             </label>
@@ -208,7 +208,7 @@ const AddObjectModal = ({
               // value={selectedGender}
               // onChange={handleChange}
               // disabled={!isEditing}
-              class={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+              className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
             >
               <option value="wedding">Wedding</option>
               <option value="birthday">Birthday</option>
@@ -217,8 +217,8 @@ const AddObjectModal = ({
           </div>
           <div className="mb-3">
             <label
-              for="object_price"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              htmlFor="object_price"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Object Price
             </label>
@@ -228,7 +228,7 @@ const AddObjectModal = ({
               type="number"
               name="object_price"
               id="object_price"
-              class={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+              className={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
               placeholder="Enter ObjectPrice"
               required=""
             />

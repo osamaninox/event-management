@@ -22,6 +22,7 @@ export function UserTable({ head, rows }) {
     setSelectedUser(null);
   };
   const onUpdateHandler = (data,index) => {
+    // console.log('data',data);
      rows[index] = {
          ...rows[index],
          name: data.name,

@@ -13,13 +13,28 @@ import DeleteEventModal from "../modal/Event/DeleteEventModal";
 
 export function Table({head, rows}) {
  const [openModal, setOpenModal] = useState({ editTransaction: false, deleteTransaction: false,editEvent: false, DeleteEvent: false,addUser: false, editUser: false, deleteUser:false });
-
-  const handleOpen = (modalType) => {
-    setOpenModal({ ...openModal, [modalType]: true });
+  const [event ,setEvent] = useState([null]);
+  const [eventDetails , setEventDetails] =useState([null]);
+  const handleOpen = (modalType, eventDetails = null, id) => {
+    setEventDetails(eventDetails);
+    console.log(eventDetails);
+    setEvent(id);
+    setOpenModal({ ...openModal, [modalType]: true, id:id });
   };
 
   const handleClose = (modalType) => {
     setOpenModal({ ...openModal, [modalType]: false });
+  };
+
+   const onUpdateHandler = (data,index) => {
+   
+     rows[index] = {
+         ...rows[index],
+         name: data.name,
+         amount:data.amount,
+         date:data.date
+     }
+     console.log(rows[index]);
   };
   return (
     <>
@@ -172,8 +187,8 @@ export function Table({head, rows}) {
                   action === 'event' && (
                     <td className="p-4">
                       <div className="flex">
-                        <Link to="#" onClick={() => handleOpen('editEvent')} className=""><IconsSet.EditIcon /></Link>
-                        <Link to="#" onClick={() => handleOpen('deleteEvent')} className="px-2"><IconsSet.TrashIcon /></Link>
+                        <Link to="#" onClick={() => handleOpen('editEvent', { id, name, Amount, onUpdateHandler,index  })} className=""><IconsSet.EditIcon /></Link>
+                        <Link to="#" onClick={() => handleOpen('deleteEvent', {id})} className="px-2"><IconsSet.TrashIcon /></Link>
                       </div>
                      </td>
                   )
@@ -211,12 +226,17 @@ export function Table({head, rows}) {
         handleClose={() => handleClose('deleteTransaction')}/>
 
 
-    <EditEventModal ModalHeader="Edit Event Details"   open={openModal.editEvent}
+    <EditEventModal ModalHeader="Edit Event Details"   
+        open={openModal.editEvent}
+        eventDetails = {setEventDetails} 
         handleClose={() => handleClose('editEvent')}
-         />
+        
+     />
     <DeleteEventModal ModalHeader="Confirmation" ModalMessageBody="Are You sure you want to delete this Event ?"
         open={openModal.deleteEvent}
-        handleClose={() => handleClose('deleteEvent')}/>
+        handleClose={() => handleClose('deleteEvent')}
+        eventId = {eventDetails}
+     />
 
     {/* <EditUserModal ModalHeader="Edit User Details"   open={openModal.editUser}
         handleClose={() => handleClose('editUser')}

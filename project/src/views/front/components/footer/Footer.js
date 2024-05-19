@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className="bg-[#265253] w-full pt-[50px]">
-      <div class="grid grid-cols-3 gap-10">
+      <div className="grid grid-cols-3 gap-10">
         <div className="infoSec flex flex-col justify-start items-center">
           <Link to="/">
             <img
