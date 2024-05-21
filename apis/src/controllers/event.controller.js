@@ -34,6 +34,33 @@ export async function updateEvent(req, res) {
   res.send(event);
 }
 
+// export async function updateEvent(req, res, next) {
+
+//   const { _id } = req.body;
+//   const {  name, amount } = req.body;
+//   let update_params = {};
+//   if(name){
+//     update_params.name = name;
+//   }
+//    if(amount){
+//     update_params.role = amount;
+
+//   }
+//   // if(img){
+//   //   const fileName = uploadImage(img);
+//   //   update_params.img = fileName;
+//   // }
+//   const updatedEvent = await Event.findByIdAndUpdate(
+//     { _id },
+//     update_params
+//   ).lean();
+//   res.status(200).json(updatedEvent);
+// }
+
+
+
+
+
 export async function deleteEvent(req, res) {
   const event = await Event.findByIdAndDelete(req.params.eventId);
   if (!event) {

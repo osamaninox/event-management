@@ -10,13 +10,16 @@ import {
 import axios from "axios";
 
 export default function EditEventModal({ open, handleClose, ModalHeader, ModalMessageBody, eventDetails, ...props }) {
+  console.log('eventDetails' , eventDetails);
+  // console.log('eventDetailsId' , eventDetails.id);
   const [isEditing, setIsEditing] = useState(false);
   const [eventData, setEventData] = useState({
     id: "",
     name: "",
     Amount: "",
-    type: "",
+    // type: "",
   });
+  console.log('eventData' , eventData);
 
   useEffect(() => {
     if (eventDetails && eventDetails.id) {
@@ -24,11 +27,12 @@ export default function EditEventModal({ open, handleClose, ModalHeader, ModalMe
         id: eventDetails.id,
         name: eventDetails.name,
         Amount: eventDetails.Amount,
-        type: eventDetails.type,
+        // type: eventDetails.type,
       });
       setIsEditing(true);
     }
   }, [eventDetails]);
+  console.log('eventDetailsUseEffect' ,eventDetails);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,9 +50,9 @@ export default function EditEventModal({ open, handleClose, ModalHeader, ModalMe
   const updateEvent = async () => {
     try {
       await axios.put(
-        "http://localhost:8000/api/event-template/updateEventTemplate",
-        {
-          _id: eventData.id,
+        "http://localhost:8000/api/event/${eventData._id}",
+        { 
+          id: eventData.id,
           name: eventData.name,
           Amount: eventData.Amount,
         },

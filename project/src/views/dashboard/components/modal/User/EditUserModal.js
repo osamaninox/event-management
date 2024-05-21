@@ -42,6 +42,7 @@ export default function EditUserModal({
       setIsEditing(true);
     }
   }, [selectedUserData]);
+  console.log('selectedUserDataUSeEffect', selectedUserData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

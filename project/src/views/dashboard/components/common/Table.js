@@ -12,12 +12,12 @@ import DeleteEventModal from "../modal/Event/DeleteEventModal";
 // import DeleteEventModal from "../modal/Event/DeleteEventModal";
 
 export function Table({head, rows}) {
- const [openModal, setOpenModal] = useState({ editTransaction: false, deleteTransaction: false,editEvent: false, DeleteEvent: false,addUser: false, editUser: false, deleteUser:false });
+  const [openModal, setOpenModal] = useState({ editTransaction: false, deleteTransaction: false,editEvent: false, DeleteEvent: false,addUser: false, editUser: false, deleteUser:false });
   const [event ,setEvent] = useState([null]);
   const [eventDetails , setEventDetails] =useState([null]);
   const handleOpen = (modalType, eventDetails = null, id) => {
     setEventDetails(eventDetails);
-    console.log(eventDetails);
+    console.log('eventDetails', eventDetails);
     setEvent(id);
     setOpenModal({ ...openModal, [modalType]: true, id:id });
   };
@@ -228,7 +228,7 @@ export function Table({head, rows}) {
 
     <EditEventModal ModalHeader="Edit Event Details"   
         open={openModal.editEvent}
-        eventDetails = {setEventDetails} 
+        eventDetails = {eventDetails} 
         handleClose={() => handleClose('editEvent')}
         
      />

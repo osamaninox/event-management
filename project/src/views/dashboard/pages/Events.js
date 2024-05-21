@@ -20,7 +20,7 @@ const Events = () => {
 
   const TABLE_HEAD = [
     "id",
-    "Event Name",
+    "Client Name",
     // "Event Type",
     "Amount",
     // "Payment Type",

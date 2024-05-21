@@ -19,10 +19,10 @@ export function ObjectsTable({ head, rows, onRowClick }) {
     deleteUser: false,
     id: null,
   });
-
-  const handleOpen = (modalType, id) => {
+  const [selectedObject, setSelectedObject] = useState([null])
+  const handleOpen = (modalType, object = null, id) => {
     setOpenModal({ ...openModal, [modalType]: true, id:id });
-
+    setSelectedObject(object);
   };
 
   const handleClose = (modalType) => {
@@ -32,6 +32,16 @@ export function ObjectsTable({ head, rows, onRowClick }) {
   const handleDelete = (id) => {
      console.log("Deleting object with id:", id);  
   }
+  const onUpdateHandler = (data,index) => {
+   
+     rows[index] = {
+         ...rows[index],
+         name: data.name,
+         amount:data.amount,
+         date:data.date
+     }
+     console.log(rows[index]);
+  };
   
   return (
     <>
@@ -111,7 +121,7 @@ export function ObjectsTable({ head, rows, onRowClick }) {
                       <div className="flex">
                         <Link
                           to="#"
-                          onClick={() => handleOpen("editobject")}
+                          onClick={() => handleOpen("editobject", row ,row._id, onUpdateHandler,index  )}
                           className=""
                         >
                           <IconsSet.EditIcon />
@@ -195,24 +205,15 @@ export function ObjectsTable({ head, rows, onRowClick }) {
         ModalHeader="Edit Object Details"
         open={openModal.editobject}
         handleClose={() => handleClose("editobject")}
+        objectDetails = {selectedObject}
       />
       <DeleteObjectModal
         ModalHeader="Confirmation"
         ModalMessageBody="Are You sure you want to delete this Object ?"
         open={openModal.deleteobject}
-         onDelete={openModal.id}
+        onDelete={openModal.id}
         handleClose={() => handleClose("deleteobject")}
       />
-
-      {/* <EditUserModal ModalHeader="Edit User Details"   open={openModal.editUser}
-        handleClose={() => handleClose('editUser')}
-         />
-    <DeleteUserModal ModalHeader="Confirmation" ModalMessageBody="Are You sure you want to delete this Event Details ?"
-        open={openModal.deleteUser}
-        handleClose={() => handleClose('deleteUser')}/>
-     <AddUserModal ModalHeader="Confirmation" ModalMessageBody="Are You sure you want to delete this Event Details ?"
-        open={openModal.addUser}
-        handleClose={() => handleClose('addUser')}/> */}
     </>
   );
 }

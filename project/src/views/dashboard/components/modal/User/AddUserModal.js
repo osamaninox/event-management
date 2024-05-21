@@ -27,14 +27,14 @@ export default function AddUserModal ({ open, handleClose, ModalHeader, handleAd
     });
   };
 
-  const handleSubmit = () => {
-    const newUser = {
-      id: Date.now(), // generate a unique ID
-      ...userData,
-      action: 'user'
-    };
-    handleAddUser(newUser);
-  };
+  // const handleSubmit = () => {
+  //   const newUser = {
+  //     id: Date.now(), // generate a unique ID
+  //     ...userData,
+  //     action: 'user'
+  //   };
+  //   handleAddUser(newUser);
+  // };
 
   return (
     <>
@@ -111,7 +111,7 @@ export default function AddUserModal ({ open, handleClose, ModalHeader, handleAd
           >
             <span>Cancel</span>
           </Button>
-          <Button className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]" onClick={handleSubmit}>
+          <Button className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]">
             <span>Add</span>
           </Button>
         </DialogFooter>

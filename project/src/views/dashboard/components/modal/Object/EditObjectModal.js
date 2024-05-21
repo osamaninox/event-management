@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import IconsSet from "../../../../../assets/front/icons/Icons";
+import axios from "axios";
 
 
 import frame1 from "../../../../../assets/tool/Shapes/Frames/FRAME1.png";
@@ -99,15 +100,79 @@ import c2 from "../../../../../assets/tool/Birthday/Chairs/chair-two.png";
 import c3 from "../../../../../assets/tool/Birthday/Chairs/chair-three.png";
 import c4 from "../../../../../assets/tool/Birthday/Chairs/chair-four.png";
  
-export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMessageBody, ...props}) {
-    const [userData, setUserData] = useState({
-    fname: "John",
-    lname: "Doe",
-    email: "johndoe@example.com",
-    address: "123 Main St",
-    profilePic: b1,
+export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMessageBody,objectDetails, ...props}) {
+  const [isEditing, setIsEditing] = useState(false);  
+  const [objectData, setObjectData] = useState({
+    id: "",
+    title: "",
+    price: "",
+    type: "",
+    objectImagePath: b1,
   });
- 
+  console.log('objectDetails', objectDetails);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setObjectData({ ...objectData, objectImagePath: e.target.result });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  useEffect(() => {
+     if(objectDetails && objectDetails._id){
+      setObjectData(
+        {   
+             id : objectDetails._id,
+            title: objectDetails.title,
+            price: objectDetails.price,
+            type:  objectDetails.type,
+            objectImagePath: b1,
+        });
+      setIsEditing(true);
+    }
+  }, [objectDetails]);
+  console.log('objectDetails UseEffect', objectDetails);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setObjectData({ ...objectData, [name]: value });
+  };
+
+  const handleSubmit = async (data) => {
+    if(isEditing){
+      await updateObject ();
+    }
+    else{
+       handleClose();
+    }  
+  };
+ const updateObject = async() => {
+    try {
+       await axios.put(
+        "http://localhost:8000/api/object-library/${objectDetails._id}",
+        {
+            _id: objectData.id,
+          title: objectData.title,
+          price: objectData.price,
+          type: objectData.type,
+          objectImagePath: objectData.objectImagePath
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+       objectDetails.onUpdateHandler(objectData,  objectDetails.index);
+       handleClose();
+      } catch (error) {
+      // Show invalid credentials error to user
+      console.error(error);
+    }
+  }
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
@@ -117,7 +182,7 @@ export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMe
             <div className="relative  m-auto">
               <div className="mt-[-60px] rounded-full shadow w-[150px] h-[150px]">
                 <img
-                  src={userData.profilePic}
+                  src={objectData.objectImagePath}
                   alt="Profile Pic"
                   className="object-center object-cover  rounded-full w-[150px] h-[150px]"
                 />
@@ -147,12 +212,13 @@ export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMe
                 </label>
                   <input
                     type="text"
-                    name="object_name"
+                    name="title"
                     id="object_name"
                     className={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                     placeholder="Enter Object Name"
                     required=""
-              
+                    onChange={handleChange}
+                    value={objectData.title}
                   />
               </div>
               <div className="mb-3">
@@ -164,12 +230,13 @@ export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMe
                 </label>
                   <input
                     type="number"
-                    name="objectprice"
+                    name="price"
                     id="objectprice"
                     className={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                     placeholder="Enter object price"
                     required=""
-              
+                    value={objectData.price}
+                     onChange={handleChange}
                   />
               </div>
               <div className="mb-3">
@@ -180,10 +247,10 @@ export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMe
                 Select Type
                 </label>
                 <select
-                  id="statustype"
-                  // value={selectedGender}
-                  // onChange={handleChange}
-                  // disabled={!isEditing}
+                  name="object_type"
+                  id="type"
+                  onChange={handleChange}
+                  value={objectData.object_type}
                   className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                 >
                   <option value="wedding">Wedding</option>
@@ -201,7 +268,7 @@ export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMe
           >
             <span>Cancel</span>
           </Button>
-          <Button  className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]" onClick={handleClose}>
+          <Button  className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]" onClick={handleSubmit}>
             <span>Update</span>
           </Button>
         </DialogFooter>

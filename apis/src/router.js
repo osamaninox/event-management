@@ -50,6 +50,7 @@ router.get("/event/all", authenticateToken, getAllEvents);
 router.get("/event", authenticateToken, getEventByUserId);
 router.get("/event/:eventId", authenticateToken, getEvent);
 router.put("/event/:eventId", authenticateToken, updateEvent);
+// router.put("/event/update", authenticateToken, updateEvent);
 router.delete("/event/:eventId", authenticateToken, deleteEvent);
 
 /* Event Template */
