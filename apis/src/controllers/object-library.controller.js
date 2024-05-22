@@ -20,7 +20,7 @@ export async function getObject(req, res) {
 }
 
 export async function updateObject(req, res) {
-  const object = await ObjectLibrary.findByIdAndUpdate(req.params.objectId, req.body, {
+  const object = await ObjectLibrary.findByIdAndUpdate(req.params.object_Id, req.body, {
     new: true,
   });
   if (!object) {

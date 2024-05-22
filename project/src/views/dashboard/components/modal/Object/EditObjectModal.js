@@ -152,7 +152,7 @@ export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMe
  const updateObject = async() => {
     try {
        await axios.put(
-        "http://localhost:8000/api/object-library/${objectDetails._id}",
+        `http://localhost:8000/api/object-library/${objectDetails._id}`,
         {
             _id: objectData.id,
           title: objectData.title,

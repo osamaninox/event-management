@@ -50,7 +50,7 @@ export default function EditEventModal({ open, handleClose, ModalHeader, ModalMe
   const updateEvent = async () => {
     try {
       await axios.put(
-        "http://localhost:8000/api/event/${eventData._id}",
+        `http://localhost:8000/api/event/${eventDetails.id}`,
         { 
           id: eventData.id,
           name: eventData.name,

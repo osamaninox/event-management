@@ -24,7 +24,7 @@ const UserProfile = () => {
   });
    
   //  useEffect(() => {
-  //   const userId = localStorage.getItem("userId");
+  //   const userId = localStorage.getItem("token");
   //   axios.get(`http://localhost:8000/api/user/profile/${userId}`, {
   //     headers: {
   //       Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -68,7 +68,7 @@ const UserProfile = () => {
                   src={userData.profilePic}
                   alt="Profile Pic"
                   className="object-center object-cover  rounded-full w-[150px] h-[150px]"
-                  />
+              />
           </div>
           {/* {
             isEditing && (
