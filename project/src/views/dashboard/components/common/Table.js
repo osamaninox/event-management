@@ -60,7 +60,7 @@ export function Table({head, rows}) {
         </thead>
         <tbody>
           {rows.map(
-            ({ id, name, Amount, date, Status, Payment_Type,success,action,type,comment,email }, index) => (
+            ({ id, name, title, Amount, date, Status, Payment_Type,success,action,type,comment,email }, index) => (
               <tr key={name} className="even:bg-blue-gray-50/50">
                 <td className="p-4">
                   <Typography
@@ -71,15 +71,18 @@ export function Table({head, rows}) {
                     {index + 1}
                   </Typography>
                 </td>
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {name}
-                  </Typography>
-                </td>
+                { name || title ?
+                      <td className="p-4">
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {name ? name : title }
+                      </Typography>
+                    </td>
+                    : ""
+                }
                 {type && 
                    <td className="p-4">
                   <Typography

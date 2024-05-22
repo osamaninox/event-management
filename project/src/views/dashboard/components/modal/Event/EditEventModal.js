@@ -53,8 +53,8 @@ export default function EditEventModal({ open, handleClose, ModalHeader, ModalMe
         `http://localhost:8000/api/event/${eventDetails.id}`,
         { 
           id: eventData.id,
-          name: eventData.name,
-          Amount: eventData.Amount,
+          title: eventData.name,
+          totalAmount: eventData.Amount,
         },
         {
           headers: {
@@ -83,7 +83,7 @@ export default function EditEventModal({ open, handleClose, ModalHeader, ModalMe
                 htmlFor="event_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Event Name
+                Client Name
               </label>
               <input
                 type="text"
