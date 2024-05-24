@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const role = localStorage.getItem("role");
   const navigate = useNavigate();
-  if (role.toLocaleLowerCase() !== "admin") {
+  if (role.toLowerCase() !== "admin") {
     window.location.href = "/";
     return;
   }
