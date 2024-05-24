@@ -36,11 +36,11 @@ const UserProfile = () => {
       });
   }, []);
 
-  const role = localStorage.getItem("role");
-  if (!role || role.toLowerCase() !== "admin") {
-    window.location.href = "/";
-    return;
-  }
+  // const role = localStorage.getItem("role");
+  // if (!role || role.toLowerCase() !== "admin") {
+  //   window.location.href = "/";
+  //   return;
+  // }
   const handleEditClick = () => {
     setIsEditing(true);
   };
@@ -147,7 +147,7 @@ const UserProfile = () => {
                 value={userData.email}
               />
             </div>
-            <div className="mb-3">
+            {/* <div className="mb-3">
               <label
                 htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -167,7 +167,7 @@ const UserProfile = () => {
                 required=""
                 value={userData.contactNumber}
               />
-            </div>
+            </div> */}
             {/* <div className="mb-3">
           <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
           <select value={selectedCountry}  onChange={handleChange} disabled={!isEditing} id="countries" className={`${isEditing ? "text-[#000]" : "text-gray-400"} bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>

@@ -21,17 +21,14 @@ const MainTop = ({handleBudgetAmount, items, onExport, onImport, onSaveAsPNG, on
 
   const saveEvent = async () => {
     const json = JSON.stringify(items);
-    const totalAmount = items[0].droppedItems.reduce(
-      (acc, item) => acc + (item.price || 0),
-      0
-    );
+   const totalBudget = items[0].droppedItems.reduce((acc, item) => acc + (parseInt(item.price, 10) || 0), 0);
     await axios.create({
     }).post("http://localhost:8000/api/event", {
       userId: "60f3b3b3b3b3b3b3b3b3b3b3", // REPLACE WITH USER ID
       design: json,
       date: new Date(),
       title: "Event 1", // REPLACE WITH EVENT TITLE
-      totalAmount: totalAmount, // REPLACE WITH TOTAL AMOUNT
+      totalAmount: totalBudget, // REPLACE WITH TOTAL AMOUNT
     },
       {
         headers: {

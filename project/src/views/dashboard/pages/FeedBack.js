@@ -3,11 +3,11 @@ import SearchInput from "../components/common/SearchInput";
 import { Table } from "../components/common/Table";
 
 const FeedBack = () => {
-  const role = localStorage.getItem("role");
-  if (!role || role.toLowerCase() !== "admin") {
-    window.location.href = "/";
-    return;
-  }
+  // const role = localStorage.getItem("role");
+  // if (!role || role.toLowerCase() !== "admin") {
+  //   window.location.href = "/";
+  //   return;
+  // }
   const TABLE_HEAD = ["id", "name", "email", "comment", "action"];
 
   const TABLE_ROWS = [

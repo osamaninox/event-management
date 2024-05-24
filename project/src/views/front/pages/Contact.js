@@ -8,8 +8,8 @@ const Contact = () => {
   var contactData = [
     {
       contactType: "phone",
-      contactNo: "0900-78601",
-      src: "tel:0900-78601",
+      contactNo: "0345-1234-567",
+      src: "tel:0345-1234-567",
     },
     {
       contactType: "email",

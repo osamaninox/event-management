@@ -130,7 +130,7 @@ const UserProfile = () => {
                 value={userData.email}
               />
             </div>
-            <div className="mb-3">
+            {/* <div className="mb-3">
               <label
                 htmlFor="lname"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -150,7 +150,7 @@ const UserProfile = () => {
                 required=""
                 value={userData.contactNumber}
               />
-            </div>
+            </div> */}
           </CardBody>
           {isEditing && (
             <CardFooter className="pt-0">

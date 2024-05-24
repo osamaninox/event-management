@@ -38,11 +38,11 @@ const Users = () => {
       });
   }, []);
 
-  const role = localStorage.getItem("role");
-  if (!role || role.toLowerCase() !== "admin") {
-    window.location.href = "/";
-    return;
-  }
+  // const role = localStorage.getItem("role");
+  // if (!role || role.toLowerCase() !== "admin") {
+  //   window.location.href = "/";
+  //   return;
+  // }
 
   const TABLE_HEAD = ["id", "name", "status", "Action"];
 

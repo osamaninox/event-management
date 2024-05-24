@@ -112,10 +112,10 @@ function Footer() {
               </h6>
               <div className="content-sec items-center">
                 <a
-                  href="tel:0900-786-01"
+                  href="tel:0345-1234-567"
                   className="text-[#fff] text-[12px]"
                 >
-                  0900-786-01
+                  0345-1234-567
                 </a>
               </div>
             </div>

@@ -163,11 +163,11 @@ const Objects = () => {
       });
   }, []);
 
-  const role = localStorage.getItem("role");
-  if (!role || role.toLowerCase() !== "admin") {
-    window.location.href = "/";
-    return;
-  }
+  // const role = localStorage.getItem("role");
+  // if (!role || role.toLowerCase() !== "admin") {
+  //   window.location.href = "/";
+  //   return;
+  // }
 
   return (
     <div>

@@ -162,7 +162,7 @@ const AddObjectModal = ({
             <div className="mt-[-60px] rounded-full shadow w-[150px] h-[150px]">
               <img
                 src={objData.objPic}
-                alt="Profile Pic"
+                alt="Object picture"
                 className="object-center object-cover  rounded-full w-[150px] h-[150px]"
               />
             </div>
