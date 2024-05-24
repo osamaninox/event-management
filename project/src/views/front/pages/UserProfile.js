@@ -9,19 +9,13 @@ import {
 } from "@material-tailwind/react";
 import IconsSet from "../../../assets/front/icons/Icons";
 import axios from "axios";
-import placeholderimg from '../../../assets/front/images/placeholderimg.png'
+import placeholderimg from "../../../assets/front/images/placeholderimg.png";
 
 const UserProfile = () => {
   const [selectedCountry, setSelectedCountry] = useState("AUS");
   const [selectedGender, setSelectedGender] = useState("male");
   const [isEditing, setIsEditing] = useState(false);
-  const [userData, setUserData] = useState({
-    fname: "John",
-    lname: "Doe",
-    email: "johndoe@example.com",
-    address: "123 Main St",
-    profilePic: placeholderimg,
-  });
+  const [userData, setUserData] = useState({});
   const handleEditClick = () => {
     setIsEditing(true);
   };
@@ -42,7 +36,7 @@ const UserProfile = () => {
   };
 
   useEffect(() => {
-    const userId = "user123"; // REPLACE WITH LOGGED IN USER ID
+    const userId = localStorage.getItem("userId");
     axios
       .create({})
       .get(`http://localhost:8000/api/user/profile/${userId}`, {
@@ -52,6 +46,7 @@ const UserProfile = () => {
       })
       .then((response) => {
         console.log(response.data);
+        setUserData(response.data);
         // SET USER PORFILE DATA TO STATE
       })
       .catch((error) => {
@@ -98,7 +93,7 @@ const UserProfile = () => {
                 htmlFor="lname"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                First Name
+                Name
               </label>
               <input
                 onChange={handleChange}
@@ -111,7 +106,7 @@ const UserProfile = () => {
                 } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                 placeholder="Enter Your First Name"
                 required=""
-                value={userData.fname}
+                value={userData.name}
               />
             </div>
             <div className="mb-3">
@@ -119,7 +114,7 @@ const UserProfile = () => {
                 htmlFor="lname"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Last Name
+                Email
               </label>
               <input
                 onChange={handleChange}
@@ -132,77 +127,29 @@ const UserProfile = () => {
                 } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                 placeholder="Enter Your Last Name"
                 required=""
-                value={userData.lname}
-              />
-            </div>
-            <div className="mb-3">
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Email
-              </label>
-              <input
-                onChange={handleChange}
-                disabled={!isEditing}
-                type="email"
-                name="email"
-                id="email"
-                className={`${
-                  isEditing ? "text-[#000]" : "text-gray-400"
-                } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
-                placeholder="Enter Your Email Id"
-                required=""
                 value={userData.email}
               />
             </div>
             <div className="mb-3">
               <label
-                htmlFor="countries"
+                htmlFor="lname"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Country
+                Contact Number
               </label>
-              <select
-                value={selectedCountry}
+              <input
                 onChange={handleChange}
                 disabled={!isEditing}
-                id="countries"
+                type="text"
+                name="lname"
+                id="lname"
                 className={`${
                   isEditing ? "text-[#000]" : "text-gray-400"
                 } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
-              >
-                <option value="AUS" disabled selected>
-                  Australia
-                </option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
-              </select>
-            </div>
-            <div className="mb-3">
-              <label
-                htmlFor="gender"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Gender
-              </label>
-              <select
-                id="gender"
-                value={selectedGender}
-                onChange={handleChange}
-                disabled={!isEditing}
-                className={`${
-                  isEditing ? "text-[#000]" : "text-gray-400"
-                } bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
-              >
-                <option value="male" disabled selected>
-                  Male
-                </option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
+                placeholder="Enter Your Last Name"
+                required=""
+                value={userData.contactNumber}
+              />
             </div>
           </CardBody>
           {isEditing && (

@@ -5,7 +5,7 @@ const objectLibrarySchema = new Schema({
     type: String,
     required: true,
   },
-  objectImagePath: {
+  filePath: {
     type: String,
     required: true,
   },

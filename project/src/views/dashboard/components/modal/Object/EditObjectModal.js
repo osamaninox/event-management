@@ -10,7 +10,6 @@ import {
 import IconsSet from "../../../../../assets/front/icons/Icons";
 import axios from "axios";
 
-
 import frame1 from "../../../../../assets/tool/Shapes/Frames/FRAME1.png";
 import frame2 from "../../../../../assets/tool/Shapes/Frames/FRAME2.png";
 import frame3 from "../../../../../assets/tool/Shapes/Frames/FRAME3.png";
@@ -61,8 +60,6 @@ import vse3 from "../../../../../assets/tool/Wedding/DecorationVaseorflowerstand
 import vse4 from "../../../../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE4.png";
 import vse5 from "../../../../../assets/tool/Wedding/DecorationVaseorflowerstands/VASE5.png";
 
-
-
 import b1 from "../../../../../assets/tool/Birthday/Balloons/B1.png";
 import b2 from "../../../../../assets/tool/Birthday/Balloons/B2.png";
 import b3 from "../../../../../assets/tool/Birthday/Balloons/B3.png";
@@ -94,47 +91,51 @@ import b28 from "../../../../../assets/tool/Birthday/Balloons/B28.png";
 import b29 from "../../../../../assets/tool/Birthday/Balloons/B29.png";
 import b30 from "../../../../../assets/tool/Birthday/Balloons/B30.png";
 
-
 import c1 from "../../../../../assets/tool/Birthday/Chairs/char-one.png";
 import c2 from "../../../../../assets/tool/Birthday/Chairs/chair-two.png";
 import c3 from "../../../../../assets/tool/Birthday/Chairs/chair-three.png";
 import c4 from "../../../../../assets/tool/Birthday/Chairs/chair-four.png";
- 
-export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMessageBody,objectDetails, ...props}) {
-  const [isEditing, setIsEditing] = useState(false);  
+
+export default function EditObjectModal({
+  open,
+  handleClose,
+  ModalHeader,
+  ModalMessageBody,
+  objectDetails,
+  ...props
+}) {
+  const [isEditing, setIsEditing] = useState(false);
   const [objectData, setObjectData] = useState({
     id: "",
     title: "",
     price: "",
     type: "",
-    objectImagePath: b1,
   });
-  console.log('objectDetails', objectDetails);
+  console.log("objectDetails", objectDetails);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setObjectData({ ...objectData, objectImagePath: e.target.result });
+        setObjectData({ ...objectData, file: e.target.result });
       };
       reader.readAsDataURL(file);
     }
   };
   useEffect(() => {
-     if(objectDetails && objectDetails._id){
-      setObjectData(
-        {   
-             id : objectDetails._id,
-            title: objectDetails.title,
-            price: objectDetails.price,
-            type:  objectDetails.type,
-            objectImagePath: b1,
-        });
+    if (objectDetails && objectDetails._id) {
+      setObjectData({
+        id: objectDetails._id,
+        title: objectDetails.title,
+        price: objectDetails.price,
+        type: objectDetails.type,
+        file: objectDetails.file,
+      });
       setIsEditing(true);
     }
   }, [objectDetails]);
-  console.log('objectDetails UseEffect', objectDetails);
+  console.log("objectDetails UseEffect", objectDetails);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -142,121 +143,123 @@ export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMe
   };
 
   const handleSubmit = async (data) => {
-    if(isEditing){
-      await updateObject ();
+    if (isEditing) {
+      await updateObject();
+    } else {
+      handleClose();
     }
-    else{
-       handleClose();
-    }  
   };
- const updateObject = async() => {
+  const updateObject = async () => {
+    console.log("object to update>>>", JSON.stringify(objectData));
+    const formData = new FormData();
+    formData.append("title", objectData.title);
+    formData.append("type", objectData.type);
+    formData.append("price", objectData.price);
+    formData.append("fileBase64", objectData.file);
     try {
-       await axios.put(
+      await axios.put(
         `http://localhost:8000/api/object-library/${objectDetails._id}`,
-        {
-            _id: objectData.id,
-          title: objectData.title,
-          price: objectData.price,
-          type: objectData.type,
-          objectImagePath: objectData.objectImagePath
-        },
+        formData,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
-       objectDetails.onUpdateHandler(objectData,  objectDetails.index);
-       handleClose();
-      } catch (error) {
+      objectDetails.onUpdateHandler(objectData, objectDetails.index);
+      handleClose();
+    } catch (error) {
       // Show invalid credentials error to user
       console.error(error);
     }
-  }
+  };
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
-        <DialogHeader>{ModalHeader ? ModalHeader : ''}</DialogHeader>
+        <DialogHeader>{ModalHeader ? ModalHeader : ""}</DialogHeader>
         <DialogBody>
           <div className="flex my-[20px]">
             <div className="relative  m-auto">
               <div className="mt-[-60px] rounded-full shadow w-[150px] h-[150px]">
                 <img
-                  src={objectData.objectImagePath}
-                  alt="Profile Pic"
+                  src={objectData.file}
+                  alt="Object picture"
                   className="object-center object-cover  rounded-full w-[150px] h-[150px]"
                 />
               </div>
-           
-                <div className="">
-                  <label
-                    htmlFor="file-upload"
-                    className="absolute border-[3px] py-[1px] px-[2px] shadow-md bottom-0 w-[35px] h-[35px] bg-[#265253] text-[#fff] rounded-full right-[0px]"
-                  >
-                    <span className="text-center">
-                      <IconsSet.CameraIcon />
-                    </span>
-                  </label>
-                  <input id="file-upload" type="file" hidden />
-                </div>
-           
+
+              <div className="">
+                <label
+                  htmlFor="file-upload"
+                  className="absolute border-[3px] py-[1px] px-[2px] shadow-md bottom-0 w-[35px] h-[35px] bg-[#265253] text-[#fff] rounded-full right-[0px]"
+                >
+                  <span className="text-center">
+                    <IconsSet.CameraIcon />
+                  </span>
+                </label>
+                <input
+                  id="file-upload"
+                  type="file"
+                  onChange={handleFileChange}
+                />
+              </div>
             </div>
           </div>
-           <div className="grid grid-cols-2 gap-4">
-              <div className="mb-3">
-                <label
-                  htmlFor="object_name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Object Name
-                </label>
-                  <input
-                    type="text"
-                    name="title"
-                    id="object_name"
-                    className={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
-                    placeholder="Enter Object Name"
-                    required=""
-                    onChange={handleChange}
-                    value={objectData.title}
-                  />
-              </div>
-              <div className="mb-3">
-                <label
-                  htmlFor="price"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Enter Object Price
-                </label>
-                  <input
-                    type="number"
-                    name="price"
-                    id="objectprice"
-                    className={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
-                    placeholder="Enter object price"
-                    required=""
-                    value={objectData.price}
-                     onChange={handleChange}
-                  />
-              </div>
-              <div className="mb-3">
-                <label
-                  htmlFor="Status type"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
+          <div className="grid grid-cols-2 gap-4">
+            <div className="mb-3">
+              <label
+                htmlFor="object_name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Object Name
+              </label>
+              <input
+                type="text"
+                name="title"
+                id="object_name"
+                className={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                placeholder="Enter Object Name"
+                required=""
+                onChange={handleChange}
+                value={objectData.title}
+              />
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="price"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Enter Object Price
+              </label>
+              <input
+                type="number"
+                name="price"
+                id="objectprice"
+                className={`placeholder-[#000] bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                placeholder="Enter object price"
+                required=""
+                value={objectData.price}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="Status type"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
                 Select Type
-                </label>
-                <select
-                  name="object_type"
-                  id="type"
-                  onChange={handleChange}
-                  value={objectData.object_type}
-                  className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
-                >
-                  <option value="wedding">Wedding</option>
-                  <option value="birthday">Birthday</option>
-                </select>
-              </div>
+              </label>
+              <select
+                name="object_type"
+                id="type"
+                onChange={handleChange}
+                value={objectData.object_type}
+                className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+              >
+                <option value="wedding">Wedding</option>
+                <option value="birthday">Birthday</option>
+              </select>
+            </div>
           </div>
         </DialogBody>
         <DialogFooter>
@@ -268,7 +271,10 @@ export default function EditObjectModal ({open, handleClose,ModalHeader, ModalMe
           >
             <span>Cancel</span>
           </Button>
-          <Button  className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]" onClick={handleSubmit}>
+          <Button
+            className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]"
+            onClick={handleSubmit}
+          >
             <span>Update</span>
           </Button>
         </DialogFooter>
