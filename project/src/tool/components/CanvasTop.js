@@ -25,7 +25,7 @@ const CanvasTop = ({ budgetAmount, items }) => {
                     <div className="css-s7vhwb" ><span className="css-1n30axn">Setting</span></div>*/}
             <div className="css-1c0qma8"></div>
             <div className="css-s7vhwb" onClick={toggleLayers}>
-              <span className="css-1n30axn">Budget</span>
+              <span className="css-1n30axn shadow-md  flex items-center bg-[#265253] text-white px-2 py-1 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]">Budget</span>
             </div>
           </div>
         </div>
