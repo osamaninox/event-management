@@ -1,37 +1,57 @@
 import { Event } from "../schemas/event.schema.js";
 
 export async function createEvent(req, res) {
-  const event = new Event(req.body);
-  await event.save();
-  res.status(201).send(event);
+  try {
+    const event = new Event(req.body);
+    await event.save();
+    res.status(201).send(event);
+  } catch (err) {
+    res.status(400).send(`Something went wrong ${JSON.stringify(err)}`);
+  }
 }
 
 export async function getEventByUserId(req, res) {
-  const events = await Event.find({ userId: req.query.userId });
-  res.send(events);
+  try {
+    const events = await Event.find({ userId: req.query.userId });
+    res.send(events);
+  } catch (err) {
+    res.status(400).send(`Something went wrong ${JSON.stringify(err)}`);
+  }
 }
 
 export async function getAllEvents(req, res) {
-  const events = await Event.find();
-  res.send(events);
+  try {
+    const events = await Event.find();
+    res.send(events);
+  } catch (err) {
+    res.status(400).send(`Something went wrong ${JSON.stringify(err)}`);
+  }
 }
 
 export async function getEvent(req, res) {
-  const event = await Event.findById(req.params.eventId);
-  if (!event) {
-    return res.status(404).send();
+  try {
+    const event = await Event.findById(req.params.eventId);
+    if (!event) {
+      return res.status(404).send();
+    }
+    res.send(event);
+  } catch (err) {
+    res.status(400).send(`Something went wrong ${JSON.stringify(err)}`);
   }
-  res.send(event);
 }
 
 export async function updateEvent(req, res) {
-  const event = await Event.findByIdAndUpdate(req.params.eventId, req.body, {
-    new: true,
-  });
-  if (!event) {
-    return res.status(404).send();
+  try {
+    const event = await Event.findByIdAndUpdate(req.params.eventId, req.body, {
+      new: true,
+    });
+    if (!event) {
+      return res.status(404).send();
+    }
+    res.send(event);
+  } catch (err) {
+    res.status(400).send(`Something went wrong ${JSON.stringify(err)}`);
   }
-  res.send(event);
 }
 
 // export async function updateEvent(req, res, next) {
@@ -56,10 +76,6 @@ export async function updateEvent(req, res) {
 //   ).lean();
 //   res.status(200).json(updatedEvent);
 // }
-
-
-
-
 
 export async function deleteEvent(req, res) {
   const event = await Event.findByIdAndDelete(req.params.eventId);

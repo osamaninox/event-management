@@ -699,12 +699,11 @@ const Canvas = ({
                     onDragStart={(e) => handleDragStart(e, item)}
                     onClick={(e) => handleItemClick(e, item)}
                   >
-                    {item.type === "wedding" ||
-                    item.type === "birthday" ||
-                    item.type === "shape" ? (
-                      
+                    {item.type.toLowerCase() === "wedding" ||
+                    item.type.toLowerCase() === "birthday" ||
+                    item.type.toLowerCase() === "shape" ? (
                       <img
-                        src={item.src} 
+                        src={item.src}
                         alt={item.name}
                         className="w-[100px] h-auto"
                       />

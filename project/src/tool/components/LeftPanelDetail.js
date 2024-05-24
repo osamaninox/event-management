@@ -504,84 +504,79 @@ const LeftPanelDetail = ({ closePanel, typePanel, onDragStart }) => {
 
   var ii = 0;
   useEffect(() => {
-    
-      ii++;
+    ii++;
   }, []);
 
-  const [isloaded, setLoaded] = useState(false)
-
+  const [isloaded, setLoaded] = useState(false);
 
   useEffect(() => {
-      if (!isloaded) {
-        console.log('This should called once')
-console.log(ii +"useEffect objects library API");
-    
-    axios
-      .create({})
-      .get(`http://localhost:8000/api/object-library`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
-        console.log("useEffect objects library API response", response.data);
-        response.data.forEach((item,index) => {
-          console.log(index);
-          if (item.type.toLowerCase() === "shape") {
-            if( !(shapesData.apiData) || shapesData.apiData !="added" ){
-            shapesData.push({
-              id: item._id,
-              itemName: item.title,
-              src: item.objectImagePath,
-              type: item.type,
-              price: item.price,
-            });
-          }
-          } else if (item.type.toLowerCase() === "wedding") {
-            
-            
-if( !(tabsData[0].apiData) || tabsData[0].apiData !="added" ){
-            tabsData[0].items.push({
-              id: item._id,
-              itemName: item.title,
-              src: item.objectImagePath,
-              type: item.type,
-              price: item.price,
-            });
-          }
-          } else if (item.type.toLowerCase() === "birthday") {
+    if (!isloaded) {
+      console.log("This should called once");
+      console.log(ii + "useEffect objects library API");
 
-            
-            console.log("count "+tabsData[1].items.count);
-            if( !(tabsData[1].apiData) || tabsData[1].apiData !="added" ){
-            tabsData[1].items.push({
-              id: item._id,
-              itemName: item.title,
-              src: item.objectImagePath,
-              type: item.type,
-              price: item.price,
-            });
+      axios
+        .create({})
+        .get(`http://localhost:8000/api/object-library`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          console.log("useEffect objects library API response", response.data);
+          response.data.forEach((item, index) => {
+            console.log(index);
+            if (item.type.toLowerCase() === "shape") {
+              if (!shapesData.apiData || shapesData.apiData != "added") {
+                shapesData.push({
+                  id: item._id,
+                  itemName: item.title,
+                  src: item.file,
+                  type: item.type,
+                  price: item.price,
+                });
+                shapesData.apiData = "added";
+              }
+            } else if (item.type.toLowerCase() === "wedding") {
+              console.log("tabs wedding data " + tabsData[0].apiData);
+              if (!tabsData[0].apiData || tabsData[0].apiData != "added") {
+                tabsData[0].items.push({
+                  id: item._id,
+                  itemName: item.title,
+                  src: item.file,
+                  type: item.type,
+                  price: item.price,
+                });
+                tabsData[0].apiData = "added";
+              }
+            } else if (item.type.toLowerCase() === "birthday") {
+              console.log("count " + tabsData[1].items.count);
+              if (!tabsData[1].apiData || tabsData[1].apiData != "added") {
+                tabsData[1].items.push({
+                  id: item._id,
+                  itemName: item.title,
+                  src: item.file,
+                  type: item.type,
+                  price: item.price,
+                });
+                tabsData[1].apiData = "added";
+              }
             }
-            
-          }
+          });
+          const newTabsData = [...tabsData];
+          setTabsData(newTabsData);
+          console.log("tabs data >>", tabsData);
+          const newShapesData = [...shapesData];
+          setShapesData(newShapesData);
+          console.log("shapes data >>", shapesData);
+        })
+        .catch((error) => {
+          console.log("useEffect objects API error", error);
+          console.error(error);
         });
-
-        shapesData.apiData = "added";
-        tabsData[0].apiData = "added";
-        tabsData[1].apiData = "added";
-        setTabsData(tabsData);
-        console.log("tabs data >>", tabsData);
-        setShapesData(shapesData);
-        console.log("shapes data >>", shapesData);
-      })
-      .catch((error) => {
-        console.log("useEffect objects API error", error);
-        console.error(error);
-      });
-        setLoaded(true)
-      }
-    return () => {}
-  }, [])
+      setLoaded(true);
+    }
+    return () => {};
+  }, []);
 
   const handleTabChange = (value) => {
     setActiveTab(value);
@@ -625,7 +620,7 @@ if( !(tabsData[0].apiData) || tabsData[0].apiData !="added" ){
                   </div>
                   <div className="tab-content overflow-wrapper">
                     {/* <pre>{JSON.stringify(tabsData, null, 2)}</pre> */}
-                     {tabsData.map(({ value, items }) => (
+                    {tabsData.map(({ value, items }) => (
                       <div
                         key={value}
                         className={`tab-pane  py-[20px] ${
@@ -633,8 +628,7 @@ if( !(tabsData[0].apiData) || tabsData[0].apiData !="added" ){
                         }`}
                       >
                         <ul className="css-1nxiby7 px-0 ">
-                          
-                           {items.map((item) => (
+                          {items.map((item) => (
                             <li
                               key={item.id}
                               className="css-7toppc border boder-[#dfdfdf] rounded-[10px] p-[7px]"
@@ -646,20 +640,18 @@ if( !(tabsData[0].apiData) || tabsData[0].apiData !="added" ){
                                 onDragStart={onDragStart}
                                 price={item.price}
                               >
-                                
                                 <img
                                   loading="lazy"
                                   src={item.src}
                                   alt={item.itemName}
                                   className="object-center w-full max-h-[60px]"
                                 />
-                                
                               </DraggableItem>
                             </li>
-                          ))} 
+                          ))}
                         </ul>
                       </div>
-                    ))} 
+                    ))}
                   </div>
                 </>
               )}

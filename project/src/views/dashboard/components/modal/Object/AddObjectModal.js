@@ -217,7 +217,7 @@ const AddObjectModal = ({
             >
               <option value="wedding">Wedding</option>
               <option value="birthday">Birthday</option>
-              <option value="birthday">Shape</option>
+              <option value="shape">Shape</option>
             </select>
           </div>
           <div className="mb-3">
@@ -253,7 +253,7 @@ const AddObjectModal = ({
           className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]"
           onClick={createObject}
         >
-          <span>Update</span>
+          <span>Add</span>
         </Button>
       </DialogFooter>
     </Dialog>

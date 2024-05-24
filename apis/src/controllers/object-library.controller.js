@@ -8,66 +8,89 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export async function createObject(req, res) {
-  const { title, price, type } = req.body;
-  const object = new ObjectLibrary({ title, price, type });
-  object.filePath = saveFileFromBase64(
-    req.body.fileBase64,
-    object._id.toString()
-  );
-  await object.save();
-  res.status(201).send(object);
-}
-
-export async function getAllObjects(req, res) {
-  let objects = await ObjectLibrary.find().lean();
-  objects = await Promise.all(
-    objects.map(async (object) => {
-      object.file = await readFileAsBase64(object.filePath);
-      return object;
-    })
-  );
-  res.send(objects);
-}
-
-export async function getObject(req, res) {
-  const object = await ObjectLibrary.findById(req.params.objectId);
-  if (!object) {
-    return res.status(404).send();
-  }
-  object.file = await readFileAsBase64(object.filePath);
-  res.send(object);
-}
-
-export async function updateObject(req, res) {
-  const object = await ObjectLibrary.findByIdAndUpdate(
-    req.params.objectId,
-    req.body,
-    {
-      new: true,
+  try {
+    const { title, price, type } = req.body;
+    const object = new ObjectLibrary({ title, price, type });
+    if (!req.body.fileBase64) {
+      res.status(400).send("File is required");
     }
-  );
-  if (!object) {
-    return res.status(404).send();
-  }
-  if (req.body.fileBase64) {
-    // Remove existing file
-    fs.unlinkSync(object.filePath);
     object.filePath = saveFileFromBase64(
       req.body.fileBase64,
       object._id.toString()
     );
     await object.save();
+    res.status(201).send(object);
+  } catch (err) {
+    res.status(400).send(`Something went wrong ${JSON.stringify(err)}`);
   }
-  res.send(object);
+}
+
+export async function getAllObjects(req, res) {
+  try {
+    let objects = await ObjectLibrary.find().lean();
+    objects = await Promise.all(
+      objects.map(async (object) => {
+        object.file = await readFileAsBase64(object.filePath);
+        return object;
+      })
+    );
+    res.send(objects);
+  } catch (err) {
+    res.status(400).send(`Something went wrong ${JSON.stringify(err)}`);
+  }
+}
+
+export async function getObject(req, res) {
+  try {
+    const object = await ObjectLibrary.findById(req.params.objectId);
+    if (!object) {
+      return res.status(404).send();
+    }
+    object.file = await readFileAsBase64(object.filePath);
+    res.send(object);
+  } catch (err) {
+    res.status(400).send(`Something went wrong ${JSON.stringify(err)}`);
+  }
+}
+
+export async function updateObject(req, res) {
+  try {
+    const object = await ObjectLibrary.findByIdAndUpdate(
+      req.params.objectId,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    if (!object) {
+      return res.status(404).send();
+    }
+    if (req.body.fileBase64) {
+      // Remove existing file
+      fs.unlinkSync(object.filePath);
+      object.filePath = saveFileFromBase64(
+        req.body.fileBase64,
+        object._id.toString()
+      );
+      await object.save();
+    }
+    res.send(object);
+  } catch (err) {
+    res.status(400).send(`Something went wrong ${JSON.stringify(err)}`);
+  }
 }
 
 export async function deleteObject(req, res) {
-  const object = await ObjectLibrary.findByIdAndDelete(req.params.objectId);
-  if (!object) {
-    return res.status(404).send();
+  try {
+    const object = await ObjectLibrary.findByIdAndDelete(req.params.objectId);
+    if (!object) {
+      return res.status(404).send();
+    }
+    fs.unlinkSync(object.filePath);
+    res.send(object);
+  } catch (err) {
+    res.status(400).send(`Something went wrong ${JSON.stringify(err)}`);
   }
-  fs.unlinkSync(object.filePath);
-  res.send(object);
 }
 
 function saveFileFromBase64(base64, fileName) {
