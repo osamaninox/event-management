@@ -1,21 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import SearchInput from '../components/common/SearchInput';
-import { Table } from '../components/common/Table';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import SearchInput from "../components/common/SearchInput";
+import { Table } from "../components/common/Table";
+import axios from "axios";
 
 const Events = () => {
+  const role = localStorage.getItem("role");
+  if (!role || role.toLowerCase() !== "admin") {
+    window.location.href = "/";
+    return;
+  }
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/event/all', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    }).then((response) => { 
-      setEvents(response.data);
-    }).catch((error) => {
-      console.error(error);
-    });
+    axios
+      .get("http://localhost:8000/api/event/all", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        setEvents(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   const TABLE_HEAD = [
@@ -30,7 +38,7 @@ const Events = () => {
   ];
 
   const formatTableRows = (events) => {
-    return events.map((event,index) => ({
+    return events.map((event, index) => ({
       id: event._id,
       name: event.title,
       Amount: event.totalAmount,
@@ -52,6 +60,6 @@ const Events = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Events;
