@@ -140,7 +140,7 @@ const Objects = () => {
   };
 
   const TABLE_HEAD = ["id", "object Image", "name", "Price", "type", "action"];
- 
+
   useEffect(() => {
     console.log("useEffect objects API");
     axios
@@ -181,7 +181,11 @@ const Objects = () => {
         <SearchInput />
       </div>
       <div className="my-[20px]">
-        <ObjectsTable head={TABLE_HEAD} rows={TABLE_ROWS} />
+        <ObjectsTable
+          head={TABLE_HEAD}
+          rows={TABLE_ROWS}
+          handleClose={() => handleClose("addObj")}
+        />
       </div>
       <AddObjectModal
         ModalHeader="Add Object "

@@ -1,8 +1,8 @@
 import { User } from "../schemas/user.schema.js";
 import jwt from "jsonwebtoken";
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,7 +19,7 @@ export async function login(req, res, next) {
     const token = jwt.sign(
       { email: user.email, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: "24h" }
+      { expiresIn: "7d" }
     );
     Object.assign(user, { token });
     return res.status(200).json({ message: "Login successful", user });
@@ -46,25 +46,19 @@ export async function register(req, res, next) {
 
 export async function updateProfile(req, res, next) {
   const { id } = req.params;
-  const { email, password, name, contactNumber } = req.body;
 
-  const updatedUser = await User.findByIdAndUpdate(
-    { id },
-    { email, password, name, contactNumber }
-  ).lean();
+  const updatedUser = await User.findByIdAndUpdate({ id }, req.body).lean();
   res.status(200).json(updatedUser);
 }
 export async function updateUser(req, res, next) {
-
   const { _id } = req.body;
-  const {  name, role, img } = req.body;
+  const { name, role, img } = req.body;
   let update_params = {};
-  if(name){
+  if (name) {
     update_params.name = name;
   }
-   if(role){
+  if (role) {
     update_params.role = role;
-
   }
   // if(img){
   //   const fileName = uploadImage(img);
@@ -101,35 +95,3 @@ export async function deleteUser(req, res) {
   }
   res.send(user);
 }
-// export async function uploadImage(base64String){
-//   // const { base64String } = req.body;
-
-//   // Validate base64String
-//   if (!base64String) {
-//     // return res.status(400).send('No Base64 string provided.');
-//     throw new Exception ('No Base64 string provided.') 
-//   }
-
-//   // Extract image type
-//   const matches = base64String.match(/^data:image\/([a-zA-Z]+);base64,(.+)$/);
-//   if (!matches || matches.length !== 3) {
-//     // return res.status(400).send('Invalid Base64 string.');
-//     throw new Error ('invalid Base64 string provided.') 
-//   }
-
-//   const ext = matches[1];
-//   const data = matches[2];
-//   const buffer = Buffer.from(data, 'base64');
-//   const fileName = `${(new Date).toUTCString()}-image.${ext}`;
-//   const filePath = path.join(__dirname, "..", "..", "images" , fileName);
-//   console.log(filePath );
-//   // Save the file
-//   fs.writeFile(filePath, buffer, (err) => {
-//     if (err) {
-//       // return res.status(500).send('Failed to save the image.');
-//       throw new Error ('Failed to save the image.'+ err.message ) 
-//     }
-//     // res.send(`Image saved successfully as ${fileName}`);
-//     return fileName;
-//   });
-// }

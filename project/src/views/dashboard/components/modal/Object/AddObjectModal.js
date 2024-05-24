@@ -103,9 +103,7 @@ const AddObjectModal = ({
   ModalMessageBody,
   ...props
 }) => {
-  const [objData, setObjData] = useState({
-    objPic: b1,
-  });
+  const [objData, setObjData] = useState({});
 
   const [title, setObjectName] = useState("");
 
@@ -125,22 +123,29 @@ const AddObjectModal = ({
     setPriceType(event.target.value);
   };
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setObjData({ ...objData, objPic: reader.result });
+    };
+    reader.readAsDataURL(file);
+  };
+
   const createObject = async () => {
     console.log("useEffect objects API", type);
-    const response = await axios.create({}).post(
-      `http://localhost:8000/api/object-library`,
-      {
-        title,
-        type,
-        price,
-        objectImagePath: objData.objPic,
-      },
-      {
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("type", type);
+    formData.append("price", price);
+    formData.append("fileBase64", objData.objPic);
+    const response = await axios
+      .create({})
+      .post(`http://localhost:8000/api/object-library`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      }
-    );
+      });
     if (response.status === 201) {
       handleClose();
     } else {
@@ -171,7 +176,7 @@ const AddObjectModal = ({
                   <IconsSet.CameraIcon />
                 </span>
               </label>
-              <input id="file-upload" type="file" hidden />
+              <input id="file-upload" type="file" onChange={handleFileChange} />
             </div>
           </div>
         </div>
@@ -244,7 +249,10 @@ const AddObjectModal = ({
         >
           <span>Cancel</span>
         </Button>
-        <Button className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]" onClick={createObject}>
+        <Button
+          className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]"
+          onClick={createObject}
+        >
           <span>Update</span>
         </Button>
       </DialogFooter>

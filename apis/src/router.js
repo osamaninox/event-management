@@ -33,6 +33,7 @@ import {
   deleteObject,
 } from "./controllers/object-library.controller.js";
 import { authenticateToken } from "./middlwares/jwt-verify.js";
+import multer from "multer";
 const router = Router();
 
 /* User */
@@ -73,10 +74,20 @@ router.delete(
 );
 
 /* Object Library */
-router.post("/object-library", authenticateToken, createObject);
+router.post(
+  "/object-library",
+  authenticateToken,
+  multer({ dest: "uploads/" }).single("object"),
+  createObject
+);
 router.get("/object-library", authenticateToken, getAllObjects);
 router.get("/object-library/:objectId", authenticateToken, getObject);
-router.put("/object-library/:objectId", authenticateToken, updateObject);
+router.put(
+  "/object-library/:objectId",
+  authenticateToken,
+  multer({ dest: "uploads/" }).single("object"),
+  updateObject
+);
 router.delete("/object-library/:objectId", authenticateToken, deleteObject);
 
 export default router;
