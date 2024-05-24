@@ -146,8 +146,9 @@ export default function EditObjectModal({
     if (isEditing) {
       await updateObject();
     } else {
-      handleClose();
+  
     }
+        handleClose();
   };
   const updateObject = async () => {
     console.log("object to update>>>", JSON.stringify(objectData));
@@ -167,7 +168,7 @@ export default function EditObjectModal({
         }
       );
       objectDetails.onUpdateHandler(objectData, objectDetails.index);
-      handleClose();
+      // handleClose();
     } catch (error) {
       // Show invalid credentials error to user
       console.error(error);
@@ -201,6 +202,7 @@ export default function EditObjectModal({
                   id="file-upload"
                   type="file"
                   onChange={handleFileChange}
+                  hidden
                 />
               </div>
             </div>

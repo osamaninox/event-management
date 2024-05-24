@@ -65,36 +65,65 @@ const RoutesConfig = (isAuthenticated) => {
         },
       ],
     },
+{
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <PrivateRoute element={<DashboardHome />} />,
+      },
+      {
+        path: "/dashboard/feedbacks",
+        element: <PrivateRoute element={<Feedback />} />,
+      },
+      {
+        path: "/dashboard/events",
+        element: <PrivateRoute element={<Events />} />,
+      },
+      {
+        path: "/dashboard/objects",
+        element: <PrivateRoute element={<Objects />} />,
+      },
+      {
+        path: "/dashboard/users",
+        element: <PrivateRoute element={<User />} />,
+      },
+      {
+        path: "/dashboard/userprofile",
+        element: <PrivateRoute element={<UserProfileDashboard />} />,
+      },
+    ],
+  },
     {
       element: <DashboardLayout />,
       children: [
         {
-          path: "/dashboard",
-          element: <PrivateRoute element={<DashboardHome />} />,
+          path: "/admin/dashboard",
+          element: <PrivateRoute element={<DashboardHome />}  adminOnly={true}/>,
         },
         // {
         //   path: "/dashboard/transactions",
         //   element: <PrivateRoute element={<PaymentTransactions />} />,
         // },
         {
-             path: "/dashboard/feedbacks",
-            element: <PrivateRoute element={<Feedback />} />,
+             path: "/admin/dashboard/feedbacks",
+            element: <PrivateRoute element={<Feedback />} adminOnly={true}/>,
         },
         {
-          path: "/dashboard/events",
-          element: <PrivateRoute element={<Events />} />,
+          path: "/admin/dashboard/events",
+          element: <PrivateRoute element={<Events />} adminOnly={true}/>,
         },
         {
-          path: "/dashboard/objects",
-          element: <PrivateRoute element={<Objects />} />,
+          path: "/admin/dashboard/objects",
+          element: <PrivateRoute element={<Objects />} adminOnly={true}/>,
         },
         {
-          path: "/dashboard/users",
-          element: <PrivateRoute element={<User />} />,
+          path: "/admin/dashboard/users",
+          element: <PrivateRoute element={<User />} adminOnly={true}/>,
         },
         {
-          path: "/dashboard/userprofile",
-          element: <PrivateRoute element={<UserProfileDashboard />} />,
+          path: "/admin/dashboard/userprofile",
+          element: <PrivateRoute element={<UserProfileDashboard />} adminOnly={true}/>,
         },
       ],
     },

@@ -176,7 +176,7 @@ const AddObjectModal = ({
                   <IconsSet.CameraIcon />
                 </span>
               </label>
-              <input id="file-upload" type="file" onChange={handleFileChange} />
+              <input id="file-upload" type="file" onChange={handleFileChange} hidden/>
             </div>
           </div>
         </div>
