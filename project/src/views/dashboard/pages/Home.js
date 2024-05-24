@@ -20,11 +20,11 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  // const role = localStorage.getItem("role");
-  // if (!role || role.toLowerCase() !== "admin") {
-  //   window.location.href = "/";
-  //   return;
-  // }
+  const role = localStorage.getItem("role");
+  if (!role || role.toLowerCase() !== "admin") {
+    window.location.href = "/";
+    return;
+  }
   const incomeData = {
     labels: Income.years.map((year) => year),
     datasets: [
