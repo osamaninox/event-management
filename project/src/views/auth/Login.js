@@ -28,6 +28,7 @@ const Login = () => {
       saveTokenInLocalStorage(response.data.user.token);
       saveUserIdInLocalStorage(response.data.user._id);
       saveRoleInLocalStorage(response.data.user.role);
+      saveNameInLocalStorage(response.data.user.name);
       navigate("/");
       // setLoginError('');
     } catch (error) {
@@ -42,6 +43,10 @@ const Login = () => {
   };
   const saveUserIdInLocalStorage = (userId) => {
     localStorage.setItem("userId", userId);
+  };
+
+  const saveNameInLocalStorage = (name) => {
+    localStorage.setItem("userName", name);
   };
 
   const saveRoleInLocalStorage = (role) => {
