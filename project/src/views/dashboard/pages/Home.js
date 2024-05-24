@@ -1,6 +1,6 @@
-import React from 'react'
-import DashboardLayout from '../../../layouts/DashboardLayout';
-import SearchInput from '../components/common/SearchInput';
+import React from "react";
+import DashboardLayout from "../../../layouts/DashboardLayout";
+import SearchInput from "../components/common/SearchInput";
 import LineChart from "../components/charts/LineChart";
 import BarChart from "../components/charts/BarChart";
 import {
@@ -11,25 +11,32 @@ import {
   MonthlySale,
   FirstChart,
 } from "../api/ChartData";
-import Button from '../components/common/Button';
-import Checkbox from '../components/common/Checkbox';
+import Button from "../components/common/Button";
+import Checkbox from "../components/common/Checkbox";
 import { AvatarDefault } from "../components/common/Avatar";
 import face from "../../../assets/dashboard/images/face-2.jpg";
-import { Table } from '../components/common/Table';
-import { Link } from 'react-router-dom';
+import { Table } from "../components/common/Table";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const role = localStorage.getItem("role");
+  const navigate = useNavigate();
+  if (role.toLocaleLowerCase() !== "admin") {
+    window.location.href = "/";
+    return;
+  }
   const incomeData = {
-      labels: Income.years.map((year) => year),
-      datasets: [
-        {
-          label: "sale",
-          data: Income.data.sales.map((sale) => sale),
-          backgroundColor: ["rgba(254,31,111,1)", "rgba(212,218,228,1)"],
-          borderRadius: 4,
-          barThickness: 12,
-        },
-      ],
+    labels: Income.years.map((year) => year),
+    datasets: [
+      {
+        label: "sale",
+        data: Income.data.sales.map((sale) => sale),
+        backgroundColor: ["rgba(254,31,111,1)", "rgba(212,218,228,1)"],
+        borderRadius: 4,
+        barThickness: 12,
+      },
+    ],
   };
   const firstChart = {
     labels: FirstChart.months.map((month) => month),
@@ -77,29 +84,29 @@ const Home = () => {
     },
   };
   const overviewChartOptions = {
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          grid: {
-            display: false,
-          },
-          display: true,
-        },
-        y: {
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: {
           display: false,
         },
+        display: true,
       },
-      plugins: {
-        legend: {
-          display: false,
-        },
-        tooltip: {
-          enabled: false,
-        },
+      y: {
+        display: false,
       },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        enabled: false,
+      },
+    },
   };
 
-  const TABLE_HEAD = ["id", "name", "Amount", "Payment Type", "status","date"];
+  const TABLE_HEAD = ["id", "name", "Amount", "Payment Type", "status", "date"];
 
   const TABLE_ROWS = [
     {
@@ -229,6 +236,6 @@ const Home = () => {
       </div>
     </>
   );
-}
+};
 
-export default Home
+export default Home;
