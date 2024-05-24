@@ -4,13 +4,7 @@ import { Table } from "../components/common/Table";
 import axios from "axios";
 
 const Events = () => {
-  const role = localStorage.getItem("role");
-  if (!role || role.toLowerCase() !== "admin") {
-    window.location.href = "/";
-    return;
-  }
   const [events, setEvents] = useState([]);
-
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/event/all", {
@@ -25,6 +19,12 @@ const Events = () => {
         console.error(error);
       });
   }, []);
+
+  const role = localStorage.getItem("role");
+  if (!role || role.toLowerCase() !== "admin") {
+    window.location.href = "/";
+    return;
+  }
 
   const TABLE_HEAD = [
     "id",

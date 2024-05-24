@@ -10,11 +10,6 @@ import AddUserModal from "../../dashboard/components/modal/User/AddUserModal";
 import EditUserModal from "../../dashboard/components/modal/User/EditUserModal";
 
 const Users = () => {
-  const role = localStorage.getItem("role");
-  if (!role || role.toLowerCase() !== "admin") {
-    window.location.href = "/";
-    return;
-  }
   const [openModal, setOpenModal] = useState({ addUser: false });
   const [users, setUsers] = useState([]);
 
@@ -42,6 +37,12 @@ const Users = () => {
         console.error(error);
       });
   }, []);
+
+  const role = localStorage.getItem("role");
+  if (!role || role.toLowerCase() !== "admin") {
+    window.location.href = "/";
+    return;
+  }
 
   const TABLE_HEAD = ["id", "name", "status", "Action"];
 

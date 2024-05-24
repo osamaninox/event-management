@@ -111,11 +111,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Objects = () => {
-  const role = localStorage.getItem("role");
-  if (!role || role.toLowerCase() !== "admin") {
-    window.location.href = "/";
-    return;
-  }
   const [openModal, setOpenModal] = useState({ addObj: false });
 
   const [TABLE_ROWS, setObjectRows] = useState([]);
@@ -167,6 +162,12 @@ const Objects = () => {
         console.error(error);
       });
   }, []);
+
+  const role = localStorage.getItem("role");
+  if (!role || role.toLowerCase() !== "admin") {
+    window.location.href = "/";
+    return;
+  }
 
   return (
     <div>
