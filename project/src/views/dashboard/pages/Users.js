@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import SearchInput from "../components/common/SearchInput";
-import { UserTable } from '../components/common/UserTable';
+import { UserTable } from "../components/common/UserTable";
 import axios from "axios";
-import vp from '../../../../src/assets/front/images/vp.jpeg';
-import president from '../../../../src/assets/front/images/president.jpeg';
-import director from '../../../../src/assets/front/images/director.jpeg';
-import { Link } from 'react-router-dom';
-import AddUserModal from '../../dashboard/components/modal/User/AddUserModal';
-import EditUserModal from '../../dashboard/components/modal/User/EditUserModal';
+import vp from "../../../../src/assets/front/images/vp.jpeg";
+import president from "../../../../src/assets/front/images/president.jpeg";
+import director from "../../../../src/assets/front/images/director.jpeg";
+import { Link } from "react-router-dom";
+import AddUserModal from "../../dashboard/components/modal/User/AddUserModal";
+import EditUserModal from "../../dashboard/components/modal/User/EditUserModal";
 
 const Users = () => {
+  const role = localStorage.getItem("role");
+  if (!role || role.toLowerCase() !== "admin") {
+    window.location.href = "/";
+    return;
+  }
   const [openModal, setOpenModal] = useState({ addUser: false });
   const [users, setUsers] = useState([]);
-  
+
   const handleOpen = (modalType) => {
     setOpenModal({ ...openModal, [modalType]: true });
   };
@@ -21,47 +26,55 @@ const Users = () => {
     setOpenModal({ ...openModal, [modalType]: false });
   };
   const onCreateHandler = (user) => {
-      setUsers({...users, user})
-  }
+    setUsers({ ...users, user });
+  };
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/user/all`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    }).then((response) => {
-      setUsers(response.data);
-    }).catch((error) => {
-      console.error(error);
-    });
+    axios
+      .get(`http://localhost:8000/api/user/all`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
-  const TABLE_HEAD = [
-    "id",
-    "name",
-    "status",
-    "Action",
-  ];
+  const TABLE_HEAD = ["id", "name", "status", "Action"];
 
   const formatTableRows = (users) => {
-    
     let _return = users.map((user, index) => ({
       id: user._id,
-      user_image: user.role === 'VP' ? vp : user.role === 'President' ? president : director,
+      user_image:
+        user.role === "VP"
+          ? vp
+          : user.role === "President"
+          ? president
+          : director,
       name: user.name,
       role: user.role,
       action: "user",
     }));
-    console.log(_return)
+    console.log(_return);
     return _return;
   };
 
   return (
     <div>
-      <div className='flex justify-between mb-[20px]'>
+      <div className="flex justify-between mb-[20px]">
         <h2 className="text-[26px] text-[#000] font-[600] font-poppins">
           User Listing
         </h2>
-        <Link to="#" onClick={() => handleOpen('addUser')} className='shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-2 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]'>Add User</Link>
+        <Link
+          to="#"
+          onClick={() => handleOpen("addUser")}
+          className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-2 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]"
+        >
+          Add User
+        </Link>
       </div>
       <div className="flex justify-end">
         <SearchInput />
@@ -73,11 +86,11 @@ const Users = () => {
       <EditUserModal
         ModalHeader="Add User"
         open={openModal.addUser}
-        selectedUserData={{onCreateHandler}} 
-        handleClose={() => handleClose('editUser')}
+        selectedUserData={{ onCreateHandler }}
+        handleClose={() => handleClose("editUser")}
       />
     </div>
   );
-}
+};
 
 export default Users;

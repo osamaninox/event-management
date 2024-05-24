@@ -12,6 +12,11 @@ import placeholder from "../../../assets/front/images/placeholderimg.png";
 import axios from "axios";
 
 const UserProfile = () => {
+  const role = localStorage.getItem("role");
+  if (!role || role.toLowerCase() !== "admin") {
+    window.location.href = "/";
+    return;
+  }
   const [selectedCountry, setSelectedCountry] = useState("AUS");
   const [selectedGender, setSelectedGender] = useState("male");
   const [isEditing, setIsEditing] = useState(false);
