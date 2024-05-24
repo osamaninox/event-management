@@ -3,7 +3,7 @@ import IconsSet from "../../../../assets/front/icons/Icons";
 import { Link } from 'react-router-dom';
 // import fb from "../../../../assets/front/images/fb.png";
 
-const ContactCard = ({contactType, contactNo}) => {
+const ContactCard = ({contactType, contactNo,src}) => {
    const renderIcon = () => {
      if (contactType === "phone") {
        return <IconsSet.ContactIconSolid />;
@@ -22,7 +22,7 @@ const ContactCard = ({contactType, contactNo}) => {
      }
    };
   return (
-    <Link to="/" className=" border-[2px] border-[#F2D2BD] flex flex-col w-[300px] max-h-[300px] h-[200px] mx-auto rounded-md  hover:shadow-md cursor-pointer justify-center items-center px-[10px] py-[20px] ">
+    <Link to={src} className=" border-[2px] border-[#F2D2BD] flex flex-col w-[300px] max-h-[300px] h-[200px] mx-auto rounded-md  hover:shadow-md cursor-pointer justify-center items-center px-[10px] py-[20px] ">
        <div>
           <div className="text-[#000] w-[40px] h-[40px] m-auto border border-[#000] p-[5px] border-1 rounded-[50px]">
              <div className='flex justify-center items-center flex-column'>

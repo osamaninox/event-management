@@ -9,17 +9,17 @@ const Contact = () => {
     {
       contactType: "phone",
       contactNo: "0900-78601",
-      src: "telto: 0900-78601",
+      src: "tel:0900-78601",
     },
     {
       contactType: "email",
       contactNo: "innovista.designers@gmail.com",
-      src: "mailto: innovista.designers@gmail.com",
+      src: "mailto:innovista.designers@gmail.com",
     },
     {
       contactType: "address",
       contactNo: "Nazimabad Road N0. 1, Nazimabad 1 Block 3 Nazimabad, Karachi Karachi City, Sindh 74600",
-      src:"1, 1 Nazimabad Rd Number 3, Nazimabad 3 Block 3 Nazimabad, Karachi, Karachi City, Sindh 74600, Pakistan",
+      src:"https://www.google.com/maps/place/1,+1+Nazimabad+Rd+Number+3,+Nazimabad+3+Block+3+Nazimabad,+Karachi,+Karachi+City,+Sindh+74600,+Pakistan/@24.9153486,67.0272546,17z/data=!3m1!4b1!4m5!3m4!1s0x3eb33f2d7f11b1b3:0x1516045415827431!8m2!3d24.9153438!4d67.0298349?entry=ttu",
     },
   ];
    var followData = [
@@ -54,6 +54,7 @@ const Contact = () => {
               <ContactCard
                 contactType={data.contactType}
                 contactNo={data.contactNo}
+                src={data.src}
               />
             );
           })}
@@ -67,6 +68,7 @@ const Contact = () => {
               <ContactCard
                 contactType={data.contactType}
                 contactNo={data.contactNo}
+                src={data.src}
               />
             );
           })}

@@ -21,9 +21,7 @@ function Footer() {
             <i>Let's Make Magic</i>
           </h2>
           <p className="text-[#fff] text-[12px] text-center">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s,
+            Thank you for visiting! We're here to turn your vision into reality, providing seamless planning and execution for all your events.
           </p>
         </div>
         <div className="AboutSec px-[100px] border-l border-white border-r border-white mb-[50px]">
@@ -94,7 +92,7 @@ function Footer() {
                   <IconsSet.ChevronIcon />
                 </span>
                 <Link
-                  to="#"
+                  to="https://www.instagram.com/innovistadesigners?igsh=MWZ4bHpwYzZzODg3dg=="
                   className="text-white text-[16px] font-[400] capitalize"
                 >
                   How To Use Tool
@@ -114,7 +112,7 @@ function Footer() {
               </h6>
               <div className="content-sec items-center">
                 <a
-                  href="telto: 0900-786-01"
+                  href="tel:0900-786-01"
                   className="text-[#fff] text-[12px]"
                 >
                   0900-786-01
@@ -132,12 +130,10 @@ function Footer() {
               </h6>
               <div className="content-sec items-center">
                 <a
-                  href="telto: 0900-786-01"
+                  href="https://www.google.com/maps/place/1,+1+Nazimabad+Rd+Number+3,+Nazimabad+3+Block+3+Nazimabad,+Karachi,+Karachi+City,+Sindh+74600,+Pakistan/@24.9153486,67.0272546,17z/data=!3m1!4b1!4m5!3m4!1s0x3eb33f2d7f11b1b3:0x1516045415827431!8m2!3d24.9153438!4d67.0298349?entry=ttu"
                   className="text-[#fff] text-[12px]"
                 >
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s
+                  Nazimabad Road N0. 1, Nazimabad 1 Block 3 Nazimabad, Karachi Karachi City, Sindh 74600
                 </a>
               </div>
             </div>
@@ -152,7 +148,7 @@ function Footer() {
               </h6>
               <div className="content-sec items-center">
                 <a
-                  href="mailto: 0900-786-01"
+                  href="mailto:innovista.designers@gmail.com"
                   className="text-[#fff] text-[12px]"
                 >
                   innovista.designers@gmail.com
@@ -170,7 +166,7 @@ function Footer() {
             </p>
           </div>
           <div className="flex">
-            <Link to="" className="px-[5px] text-[#fff]">
+            <Link to="https://www.instagram.com/innovistadesigners?igsh=MWZ4bHpwYzZzODg3dg==" className="px-[5px] text-[#fff]">
               <IconsSet.InstagramIcon className="px-[5px]" />
             </Link>
             <Link to="" className="px-[5px] text-[#fff]">
