@@ -1,17 +1,20 @@
-import React, { useState,useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome
-} from "@fortawesome/free-solid-svg-icons";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const MainTop = ({handleBudgetAmount, items, onExport, onImport, onSaveAsPNG, onSaveAsPDF }) => {
+const MainTop = ({
+  handleBudgetAmount,
+  items,
+  onExport,
+  onImport,
+  onSaveAsPNG,
+  onSaveAsPDF,
+}) => {
   const [jsonTemplate, setJsonTemplate] = useState("");
   const [budgetPrice, setbudgetPrice] = useState();
-   useEffect(() => {
-   
-   }, [handleBudgetAmount]);
+  useEffect(() => {}, [handleBudgetAmount]);
   const exportTemplate = () => {
     const json = JSON.stringify(items);
     setJsonTemplate(json);
@@ -21,20 +24,25 @@ const MainTop = ({handleBudgetAmount, items, onExport, onImport, onSaveAsPNG, on
 
   const saveEvent = async () => {
     const json = JSON.stringify(items);
-   const totalBudget = items[0].droppedItems.reduce((acc, item) => acc + (parseInt(item.price, 10) || 0), 0);
-    await axios.create({
-    }).post("http://localhost:8000/api/event", {
-      userId: "60f3b3b3b3b3b3b3b3b3b3b3", // REPLACE WITH USER ID
-      design: json,
-      date: new Date(),
-      title: "Event 1", // REPLACE WITH EVENT TITLE
-      totalAmount: totalBudget, // REPLACE WITH TOTAL AMOUNT
-    },
+    const totalBudget = items[0].droppedItems.reduce(
+      (acc, item) => acc + (parseInt(item.price, 10) || 0),
+      0
+    );
+    await axios.create({}).post(
+      "http://localhost:8000/api/event",
+      {
+        userId: "60f3b3b3b3b3b3b3b3b3b3b3", // REPLACE WITH USER ID
+        design: json,
+        date: new Date(),
+        title: "Event 1", // REPLACE WITH EVENT TITLE
+        totalAmount: totalBudget, // REPLACE WITH TOTAL AMOUNT
+      },
       {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
-      });
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
   };
 
   const handleFileChange = (event) => {
@@ -56,16 +64,15 @@ const MainTop = ({handleBudgetAmount, items, onExport, onImport, onSaveAsPNG, on
   const [budgetModal, setBudgetModal] = useState(true);
   //const [budgetAmount, setBudgetAmount] = useState('00');
   const budgetPopup = (event) => {
-   console.log("budgetPopup");
-   setBudgetModal(prevState => !prevState); 
+    console.log("budgetPopup");
+    setBudgetModal((prevState) => !prevState);
   };
 
-  
   const Updatebudget = (event) => {
-   //console.log("Updatebudget " +budgetAmount);
-   setBudgetModal(prevState => !prevState);
+    //console.log("Updatebudget " +budgetAmount);
+    setBudgetModal((prevState) => !prevState);
   };
-  
+
   // const handleFileChange = (event) => {
   //   const file = event.target.files[0];
   //   if (event && event.target && event.target.files && event.target.files.length > 0) {
@@ -80,22 +87,27 @@ const MainTop = ({handleBudgetAmount, items, onExport, onImport, onSaveAsPNG, on
 
   return (
     <div className="css-wcwwis fixed w-full z-[9]">
-      <div className="css-7z6edo">
-
-      </div>
+      <div className="css-7z6edo"></div>
       <div className="css-70qvj9">
-        <Link to="/" rel="noreferrer" target="_blank" className="shadow-md  rounded-[5px]">
-        <FontAwesomeIcon
-            className="text-[#fff] p-[5px]"
-             icon={faHome}
-            />
+        <Link
+          to="/"
+          rel="noreferrer"
+          target="_blank"
+          className="shadow-md  rounded-[5px]"
+        >
+          <FontAwesomeIcon className="text-[#fff] p-[5px]" icon={faHome} />
         </Link>
 
         <div className="css-1xzdikv">
-            <label>
-               <input  onChange={handleFileChange} accept="application/json" type="file" className="css-1hyfx7x cursor-pointer" />Import
-            </label>
-          
+          <label>
+            <input
+              onChange={handleFileChange}
+              accept="application/json"
+              type="file"
+              className="css-1hyfx7x cursor-pointer"
+            />
+            Import
+          </label>
         </div>
         <div className="css-1xzdikv" onClick={exportTemplate}>
           Export
@@ -132,16 +144,16 @@ const MainTop = ({handleBudgetAmount, items, onExport, onImport, onSaveAsPNG, on
           Export PDF
         </div>
         <div className="css-y73845  ml-3 flex min-h-[36px]">
-         <Link to="/" rel="noreferrer" target="_blank" className="">
-             How to use Tool ?
-        </Link>
+          <Link to="/" rel="noreferrer" target="_blank" className="">
+            How to use Tool ?
+          </Link>
         </div>
-       <div onClick={budgetPopup}  className="css-y73845 ml-3 min-h-[36px]">
+        <div onClick={budgetPopup} className="css-y73845 ml-3 min-h-[36px]">
           {/* <div className="css-8cka6y">
            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
             <path d="M64 64C28.7 64 0 92.7 0 128V384c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H64zm64 320H64V320c35.3 0 64 28.7 64 64zM64 192V128h64c0 35.3-28.7 64-64 64zM448 384c0-35.3 28.7-64 64-64v64H448zm64-192c-35.3 0-64-28.7-64-64h64v64zM288 160a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/></svg>
           </div> */}
-         Calculate Budget
+          Calculate Budget
         </div>
         {/* <div className="css-y73845">
          <div className="css-8cka6y">
@@ -153,35 +165,53 @@ const MainTop = ({handleBudgetAmount, items, onExport, onImport, onSaveAsPNG, on
       </div> */}
         {/* <pre>{JSON.stringify(items, null, 2)}</pre> */}
       </div>
-      <div className='budget-modal position-absolute'>
-      {budgetModal &&  
-      <>
-      <div className="modal-backdrop fade show"></div>
-      <div className="modal d-block show fade" tabindex="-1" >   
-         <div className="modal-dialog">
-            <div className="modal-content">
-               <div className="modal-header">
-                  <h5 className="modal-title">Project Budget</h5>
-                  <button onClick={budgetPopup} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-               </div>
-               <div className="modal-body">
-                  <div className="input-group input-group-sm">
-                     <span className="input-group-text">Amount:</span>
-                     <input className="form-control" id="budgetPrice" type="number" 
-                     value={budgetPrice} 
-                        onChange={(event) => handleBudgetAmount(event.target.value)} 
-                        />
+      <div className="budget-modal position-absolute">
+        {budgetModal && (
+          <>
+            <div className="modal-backdrop fade show"></div>
+            <div className="modal d-block show fade" tabindex="-1">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title">Project Budget</h5>
+                    <button
+                      onClick={budgetPopup}
+                      type="button"
+                      className="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
                   </div>
-               </div>
-               <div className="modal-footer">
-                  <button type="button" className="btn btn-primary" onClick={Updatebudget}>Save</button>
-               </div>
+                  <div className="modal-body">
+                    <div className="input-group input-group-sm">
+                      <span className="input-group-text">Amount:</span>
+                      <input
+                        className="form-control"
+                        id="budgetPrice"
+                        type="number"
+                        min="0"
+                        value={budgetPrice}
+                        onChange={(event) =>
+                          handleBudgetAmount(event.target.value)
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className="modal-footer">
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={Updatebudget}
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-         </div>
+          </>
+        )}
       </div>
-      </>
-      }
-   </div>
     </div>
   );
 };
