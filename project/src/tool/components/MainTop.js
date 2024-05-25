@@ -14,7 +14,28 @@ const MainTop = ({
 }) => {
   const [jsonTemplate, setJsonTemplate] = useState("");
   const [budgetPrice, setbudgetPrice] = useState();
-  useEffect(() => {}, [handleBudgetAmount]);
+  useEffect(() => {
+   
+  }, [handleBudgetAmount]);
+  
+   const validateBudgetAmount = (value) => {
+    if (isNaN(value)) {
+      alert("Please enter a valid number");
+      return false;
+    } else if (parseFloat(value) < 0) {
+      alert("Please enter a positive number");
+      return false;
+    }
+    return true;
+  };
+
+  const handleBudgetAmountChanged = (value) => {
+    if (validateBudgetAmount(value)) {
+      setbudgetPrice(value);
+      handleBudgetAmount(value);
+    }
+  };
+
   const exportTemplate = () => {
     const json = JSON.stringify(items);
     setJsonTemplate(json);
@@ -191,9 +212,8 @@ const MainTop = ({
                         type="number"
                         min="0"
                         value={budgetPrice}
-                        onChange={(event) =>
-                          handleBudgetAmount(event.target.value)
-                        }
+                        onChange={(event) => handleBudgetAmountChanged(event.target.value)}
+                        // onChange={handleBudgetAmount(e)}
                       />
                     </div>
                   </div>
