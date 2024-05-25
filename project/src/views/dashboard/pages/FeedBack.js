@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SearchInput from "../components/common/SearchInput";
-import { Table } from "../components/common/Table";
+import { FeedbackTable } from "../components/common/FeedbackTable";
+import axios from "axios";
 
 const FeedBack = () => {
   // const role = localStorage.getItem("role");
@@ -8,34 +9,24 @@ const FeedBack = () => {
   //   window.location.href = "/";
   //   return;
   // }
-  const TABLE_HEAD = ["id", "name", "email", "comment", "action"];
+  let [TABLE_ROWS, setTableRows] = useState([]);
 
-  const TABLE_ROWS = [
-    {
-      id: "1",
-      name: "John Michael",
-      email: "abc@gmail.com",
-      comment:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
-      action: "feedbacks",
-    },
-    {
-      id: "2",
-      name: "John Michael",
-      email: "abc@gmail.com",
-      comment:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
-      action: "feedbacks",
-    },
-    {
-      id: "3",
-      name: "John Michael",
-      email: "abc@gmail.com",
-      comment:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
-      action: "feedbacks",
-    },
-  ];
+  const TABLE_HEAD = ["name", "email", "comment"];
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/feedback`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        setTableRows(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   return (
     <div>
       <h2 className="text-[26px] text-[#000] font-[600] font-poppins">
@@ -45,7 +36,7 @@ const FeedBack = () => {
         <SearchInput />
       </div>
       <div className="my-[20px]">
-        <Table head={TABLE_HEAD} rows={TABLE_ROWS} />
+        <FeedbackTable head={TABLE_HEAD} rows={TABLE_ROWS} />
       </div>
     </div>
   );

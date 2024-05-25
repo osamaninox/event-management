@@ -36,7 +36,7 @@ export async function login(req, res, next) {
 
 export async function register(req, res, next) {
   try {
-    const { email, password, name, contactNumber } = req.body;
+    const { email, password, name, contactNumber, active, role } = req.body;
 
     const userWithEmailAlreadyExists = await User.exists({ email: email });
     if (userWithEmailAlreadyExists) {
@@ -45,9 +45,15 @@ export async function register(req, res, next) {
         .json({ message: "User with email already exists" });
     }
 
-    const newUser = { email, password, name, contactNumber };
-    await User.create(newUser);
-
+    const newUser = { email, password, name, contactNumber, active, role };
+    const createdUser = await User.create(newUser);
+    if (req.body.fileBase64) {
+      createdUser.imagePath = saveFileFromBase64(
+        req.body.fileBase64,
+        createdUser.id.toString()
+      );
+      await createdUser.save();
+    }
     res
       .status(201)
       .json({ message: "User registered successfully", user: newUser });
@@ -62,33 +68,15 @@ export async function updateProfile(req, res, next) {
   try {
     const { id } = req.params;
 
-    const updatedUser = await User.findByIdAndUpdate({ id }, req.body).lean();
-    res.status(200).json(updatedUser);
-  } catch (err) {
-    res
-      .status(500)
-      .json({ message: `Something went wrong ${JSON.stringify(err)}` });
-  }
-}
-export async function updateUser(req, res, next) {
-  try {
-    const { _id } = req.body;
-    const { name, role, img } = req.body;
-    let update_params = {};
-    if (name) {
-      update_params.name = name;
+    const updatedUser = await User.findByIdAndUpdate(id, req.body);
+    if (req.body.fileBase64) {
+      if (updatedUser.imagePath) fs.unlinkSync(updatedUser.imagePath);
+      updatedUser.imagePath = saveFileFromBase64(
+        req.body.fileBase64,
+        updatedUser._id.toString()
+      );
+      await updatedUser.save();
     }
-    if (role) {
-      update_params.role = role;
-    }
-    // if(img){
-    //   const fileName = uploadImage(img);
-    //   update_params.img = fileName;
-    // }
-    const updatedUser = await User.findByIdAndUpdate(
-      { _id },
-      update_params
-    ).lean();
     res.status(200).json(updatedUser);
   } catch (err) {
     res
@@ -104,6 +92,7 @@ export async function getProfile(req, res, next) {
     if (!user) {
       return res.status(400).json({ message: "Invalid user id" });
     }
+    if (user.imagePath) user.file = await readFileAsBase64(user.imagePath);
     res.status(200).json(user);
   } catch (err) {
     res
@@ -114,7 +103,13 @@ export async function getProfile(req, res, next) {
 
 export async function getAllUsers(req, res, next) {
   try {
-    const users = await User.find().lean();
+    let users = await User.find().lean();
+    users = await Promise.all(
+      users.map(async (user) => {
+        if (user.imagePath) user.file = await readFileAsBase64(user.imagePath);
+        return user;
+      })
+    );
     res.status(200).json(users);
   } catch (err) {
     res
@@ -134,4 +129,46 @@ export async function deleteUser(req, res) {
       .status(500)
       .json({ message: `Something went wrong ${JSON.stringify(err)}` });
   }
+}
+
+function saveFileFromBase64(base64, fileName) {
+  // Split the base64 string in data and contentType
+  const block = base64.split(";");
+  // Get the content type
+  const contentType = block[0].split(":")[1]; // In this case "image/gif"
+  // get the real base64 content of the file
+  const realData = block[1].split(",")[1]; // In this case "R0lGODlhPQBEAPeoAJosM...."
+
+  const extension = contentType.split("/")[1];
+  // Convert it to a buffer
+  const buffer = Buffer.from(realData, "base64");
+
+  // Define the output path
+  const dir = path.join(__dirname, "/user/");
+  const outputPath = path.join(dir, fileName + "." + extension);
+
+  // Create the directory if it does not exist
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
+  // Write the file
+  fs.writeFileSync(outputPath, buffer);
+  return outputPath;
+}
+
+async function readFileAsBase64(filePath) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, { encoding: "base64" }, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        // Get the file extension
+        const extension = path.extname(filePath).substring(1);
+        // Prepend the data URL scheme
+        const base64 = `data:image/${extension};base64,${data}`;
+        resolve(base64);
+      }
+    });
+  });
 }

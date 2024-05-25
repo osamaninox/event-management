@@ -5,7 +5,6 @@ import {
   updateProfile,
   getProfile,
   getAllUsers,
-  updateUser,
   deleteUser,
 } from "./controllers/user.controller.js";
 import {
@@ -34,13 +33,25 @@ import {
 } from "./controllers/object-library.controller.js";
 import { authenticateToken } from "./middlwares/jwt-verify.js";
 import multer from "multer";
+import {
+  createFeedback,
+  getAllFeedbacks,
+} from "./controllers/feedback.controller.js";
 const router = Router();
 
 /* User */
-router.post("/user/register", register);
+router.post(
+  "/user/register",
+  multer({ dest: "uploads/" }).single("object"),
+  register
+);
 router.post("/user/login", login);
-router.patch("/user/profile", authenticateToken, updateProfile);
-router.post("/user/update", authenticateToken, updateUser);
+router.patch(
+  "/user/profile/:id",
+  authenticateToken,
+  multer({ dest: "uploads/" }).single("object"),
+  updateProfile
+);
 router.get("/user/profile/:id", authenticateToken, getProfile);
 router.get("/user/all", authenticateToken, getAllUsers);
 router.delete("/user/:userId", authenticateToken, deleteUser);
@@ -89,5 +100,8 @@ router.put(
   updateObject
 );
 router.delete("/object-library/:objectId", authenticateToken, deleteObject);
+
+router.get("/feedback", authenticateToken, getAllFeedbacks);
+router.post("/feedback", createFeedback);
 
 export default router;

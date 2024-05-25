@@ -9,7 +9,7 @@ import {
 } from "@material-tailwind/react";
 import IconsSet from "../../../../../assets/front/icons/Icons";
 import vp from "../../../../../assets/front/images/vp.jpeg";
-import placeholder from '../../../../../assets/front/images/placeholderimg.png'
+import placeholder from "../../../../../assets/front/images/placeholderimg.png";
 import axios from "axios";
 
 export default function EditUserModal({
@@ -28,21 +28,24 @@ export default function EditUserModal({
     name: "",
     profilePic: placeholder,
     role: "",
+    active: "active",
   });
   //  const [selectedUserData, setSelectedUserData] = useState(selectedUserData1);
 
   useEffect(() => {
-    if (selectedUserData && selectedUserData .id) {
+    if (selectedUserData && selectedUserData.id) {
       setUserData({
         id: selectedUserData.id,
         name: selectedUserData.name,
         profilePic: selectedUserData.user_image || vp,
         role: selectedUserData.role,
+        file: selectedUserData.file,
+        active: selectedUserData.active,
       });
       setIsEditing(true);
     }
   }, [selectedUserData]);
-  console.log('selectedUserDataUSeEffect', selectedUserData);
+  console.log("selectedUserDataUSeEffect", selectedUserData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,47 +57,45 @@ export default function EditUserModal({
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setUserData({ ...userData, profilePic: e.target.result });
+        setUserData({ ...userData, file: e.target.result });
       };
       reader.readAsDataURL(file);
     }
   };
 
   const handleSubmit = async (data) => {
-    if(isEditing){
-      await updateUser ();
+    if (isEditing) {
+      await updateUser();
+    } else {
+      await createUser();
     }
-    else{
-      await createUser()
-    }  
     handleClose();
   };
-  
-  const updateUser = async() => {
+
+  const updateUser = async () => {
     try {
-       await axios.post(
-        "http://localhost:8000/api/user/update",
-        {
-          _id: selectedUserData.id,
-          name: userData.name,
-          role: userData.role,
-          img: userData.profilePic
-        },
+      const formData = new FormData();
+      formData.append("name", userData.name);
+      formData.append("active", userData.active);
+      formData.append("fileBase64", userData.file);
+      await axios.patch(
+        `http://localhost:8000/api/user/profile/${userData.id}`,
+        formData,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
-       selectedUserData.onUpdateHandler(userData,  selectedUserData.index);
-      } catch (error) {
+      selectedUserData.onUpdateHandler(userData, selectedUserData.index);
+    } catch (error) {
       // Show invalid credentials error to user
       console.error(error);
     }
-  }
-  const createUser = async() => {
+  };
+  const createUser = async () => {
     try {
-       const response = await axios.post(
+      const response = await axios.post(
         "http://localhost:8000/api/user/",
         {
           _id: selectedUserData.id,
@@ -108,13 +109,12 @@ export default function EditUserModal({
         }
       );
       console.log(response.data);
-       selectedUserData.onCreateHandler(response.data);
-       
-      } catch (error) {
+      selectedUserData.onCreateHandler(response.data);
+    } catch (error) {
       // Show invalid credentials error to user
       console.error(error);
     }
-  }
+  };
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
@@ -124,7 +124,7 @@ export default function EditUserModal({
             <div className="relative m-auto">
               <div className="mt-[-60px] rounded-full shadow w-[150px] h-[150px]">
                 <img
-                  src={userData.profilePic}
+                  src={userData.file}
                   alt="Profile Pic"
                   className="object-center object-cover rounded-full w-[150px] h-[150px]"
                 />
@@ -174,9 +174,9 @@ export default function EditUserModal({
                 Select Status
               </label>
               <select
-                name="role"
-                id="status"
-                value={userData.role}
+                name="active"
+                id="active"
+                value={userData.active}
                 onChange={handleChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
@@ -195,7 +195,10 @@ export default function EditUserModal({
           >
             <span>Cancel</span>
           </Button>
-          <Button className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]" onClick={handleSubmit}>
+          <Button
+            className="shadow-md mx-3 flex items-center bg-[#265253] text-white px-4 py-3 rounded-lg hover:bg-[#265253] focus:outline-none focus:bg-[#265253]"
+            onClick={handleSubmit}
+          >
             <span>Update</span>
           </Button>
         </DialogFooter>

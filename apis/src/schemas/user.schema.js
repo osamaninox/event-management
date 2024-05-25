@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
   email: {
@@ -6,29 +6,34 @@ const userSchema = new Schema({
     required: true,
     unique: true,
     lowercase: true,
-    trim: true
+    trim: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   name: {
     type: String,
-    required: true
+    required: true,
   },
   contactNumber: {
     type: String,
-    required: false
+    required: false,
   },
   role: {
     type: String,
-    enum: ['admin', 'user'],
-    default: 'user'
+    enum: ["admin", "user"],
+    default: "user",
   },
-  image: {
+  imagePath: {
     type: String,
-    required: false
+    required: false,
+  },
+  active: {
+    type: String,
+    required: true,
+    default: "active",
   },
 });
 
-export const User = model('User', userSchema);
+export const User = model("User", userSchema);

@@ -8,7 +8,7 @@ import EditUserModal from "../modal/User/EditUserModal";
 import AddUserModal from "../modal/User/AddUserModal";
 import DeleteUserModal from "../modal/User/DeleteUserModal";
 
-export function UserTable({ head, rows, handleClose: handleCloseModal }) {
+export function FeedbackTable({ head, rows, handleClose: handleCloseModal }) {
   const [openModal, setOpenModal] = useState({
     addUser: false,
     editUser: false,
@@ -69,33 +69,8 @@ export function UserTable({ head, rows, handleClose: handleCloseModal }) {
             </tr>
           </thead>
           <tbody>
-            {rows.map(({ id, name, file, role, active }, index) => (
-              <tr key={id} className="even:bg-blue-gray-50/50">
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {index + 1}
-                  </Typography>
-                </td>
-                <td className="p-4">
-                  <div className="flex items-center">
-                    <img
-                      src={file}
-                      alt="image"
-                      className="w-[30px] h-[30px] object-center object-cover rounded-full"
-                    />
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal px-2"
-                    >
-                      {name}
-                    </Typography>
-                  </div>
-                </td>
+            {rows.map(({ name, email, comment }, index) => (
+              <tr className="even:bg-blue-gray-50/50">
                 <td className="p-4">
                   <Typography
                     as="a"
@@ -104,7 +79,7 @@ export function UserTable({ head, rows, handleClose: handleCloseModal }) {
                     color="blue-gray"
                     className="font-medium"
                   >
-                    {role}
+                    {name}
                   </Typography>
                 </td>
                 <td className="p-4">
@@ -115,58 +90,25 @@ export function UserTable({ head, rows, handleClose: handleCloseModal }) {
                     color="blue-gray"
                     className="font-medium"
                   >
-                    {active}
+                    {email}
                   </Typography>
                 </td>
-                {
-                  <td className="p-4">
-                    <div className="flex">
-                      <Link
-                        to="#"
-                        onClick={() =>
-                          handleOpen("editUser", {
-                            id,
-                            name,
-                            file,
-                            role,
-                            active,
-                            onUpdateHandler,
-                            index,
-                          })
-                        }
-                        className=""
-                      >
-                        <IconsSet.EditIcon />
-                      </Link>
-                      <Link
-                        to="#"
-                        onClick={() => handleOpen("deleteUser", { id })}
-                        className="px-2"
-                      >
-                        <IconsSet.TrashIcon />
-                      </Link>
-                    </div>
-                  </td>
-                }
+                <td className="p-4">
+                  <Typography
+                    as="a"
+                    href="#"
+                    variant="small"
+                    color="blue-gray"
+                    className="font-medium"
+                  >
+                    {comment}
+                  </Typography>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </Card>
-      <EditUserModal
-        ModalHeader="Edit User Details"
-        open={openModal.editUser}
-        selectedUserData={selectedUser}
-        handleClose={() => handleClose("editUser")}
-      />
-      <DeleteUserModal
-        ModalHeader="Confirmation"
-        ModalMessageBody="Are you sure you want to delete this User?"
-        open={openModal.deleteUser}
-        selectedUserData={selectedUser}
-        handleClose={() => handleClose("deleteUser")}
-        // handleDelete={handleDeleteUser}
-      />
     </>
   );
 }
