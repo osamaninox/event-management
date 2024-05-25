@@ -4,11 +4,6 @@ import { FeedbackTable } from "../components/common/FeedbackTable";
 import axios from "axios";
 
 const FeedBack = () => {
-  // const role = localStorage.getItem("role");
-  // if (!role || role.toLowerCase() !== "admin") {
-  //   window.location.href = "/";
-  //   return;
-  // }
   let [TABLE_ROWS, setTableRows] = useState([]);
 
   const TABLE_HEAD = ["name", "email", "comment"];
@@ -27,6 +22,11 @@ const FeedBack = () => {
         console.error(error);
       });
   }, []);
+  const role = localStorage.getItem("role");
+  if (!role || role.toLowerCase() !== "admin") {
+    window.location.href = "/";
+    return;
+  }
   return (
     <div>
       <h2 className="text-[26px] text-[#000] font-[600] font-poppins">
