@@ -2,8 +2,22 @@ import React,{useState} from 'react'
 import Banner from '../components/common/Banner';
 import galleryBanner from '../../../assets/front/images/Bannergallery.png';
 import premadeTemplate from "../../../assets/front/images/12.jpg";
-import weddingEvent from "../../../assets/front/images/1.jpg";
-import birthdayEvent from "../../../assets/front/images/20.jpg";
+import weddingEvent1 from "../../../assets/front/images/1.jpg";
+import weddingEvent2 from "../../../assets/front/images/2.jpg";
+import weddingEvent3 from "../../../assets/front/images/3.jpg";
+import weddingEvent4 from "../../../assets/front/images/4.jpg";
+import weddingEvent5 from "../../../assets/front/images/5.jpg";
+import weddingEvent6 from "../../../assets/front/images/6.jpg";
+import weddingEvent7 from "../../../assets/front/images/7.jpg";
+import weddingEvent8 from "../../../assets/front/images/9.jpg";
+
+import birthdayEvent1 from "../../../assets/front/images/12.jpg";
+import birthdayEvent2 from "../../../assets/front/images/13.jpg";
+import birthdayEvent3 from "../../../assets/front/images/15.jpg";
+import birthdayEvent4 from "../../../assets/front/images/16.jpg";
+import birthdayEvent5 from "../../../assets/front/images/17.jpg";
+import birthdayEvent6 from "../../../assets/front/images/19.jpg";
+import birthdayEvent7 from "../../../assets/front/images/20.jpg";
 import { Link } from 'react-router-dom';
 import TemplateModal from '../components/common/TemplateModal';
 
@@ -23,53 +37,65 @@ const Gallery = () => {
   };
   const birthdayData = [
     {
-      img: birthdayEvent,
+      img: birthdayEvent1,
       event: "Birthday",
     },
     {
-      img: birthdayEvent,
+      img: birthdayEvent2,
       event: "Birthday",
     },
     {
-      img: birthdayEvent,
+      img: birthdayEvent3,
       event: "Birthday",
     },
     {
-      img: birthdayEvent,
+      img: birthdayEvent4,
       event: "Birthday",
     },
     {
-      img: birthdayEvent,
+      img: birthdayEvent5,
       event: "Birthday",
     },
     {
-      img: birthdayEvent,
+      img: birthdayEvent6,
+      event: "Birthday",
+    },
+    {
+      img: birthdayEvent7,
       event: "Birthday",
     },
   ];
   const weddingData = [
     {
-      img: weddingEvent,
+      img: weddingEvent1,
       event: "Wedding",
     },
     {
-      img: weddingEvent,
+      img: weddingEvent2,
       event: "Wedding",
     },
     {
-      img: weddingEvent,
+      img: weddingEvent3,
       event: "Wedding",
     },
     {
-      img: weddingEvent,
+      img: weddingEvent4,
       event: "Wedding",
     },
     {
-      img: weddingEvent,
+      img: weddingEvent5,
       event: "Wedding",
     },
     {
-      img: weddingEvent,
+      img: weddingEvent6,
+      event: "Wedding",
+    },
+    {
+      img: weddingEvent7,
+      event: "Wedding",
+    },
+    {
+      img: weddingEvent8,
       event: "Wedding",
     },
   ];
